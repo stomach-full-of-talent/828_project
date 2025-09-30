@@ -1,0 +1,332 @@
+app:
+  description: ''
+  icon: 📑
+  icon_background: '#E0F2FE'
+  mode: advanced-chat
+  name: 通用-通用AI助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1748565399968-source-1748565411287-target
+      selected: false
+      source: '1748565399968'
+      sourceHandle: source
+      target: '1748565411287'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1711528914102-source-1752136545464-target
+      source: '1711528914102'
+      sourceHandle: source
+      target: '1752136545464'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17521366013370-source-17521366013371-target
+      selected: false
+      source: '17521366013370'
+      sourceHandle: source
+      target: '17521366013371'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1752136545464-true-1752136676370-target
+      source: '1752136545464'
+      sourceHandle: 'true'
+      target: '1752136676370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1752136676370-source-1748565399968-target
+      selected: false
+      source: '1752136676370'
+      sourceHandle: source
+      target: '1748565399968'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1752136545464-false-17521366013370-target
+      source: '1752136545464'
+      sourceHandle: 'false'
+      target: '17521366013370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 是否开启上下文记忆功能（默认不开启，检索知识库更迅速。开启后模型可以根据对话之前的内容进行回答，用时会增加）
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: false
+          type: select
+          variable: memory
+      height: 90
+      id: '1711528914102'
+      position:
+        x: 30
+        y: 404
+      positionAbsolute:
+        x: 30
+        y: 404
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 90dc22b4-f8a1-4e73-89fd-cef861797aec
+          role: system
+          text: 你是一个智能助手，帮助解决用户问题。
+        selected: false
+        title: 最终回复
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1748565399968'
+      position:
+        x: 1123
+        y: 267
+      positionAbsolute:
+        x: 1123
+        y: 267
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748565399968.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: '1748565411287'
+      position:
+        x: 1457
+        y: 267
+      positionAbsolute:
+        x: 1457
+        y: 267
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 353b692f-36b8-4dc3-be41-5e937db7b60e
+            value: 是
+            varType: string
+            variable_selector:
+            - '1711528914102'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: true
+        title: 条件分支
+        type: if-else
+      height: 126
+      id: '1752136545464'
+      position:
+        x: 364
+        y: 404
+      positionAbsolute:
+        x: 364
+        y: 404
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-8B
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 90dc22b4-f8a1-4e73-89fd-cef861797aec
+          role: system
+          text: 你是一个智能助手，帮助解决用户问题。
+        - id: f8ca64eb-cfb3-4fb2-8d94-d90c65391f86
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: 最终回复2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17521366013370'
+      position:
+        x: 1123
+        y: 424
+      positionAbsolute:
+        x: 1123
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17521366013370.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: '17521366013371'
+      position:
+        x: 1457
+        y: 424
+      positionAbsolute:
+        x: 1457
+        y: 424
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击再次点击记忆按钮~
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1752136676370'
+      position:
+        x: 789
+        y: 267
+      positionAbsolute:
+        x: 789
+        y: 267
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -698.3186115897021
+      y: -78.40525656611067
+      zoom: 0.870550479254139

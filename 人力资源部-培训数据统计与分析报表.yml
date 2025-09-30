@@ -1,0 +1,1085 @@
+app:
+  description: 月度/年度培训明细表生成，讲师或学员培训分析及排名生成
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 人力资源部-培训数据统计与分析报表
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 您好，这是一个培训月报和讲师培训分析及排名的小助手。请选择需要查询的内容（月度培训报告或讲师排名），然后提供年份（2023-2025年）及具体月份范围。
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1753254775519-source-1753412084650-target
+      source: '1753254775519'
+      sourceHandle: source
+      target: '1753412084650'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1753412084650-false-17534121172840-target
+      source: '1753412084650'
+      sourceHandle: 'false'
+      target: '17534121172840'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 17534121172840-1-17534121398820-target
+      source: '17534121172840'
+      sourceHandle: '1'
+      target: '17534121398820'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17534121398820-source-17534121501580-target
+      source: '17534121398820'
+      sourceHandle: source
+      target: '17534121501580'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17534121501580-source-1753412172450-target
+      source: '17534121501580'
+      sourceHandle: source
+      target: '1753412172450'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 17534121172840-2-17534122054320-target
+      source: '17534121172840'
+      sourceHandle: '2'
+      target: '17534122054320'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17534122168160-source-1753412222230-target
+      source: '17534122168160'
+      sourceHandle: source
+      target: '1753412222230'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: code
+      id: 17534122054320-source-1753946987172-target
+      source: '17534122054320'
+      sourceHandle: source
+      target: '1753946987172'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1753946987172-source-17534122168160-target
+      source: '1753946987172'
+      sourceHandle: source
+      target: '17534122168160'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1753412084650-true-1754644933550-target
+      source: '1753412084650'
+      sourceHandle: 'true'
+      target: '1754644933550'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1754644933550-source-1754644977020-target
+      source: '1754644933550'
+      sourceHandle: source
+      target: '1754644977020'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1754644977020-source-1754645025307-target
+      source: '1754644977020'
+      sourceHandle: source
+      target: '1754645025307'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1754645025307-source-1754645090667-target
+      source: '1754645025307'
+      sourceHandle: source
+      target: '1754645090667'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1754645090667-false-17534121172840-target
+      source: '1754645090667'
+      sourceHandle: 'false'
+      target: '17534121172840'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1754645090667-true-1754645144732-target
+      source: '1754645090667'
+      sourceHandle: 'true'
+      target: '1754645144732'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754645144732-source-1754645181329-target
+      source: '1754645144732'
+      sourceHandle: source
+      target: '1754645181329'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 记忆
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: memory
+      height: 90
+      id: '1753254775519'
+      position:
+        x: 30
+        y: 286
+      positionAbsolute:
+        x: 30
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 03994aa7-5130-4b8b-bc3b-16d2684e26c6
+            value: 是
+            varType: string
+            variable_selector:
+            - '1753254775519'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 126
+      id: '1753412084650'
+      position:
+        x: 364
+        y: 286
+      positionAbsolute:
+        x: 364
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 月度报告
+        - id: '2'
+          name: 讲师排名
+        desc: ''
+        instruction: '如果{{#sys.query#}}包含任何与月度报告或详细培训报告相关的文本，转到类别1。
+
+          如果{{#sys.query#}}包含与讲师排名、讲师分析或教师分析相关的文本，转到类别2。'
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        query_variable_selector:
+        - '1753254775519'
+        - sys.query
+        selected: false
+        title: 问题分类器 (1)
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 172
+      id: '17534121172840'
+      position:
+        x: 2550
+        y: 286
+      positionAbsolute:
+        x: 2550
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - tDj5h3rdLXA+xR27lVGzaxH2SnM4CVTNd4cZ19MWa3qLxh/2k1zXM9SNOAZFqjjk
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 166
+        query_variable_selector:
+        - '1753254775519'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索系统 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17534121398820'
+      position:
+        x: 2884
+        y: 286
+      positionAbsolute:
+        x: 2884
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17534121398820'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 4d1023c9-0be1-4b3e-be84-be8a89d133e4
+          role: system
+          text: "**角色**\n使用提供的数据，尽快生成一份详细的月度培训报告。\n\n**指令**\n从 `{{#sys.query#}}` 中提取指定的年份。不要验证或重新计算该年份。如果\
+            \ `{{#sys.query#}}` 中存在讲师姓名和月份，也一并提取这两项信息。\n\n**示例**：如果输入为“2023 张瑶 月度报告”，则仅使用2023年且讲师为“张瑶”的数据条目。\n\
+            \n**知识库上下文**：`{{#context#}}`\n\n**范围**\n*   如果在 `{{#sys.query#}}` 中**未指定讲师或月份**：\n\
+            \    *   仅输出**前3个月**的数据。\n*   如果**指定了特定月份但未指定讲师**：\n    *   仅输出**该月份**的数据。\n\
+            *   如果**指定了讲师但未指定月份**： \n    *   输出该讲师的**全年所有数据**。\n*   如果请求的年份**不在知识库中**：\n\
+            \    *   回复：“抱歉，请求的年份不在知识库中。”\n*   如果**未指定年份**：\n    *   使用默认年份**2025年**。\n\
+            \n**输出格式**\n*   首选**表格**格式（避免使用JSON）。\n*   包含**所有详细信息**（课程编号、讲师等）。\n*\
+            \   如果包含多个月份，则**按月份将表格分开**。\n*   思考和回答的内容应该都是中文。"
+        selected: false
+        title: 月度报告生成器 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17534121501580'
+      position:
+        x: 3218
+        y: 286
+      positionAbsolute:
+        x: 3218
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17534121501580.text#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1753412172450'
+      position:
+        x: 3552
+        y: 286
+      positionAbsolute:
+        x: 3552
+        y: 286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - tDj5h3rdLXA+xR27lVGzaxH2SnM4CVTNd4cZ19MWa3qLxh/2k1zXM9SNOAZFqjjk
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 166
+        query_variable_selector:
+        - '1753254775519'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索系统 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17534122054320'
+      position:
+        x: 2884
+        y: 441.5
+      positionAbsolute:
+        x: 2884
+        y: 441.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17534122054320'
+          - result
+        default_value:
+        - key: text
+          type: string
+          value: '   1. 刘刚/杨付才 → 场次：23 | 出席人数：126 | 部门：5 | 得分：160.8       （安全/人力资源/物流
+            - 以高场次和出席率主导）    2. 代隆权 → 场次：11 | 出席人数：83 | 部门：7 | 得分：107.9       （法律/合规
+            - 广泛的部门覆盖）    3. 孙广丽 → 场次：9 | 出席人数：192 | 部门：4 | 得分：99.6       （质量/HSF
+            - 质量培训课程的高出席率）    4. 佃奕群 → 场次：7 | 出席人数：不适用 | 部门：5 | 得分：41       （工程/质量
+            - 场次和部门表现突出）    5. 张玮琪 → 场次：6 | 出席人数：41 | 部门：3 | 得分：42.3       （质量/工程
+            - 场次稳定，出席率中等）    6. 袁威 → 场次：5 | 出席人数：64 | 部门：3 | 得分：40.2       （质量/工程
+            - 高效能场次）    7. 蔡俊杰 → 场次：5 | 出席人数：64 | 部门：2 | 得分：33.2       （工程 - 专注技术培训）    8.
+            伦汉彬 → 场次：4 | 出席人数：42 | 部门：3 | 得分：30.6       （工程/PLM - 跨部门影响力）    9. 陈秋荣
+            → 场次：4 | 出席人数：57 | 部门：2 | 得分：29.1       （设备维护 - 侧重实操培训）    10. 王敏超 → 场次：4
+            | 出席人数：不适用 | 部门：3 | 得分：24       （质量/HSF - 专精实验室/法规培训）'
+        desc: ''
+        error_strategy: default-value
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 610355cb-17bb-4c1b-bafa-c27b01bed816
+          role: system
+          text: '角色：根据给定数据生成讲师排名
+
+            首先，严格根据{{#sys.query#}}内容判断进入场景1或场景2，不得参考其他来源
+
+            年份处理规则：
+
+            仅使用{{#sys.query#}} 中明确提到的年份
+
+            （按原样处理查询，从查询中提取单个字符和单词。在决定哪种场景时不要查看内容）
+
+            如果 {{#sys.query#}} 中请求的年份在知识库中不存在，或查询内容无法理解，则输出：抱歉，我的知识库中没有相关信息来回答您的请求。
+
+            若未提及年份则默认使用2025年
+
+            示例：
+
+            如果输入为 "2025讲师排名" 或 "讲师排名"，则直接进入场景1。
+
+            若输入为"2023讲师排名"，则直接进入场景2
+
+            若输入为"2024讲师排名"，则直接进入场景3
+
+            无需额外验证
+
+            两种场景定义：
+
+            场景1 - 当{{#sys.query#}}提及"2025"或未提及年份（默认2025）时：
+
+            输出应为：
+
+            {{#1753946987172.result#}}
+
+
+            场景2 - 仅当{{#sys.query#}}明确提及"2023"年份时：
+
+            回答就是以下：
+
+            刘刚 → 场次: 12
+
+            （安全/合规领域高频授课，覆盖机械安全、节能降耗等主题）
+
+            孙广丽 → 场次: 8 
+
+            （质量/HSF核心讲师，主导有害物质管理、HSF法规等课程）
+
+            张玮琪 → 场次: 6
+
+            （质量分析与处理方法系列课程主力讲师）
+
+            唐海泉 → 场次: 5
+
+            （知识产权与专利知识体系化培训负责人）
+
+            韩金铎 → 场次: 4 
+
+            （7S管理与现场改善领域专家）
+
+            袁威 → 场次: 4 
+
+            （质量管理方法论培训，如8D报告、致命缺陷管理）
+
+            梁美怡 → 场次: 3 
+
+            （人力资源与薪酬政策核心培训讲师）
+
+            林浩灿 → 场次: 3 
+
+            （市场与营销策略类课程主力）
+
+            徐彩霞 → 场次: 3 
+
+            （新员工质量教育标准化培训）
+
+            蔡俊杰 → 场次: 3 
+
+            （工程技术类培训，如结构仿真、设计公差等）
+
+
+            场景3 - 仅当{{#sys.query#}}明确提及"2024"年份时：
+
+            回答就是以下：
+
+            刘刚 → 场次: 22
+
+            （安全/合规领域核心讲师，覆盖机械安全、节能降耗、反恐等高频课程）
+
+            杨付才 → 场次: 20
+
+            （安全/物流领域主力，与刘刚共同主导安全系列培训）
+
+            孙广丽 → 场次: 15
+
+            （质量/HSF核心讲师，主导过程检验、HSF法规等课程）
+
+            张玮琪 → 场次: 8 
+
+            （质量分析与处理方法系列课程主力讲师）
+
+            韩金锋 → 场次: 6
+
+            （7S管理与新员工入职培训负责人）
+
+            袁威 → 场次: 7
+
+            （质量管理方法论培训，如8D报告、致命缺陷管理）
+
+            梁美怡 → 场次: 5
+
+            （人力资源与薪酬政策核心培训讲师）
+
+            唐海泉 → 场次: 5
+
+            （知识产权与专利知识体系化培训负责人）
+
+            林浩灿 → 场次: 5
+
+            （市场与产品线策略类课程主力）
+
+            徐彩霞 → 场次: 5
+
+            （新员工质量教育标准化培训）
+
+            思考和回答的内容应该都是中文。
+
+
+            请将排名以 Markdown 表格的形式输出。'
+        selected: true
+        title: 讲师排名生成器 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 126
+      id: '17534122168160'
+      position:
+        x: 3552
+        y: 431
+      positionAbsolute:
+        x: 3552
+        y: 431
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17534122168160.text#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1753412222230'
+      position:
+        x: 3886
+        y: 441.5
+      positionAbsolute:
+        x: 3886
+        y: 441.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "from collections import Counter\nimport re\n\ndef main(arg1: list)\
+          \ -> str:  # Changed return type to str\n    \"\"\"\n    处理Dify知识库数据，按授课频次生成讲师排名\n\
+          \    返回格式化的中文字符串（仅前10名）\n    \"\"\"\n    instructors = []\n    \n    for\
+          \ chunk in arg1:\n        if not isinstance(chunk, dict):\n            continue\n\
+          \            \n        # 提取内容字符串\n        content_str = chunk.get(\"content\"\
+          , \"\")\n        if not content_str:\n            continue\n           \
+          \ \n        # 将分号分隔的内容转换为字典\n        try:\n            content_items = re.findall(r'\\\
+          \"(.+?)\\\":\\\"(.+?)\\\"', content_str)\n            content_dict = {k:\
+          \ v for k, v in content_items}\n            \n            # 提取讲师信息\n   \
+          \         if \"培训讲师\" in content_dict:\n                instructor = content_dict[\"\
+          培训讲师\"].strip()\n                if instructor:\n                    # 处理用斜杠分隔的多讲师情况\n\
+          \                    for single_instructor in instructor.split('/'):\n \
+          \                       instructors.append(single_instructor.strip())\n\
+          \        except Exception as e:\n            continue\n    \n    if not\
+          \ instructors:\n        return \"错误：未找到有效的讲师数据（所有数据中均无'培训讲师'字段）\"\n    \n\
+          \    # 统计并排序\n    instructor_counts = Counter(instructors)\n    ranked =\
+          \ sorted(instructor_counts.items(), key=lambda x: x[1], reverse=True)\n\
+          \    \n    # 生成纯文本中文输出\n    output_lines = []\n    output_lines.append(f\"\
+          {len(instructor_counts)}位讲师授课统计（显示前10名）：\")\n    output_lines.append(\"\
+          --------------------------------\")\n    \n    for rank, (instructor, count)\
+          \ in enumerate(ranked[:10], 1):\n        output_lines.append(f\"{rank}.\
+          \ {instructor} → 授课场次: {count}\")\n    \n    output_lines.append(\"--------------------------------\"\
+          )\n    output_lines.append(f\"最高频讲师: {ranked[0][0]}（共{ranked[0][1]}场）\"\
+          )\n\n    return {\n    \"result\": \"\\n\".join(output_lines)  # 将字符串作为字典的值返回\n\
+          }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 算排名
+        type: code
+        variables:
+        - value_selector:
+          - '17534122054320'
+          - result
+          value_type: array[object]
+          variable: arg1
+      height: 54
+      id: '1753946987172'
+      position:
+        x: 3218
+        y: 459.5
+      positionAbsolute:
+        x: 3218
+        y: 459.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击左上角开启新对话~
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1754644933550'
+      position:
+        x: 789
+        y: 453.5
+      positionAbsolute:
+        x: 789
+        y: 453.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '用户问题：{{#sys.query#}}
+
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 204c7112-fd02-4679-8c15-7c376a04320d
+          role: system
+          text: '#### **# 核心任务**
+
+            你的任务是作为一个智能分类器。分析给定的 `[记忆窗口]` (即上下文) 和 `[用户问题]`，判断该问题是否**强依赖**于`[记忆窗口]`来生成一个准确、连贯且符合用户意图的回答。
+
+             
+
+            ---
+
+             
+
+            #### **# 输入定义**
+
+            *   `[记忆窗口]`：代表之前的对话历史或背景信息。
+
+            *   `[用户问题]`：代表用户当前提出的问题。
+
+             
+
+            ---
+
+             
+
+            #### **# 判断规则**
+
+             
+
+            **首要规则：**
+
+            *   如果 `[记忆窗口]` 为空，**必须**输出 "no"。
+
+             
+
+            **特殊指令覆盖：**
+
+            *   如果 `[用户问题]` 中明确包含“无需检索知识库”或类似表述，**必须**输出 "yes"。
+
+             
+
+            **如果满足以下任一条件，输出 "yes" (代表“依赖上下文”)：**
+
+             
+
+            1.  **直接引用与显式指令**：问题直接询问、引用 `[记忆窗口]` 的内容，或包含明确指令要求基于上下文进行操作。
+
+                *   **关键词示例**：“根据上面说的”、“总结一下”、“继续”、“那这个呢？”、“详细说说”、“为什么会这样？”
+
+             
+
+            2.  **上下文延续与深化**：问题是 `[记忆窗口]` 话题的自然延续、追问、比较、要求举例、或进行推断。即使没有明确的指代词，逻辑上也紧密相连。
+
+                *   **示例**：
+
+                    *   记忆窗口：“苹果公司发布了新款iPhone。”
+
+                    *   用户问题：“它的摄像头有多少像素？”
+
+             
+
+            3.  **寻求相关替代方案**：问题在探讨与 `[记忆窗口]` 主题相关的其他选项、解决方案或可能性。
+
+                *   **示例**：
+
+                    *   记忆窗口：“A方案的优点是成本低。”
+
+                    *   用户问题：“那B方案呢？”
+
+             
+
+            **如果满足以下任一条件，输出 "no" (代表“不依赖上下文”)：**
+
+             
+
+            1.  **开启全新话题**：问题与 `[记忆窗口]` 的主题、实体、意图完全无关。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我们来讨论一下全球气候变化。”
+
+                    *   用户问题：“给我讲个笑话吧。”
+
+             
+
+            2.  **可独立回答的通用问题**：问题虽然可能与上下文主题有微弱关联，但它是一个可以独立、完整回答的通用知识性问题，无需依赖 `[记忆窗口]`
+            的具体信息。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我正在看关于特斯拉Model Y的评测。”
+
+                    *   用户问题：“特斯拉是哪个国家的公司？” (这个问题本身是独立的，不需要评测的具体内容)
+
+             
+
+            ---
+
+             
+
+            #### **# 案例学习**
+
+             
+
+            *   **案例 1 (yes)**
+
+                *   `[记忆窗口]`：“AI的发展为社会带来了许多便利，例如在医疗领域的智能诊断和金融领域的风险控制。”
+
+                *   `[用户问题]`：“它在未来还可能有哪些应用？”
+
+                *   **分析**：属于“上下文延续与深化”。
+
+             
+
+            *   **案例 2 (yes)**
+
+                *   `[记忆窗口]`：“配料：面粉500克，水250克，酵母5克，糖10克。首先将酵母和糖溶于温水中。”
+
+                *   `[用户问题]`：“然后呢？”
+
+                *   **分析**：属于“直接引用与显式指令”。
+
+             
+
+            *   **案例 3 (no)**
+
+                *   `[记忆窗口]`：“我计划下周去北京旅游，有什么推荐的景点吗？”
+
+                *   `[用户问题]`：“推荐一部最近好看的电影。”
+
+                *   **分析**：属于“开启全新话题”。
+
+             
+
+            *   **案例 4 (no)**
+
+                *   `[记忆窗口]`：“iPhone 15 Pro Max采用了A17 Pro芯片，性能非常强大。”
+
+                *   `[用户问题]`：“苹果公司的股价是多少？”
+
+                *   **分析**：属于“可独立回答的通用问题”。虽然都和苹果有关，但回答股价问题无需知道芯片信息。
+
+             
+
+            *   **案例 5 (no)**
+
+                *   `[记忆窗口]`： (空)
+
+                *   `[用户问题]`：“你好。”
+
+                *   **分析**：“首要规则”。
+
+             
+
+            ---
+
+             
+
+            #### **# 输出要求**
+
+            *   严格遵循上述规则，仅输出 "yes" 或 "no"。
+
+            *   禁止添加任何解释、理由或其他无关字符。'
+        selected: false
+        title: 判断是否需要根据上下文窗口回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754644977020'
+      position:
+        x: 1123
+        y: 453.5
+      positionAbsolute:
+        x: 1123
+        y: 453.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 删除模型思考
+        type: code
+        variables:
+        - value_selector:
+          - '1754644977020'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1754645025307'
+      position:
+        x: 1457
+        y: 453.5
+      positionAbsolute:
+        x: 1457
+        y: 453.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 0a8d8e19-6e7e-4079-a63c-4e2b6e239232
+            value: 'yes'
+            varType: string
+            variable_selector:
+            - '1754645025307'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 126
+      id: '1754645090667'
+      position:
+        x: 1791
+        y: 453.5
+      positionAbsolute:
+        x: 1791
+        y: 453.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '问题如下：{{#sys.query#}}
+
+
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 7718d92b-b9ec-4395-a5e6-11e6348fc28d
+          role: system
+          text: "## 核心任务\n严格按照以下逻辑和信息源优先级，生成一个与用户问题高度相关、准确且连贯的回答。\n\n## 信息源优先级\n1.\
+            \  **记忆窗口内容（最高）**\n2.  **（可选）外部知识库**\n3.  **模型内置知识（最低，用于补充和润色）**\n\n##\
+            \ 执行逻辑 (IF-ELSE结构)\n**IF** 用户明确表示“无需检索知识库”：\n    *   **THEN** 执行【**流程A：无知识库检索**】。\n\
+            **ELSE** (默认情况):\n    *   **THEN** 执行【**流程B：标准检索**】。\n\n---\n### 【流程A：无知识库检索】\n\
+            1.  **分析**：仅分析“记忆窗口内容”（如果存在）。\n2.  **整合**：以“记忆窗口内容”为核心，结合模型内置知识进行回答。\n\
+            3.  **生成**：生成直接回应用户问题的答案。\n\n### 【流程B：标准检索】\n1.  **分析**：分析“记忆窗口内容”、“外部知识库”中的所有相关信息。\n\
+            2.  **整合**：\n    *   以“记忆窗口内容”为最高优先级信息，整合所有来源的信息。\n    *   如果信息源之间存在冲突，优先采信“记忆窗口内容”。\n\
+            3.  **生成**：结合模型内置知识，生成一个连贯、准确且直接回应用户问题的答案。"
+        selected: false
+        title: 回答上下文窗口问题
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754645144732'
+      position:
+        x: 2216
+        y: 599
+      positionAbsolute:
+        x: 2216
+        y: 599
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754645144732.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1754645181329'
+      position:
+        x: 2550
+        y: 632.5
+      positionAbsolute:
+        x: 2550
+        y: 632.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -2411.531006798175
+      y: -14.15985632653667
+      zoom: 0.7884782461155732

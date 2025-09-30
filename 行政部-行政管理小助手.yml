@@ -1,0 +1,1882 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 行政部-行政管理小助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      - document
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 你好。如果你对政策有任何疑问，欢迎随时提问。若需检查某项政策是否符合规定，请上传文件或在下方输入文本内容。
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1752221234516-source-1753083037455-target
+      source: '1752221234516'
+      sourceHandle: source
+      target: '1753083037455'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1753083037455-false-17530830863080-target
+      source: '1753083037455'
+      sourceHandle: 'false'
+      target: '17530830863080'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17530890596440-source-17530890675310-target
+      source: '17530890596440'
+      sourceHandle: source
+      target: '17530890675310'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17530890675310-source-17530891345770-target
+      source: '17530890675310'
+      sourceHandle: source
+      target: '17530891345770'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 17530830863080-false-17530891819330-target
+      source: '17530830863080'
+      sourceHandle: 'false'
+      target: '17530891819330'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 17530891819330-1-17530891934220-target
+      source: '17530891819330'
+      sourceHandle: '1'
+      target: '17530891934220'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17530891934220-source-17530891963010-target
+      source: '17530891934220'
+      sourceHandle: source
+      target: '17530891963010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17530891963010-source-17530891998540-target
+      source: '17530891963010'
+      sourceHandle: source
+      target: '17530891998540'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17530893013920-source-17530893047840-target
+      selected: false
+      source: '17530893013920'
+      sourceHandle: source
+      target: '17530893047840'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17530893047840-source-17530893079680-target
+      source: '17530893047840'
+      sourceHandle: source
+      target: '17530893079680'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 17530830863080-true-1754557272172-target
+      source: '17530830863080'
+      sourceHandle: 'true'
+      target: '1754557272172'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: document-extractor
+      id: 1754557272172-1-17530831926320-target
+      source: '1754557272172'
+      sourceHandle: '1'
+      target: '17530831926320'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: document-extractor
+      id: 1754557272172-2-17545573627800-target
+      source: '1754557272172'
+      sourceHandle: '2'
+      target: '17545573627800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 17545573627800-source-17545573659010-target
+      source: '17545573627800'
+      sourceHandle: source
+      target: '17545573659010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 17545573659010-source-17545573690830-target
+      source: '17545573659010'
+      sourceHandle: source
+      target: '17545573690830'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 17545573690830-source-17545573723470-target
+      source: '17545573690830'
+      sourceHandle: source
+      target: '17545573723470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17545573723470-source-17545573863630-target
+      source: '17545573723470'
+      sourceHandle: source
+      target: '17545573863630'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17545573863630-source-17545573913870-target
+      source: '17545573863630'
+      sourceHandle: source
+      target: '17545573913870'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 17530831926320-source-1754959105426-target
+      source: '17530831926320'
+      sourceHandle: source
+      target: '1754959105426'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754959105426-source-1754959087644-target
+      source: '1754959105426'
+      sourceHandle: source
+      target: '1754959087644'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1754959087644-source-17549592267480-target
+      source: '1754959087644'
+      sourceHandle: source
+      target: '17549592267480'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 17549592267480-source-17530890596440-target
+      source: '17549592267480'
+      sourceHandle: source
+      target: '17530890596440'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 17530891819330-2-1754959300427-target
+      source: '17530891819330'
+      sourceHandle: '2'
+      target: '1754959300427'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754959300427-source-1754959330044-target
+      source: '1754959300427'
+      sourceHandle: source
+      target: '1754959330044'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1754959330044-source-1754959454031-target
+      source: '1754959330044'
+      sourceHandle: source
+      target: '1754959454031'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1754959454031-source-17530893013920-target
+      source: '1754959454031'
+      sourceHandle: source
+      target: '17530893013920'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1753083037455-true-1754959563992-target
+      source: '1753083037455'
+      sourceHandle: 'true'
+      target: '1754959563992'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1754959563992-source-1754959624535-target
+      source: '1754959563992'
+      sourceHandle: source
+      target: '1754959624535'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1754959624535-source-17549597705010-target
+      source: '1754959624535'
+      sourceHandle: source
+      target: '17549597705010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 17549597705010-source-1754959782677-target
+      source: '17549597705010'
+      sourceHandle: source
+      target: '1754959782677'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1754959782677-true-1754959823181-target
+      source: '1754959782677'
+      sourceHandle: 'true'
+      target: '1754959823181'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754959823181-source-1754959873721-target
+      source: '1754959823181'
+      sourceHandle: source
+      target: '1754959873721'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1754959782677-false-17530830863080-target
+      source: '1754959782677'
+      sourceHandle: 'false'
+      target: '17530830863080'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 记忆按钮
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: memory
+      height: 90
+      id: '1752221234516'
+      position:
+        x: 46.08177696995847
+        y: 591.5
+      positionAbsolute:
+        x: 46.08177696995847
+        y: 591.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 5fc8975c-65e3-4def-b25e-d8ba13df529e
+            value: 是
+            varType: string
+            variable_selector:
+            - '1752221234516'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 126
+      id: '1753083037455'
+      position:
+        x: 364
+        y: 591.5
+      positionAbsolute:
+        x: 364
+        y: 591.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 85cbcadd-17f9-4c78-9f64-671156da5d3c
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - sys
+            - files
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: true
+        title: IF/ELSE (1)
+        type: if-else
+      height: 126
+      id: '17530830863080'
+      position:
+        x: 2550
+        y: 481
+      positionAbsolute:
+        x: 2550
+        y: 481
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器 (1)
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '17530831926320'
+      position:
+        x: 3309
+        y: 294
+      positionAbsolute:
+        x: 3309
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 9KLUS9AgtgNoJx23Ji32peFxp2HFYt8il/o6Sg42090KmFSkvY4k11SUW15CF7gX
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 412
+        query_variable_selector:
+        - '17549592267480'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17530890596440'
+      position:
+        x: 4645
+        y: 294
+      positionAbsolute:
+        x: 4645
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17530890596440'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 5bc99b25-fb2e-491e-b3d7-01ea3440f150
+          role: system
+          text: "**核心行为准则：**\n1.  **语言：** 您必须全程使用**中文**进行思考、分析和回答。您的所有输出，包括最终的分析报告，都必须是中文。\n\
+            2. **角色：** 您是一名行政规则专家，负责帮助新员工快速判断政策是否符合行政规定。\n\n**核心任务：**\n您的任务是将提供的文档（`分析此文档`）中的各项政策，与公司的`知识库上下文`进行逐条比对和合规性分析。\n\
+            \n**核心约束：**\n*   **严格限定范围：** 分析时，**仅能参考**提供的`知识库上下文`。严禁引用任何外部在线ISO文档、通用知识或知识库以外的内容。\n\
+            *   **格式化输出：** 最终结果**必须以一个Markdown表格**呈现，并在表格下方附上分析摘要。\n\n---\n\n**输入信息**\n\
+            \n**分析此文档：**\n{{#17530831926320.text#}}\n\n**知识库上下文：**\n{{#context#}}\n\
+            \n---\n\n**分析与决策逻辑**\n\n对每一项独立的输入政策，请遵循以下决策树进行判断：\n```\n决策树 = \"\"\"\n\
+            知识库匹配规则：\n✅ 符合：\n- 要求：与知识库策略无实质性冲突，允许表述上的差异。\n- 逻辑：输入政策达到或超越了知识库要求的目标。\n\
+            - 示例：知识库:\"密码必须12位\" vs 输入:\"密码最短12位\"。\n\n❌ 不符合：\n- 要求：与知识库的核心要求存在直接、明确的冲突。\n\
+            - 逻辑：输入政策削弱、规避或违背了知识库中定义的控制措施。\n- 示例：知识库:\"禁止共享账户\" vs 输入:\"允许临时共享账户\"\
+            。\n\n\U0001F7E1 未找到匹配：\n- 要求：知识库中没有与输入政策直接相关的条款。\n- 示例：输入政策是关于“物理服务器退役的数据擦除标准”，但知识库中仅有“虚拟服务器管理策略”。\n\
+            \"\"\"\n```\n\n---\n\n### **输出格式要求**\n\n请将您的分析报告严格按照以下“表格”和“摘要”两部分格式输出。\n\
+            \n#### **1. 分析结果表格**\n\n创建一个包含以下列的Markdown表格：\n\n| 序号 | 输入政策 | 符合状态 |\
+            \ 知识库引用 | 证据 (文本与位置) | 详情 (冲突与改进措施) |\n| :--- | :--- | :--- | :--- | :---\
+            \ | :--- |\n\n**各列填写说明：**\n*   **序号：** 填入从1开始的连续编号。\n*   **输入政策：** 填入待评估的政策原文。\n\
+            *   **符合状态：** 填写 `符合`、`不符合` 或 `未找到匹配`。\n*   **知识库引用：** 填写匹配到的 `[文档编号].[章节号]`，若无则填写\
+            \ `不适用`。\n*   **证据 (文本与位置)：**\n    *   当状态为 `符合` 或 `不符合` 时，填写：\n     \
+            \   *   **证据文本：** `\"[知识库中的直接引用]\"`\n        *   **证据位置：** `[文档名称] > [章节标题]`\n\
+            \    *   当状态为 `未找到匹配` 时，此栏填写 `无`。\n*   **详情 (冲突与改进措施)：**\n    *   **仅当“符合状态”为“不符合”时**，才需要填写此列。内容应包括：\n\
+            \        *   **冲突详情：** `- [具体冲突点描述]`\n        *   **改进措施：** `- [具体的行动建议]\
+            \ (负责人：[角色]，时限：[时间])`\n    *   对于其他状态，此栏填写 `无`。\n\n#### **2. 分析摘要**\n\n\
+            在表格的下方，提供一个独立的摘要部分：\n\n**已分析政策总数：** [X]\n**符合：** [Y]\n**不符合：** [Z]\n**未找到匹配：**\
+            \ [W]\n\n---\n\n### **完整输出示例**\n\n| 序号 | 输入政策 | 符合状态 | 知识库引用 | 证据 (文本与位置)\
+            \ | 详情 (冲突与改进措施) |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| 1 |\
+            \ \"增量备份必须每天执行\" | 符合 | IT-POL-005.4.1 | **证据文本：** `\"每日增量备份为最低要求，并鼓励更频繁的备份。\"\
+            `<br>**证据位置：** `《备份与恢复策略》 > 4.1 备份频率` | 无 |\n| 2 | \"允许临时项目使用4字符密码\" |\
+            \ 不符合 | SEC-POL-002.3.3 | **证据文本：** `\"所有系统账户的密码长度不得少于12个字符，并应包含大写字母、小写字母、数字和特殊符号中的至少三类。\"\
+            `<br>**证据位置：** `《身份与访问控制策略》 > 3.3 密码复杂度` | **冲突详情：**<br>- 输入政策允许的4字符密码严重违反了知识库要求的最小12字符密码长度标准。<br>**改进措施：**<br>-\
+            \ 废除临时项目的密码例外规则，确保所有项目均遵循统一的密码策略。(负责人：`安全团队`，时限：`1周内`) |\n| 3 | \"公司访客必须在进入数据中心时交出手机\"\
+            \ | 未找到匹配 | 不适用 | 无 | 无 |\n\n**分析摘要**\n\n**已分析政策总数：** 3\n**符合：** 1\n**不符合：**\
+            \ 1\n**未找到匹配：** 1\n\n\n\n"
+        - id: ab01a940-6f58-4f3e-826c-0bc31102deb4
+          role: user
+          text: ''
+        selected: false
+        title: 合规检查器 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17530890675310'
+      position:
+        x: 4979
+        y: 294
+      positionAbsolute:
+        x: 4979
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17530890675310.text#}}'
+        desc: ''
+        selected: false
+        title: 回答 (1)
+        type: answer
+        variables: []
+      height: 105
+      id: '17530891345770'
+      position:
+        x: 5313
+        y: 294
+      positionAbsolute:
+        x: 5313
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 常规问题类
+        - id: '2'
+          name: 合规检查类
+        desc: ''
+        instruction: "# 文本分类规则\n\n用户问题：`{{#sys.query#}}`\n\n## 分类标准\n\n### Class 1（常规问题类）\n\
+          **默认归类，适用于以下情况：**\n1. 询问流程/职责相关问题：\n   - \"需要哪些具体职责\"\n   - \"如何确保...被满足\"\
+          \n   - \"应该记录什么\"\n2. 请求文档操作：\n   - \"重写此文档\"\n   - \"优化以下内容\"\n   - \"\
+          解释这条政策\"\n3. 其他所有**不明确要求合规检查**的查询\n\n### Class 2（合规检查类）\n**满足以下任一条件时选择：**\n\
+          1. 用户**明确要求**合规性验证（使用以下关键词）：\n   - \"是否符合\"\n   - \"是否合规\"\n   - \"检查合规性\"\
+          \n   - \"验证是否符合\"\n2. 输入内容无法解析：\n   - 完全乱码（如\"fhoiearon\"）\n   - 空内容\n\n\
+          ## 决策流程\n1. 首先检查是否满足Class 2的明确条件\n2. 如果不确定，默认选择Class 1\n3. 特别注意事项：\n   -\
+          \ 包含\"要求\"、\"标准\"等词但未明确要求检查 → Class 1\n   - 询问\"如何做到合规\" → Class 1\n   -\
+          \ 直接问\"这个合规吗\" → Class 2\n\n## 示例说明\n| 用户问题 | 正确分类 |\n|---------|----------|\n\
+          | \"如何修改这份文件？\" | Class 1 |\n| \"需求管理需要哪些职责？\" | Class 1 | \n| \"fhewuih\"\
+          \ (乱码) | Class 2 |\n| \"这份政策是否符合ISO标准？\" | Class 2 |"
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-8B
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        query_variable_selector:
+        - '1752221234516'
+        - sys.query
+        selected: false
+        title: 问题分类器 (1)
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 172
+      id: '17530891819330'
+      position:
+        x: 3309
+        y: 563.5
+      positionAbsolute:
+        x: 3309
+        y: 563.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 9KLUS9AgtgNoJx23Ji32peFxp2HFYt8il/o6Sg42090KmFSkvY4k11SUW15CF7gX
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 333
+        query_variable_selector:
+        - '1752221234516'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17530891934220'
+      position:
+        x: 3643
+        y: 616.9842834334896
+      positionAbsolute:
+        x: 3643
+        y: 616.9842834334896
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17530891934220'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 6292c242-ba4a-4b93-9fb0-b342bbfa661e
+          role: system
+          text: "提示：\n您是一名公司政策助手，旨在帮助员工查找相关政策和流程。\n修订版政策助手提示\n指令： 当用户询问有关公司政策的问题时，请按照以下步骤操作：\n\
+            确定政策意图\n分析查询 {{#sys.query#}}，寻找对政策的显性或隐性引用，包括：\n显性关键词：\n“政策”、“规则”、“程序”、“指南”、“要求”、“审批”、“报销”、“津贴”、“标准”。\n\
+            短语如“关于……的政策是什么”、“如何……”、“员工是否允许……”\n隐性/假设性表述：\n“如果……”、“[场景]的协议……”、“是否需要……”、“谁批准……”、“当……时会发生什么”\n\
+            推测性语言（例如“假设发生X……”、“如果有人要……”）。\n提取政策主题\n确定核心主题，即使表述间接。例如：\n“建造秘密隧道” → 采购/合同政策。\n\
+            “电梯故障” → 安全/维护协议。\n“异常充足的自助餐厅” → 食品安全/库存记录。\n间接查询的回退机制\n如果查询含糊或假设性：\n\
+            推断最接近的相关政策主题（例如“5万元项目” → 预算审批阈值）。\n标注推测性内容：\ntext\n关于[相关主题]的一般政策，请参阅[X]。\
+            \  \n具体案例请联系[部门]。  \n搜索知识库\n扫描知识库 {{#context#}} 中的所有内容，寻找与用户查询最接近的匹配项。\n\
+            优先级顺序如下：\n确切的政策名称/ID（例如 *“PROC-2022-003”*）。\n包含指令的章节（例如“员工必须……”）。\n相关条款（例如“5.2：承包商投标要求”）。\n\
+            生成响应\n如果找到政策：\n问题：[用户原始问题]  \n政策：[直接引用或总结文本。保留规则、限制和程序。]  \n如果无完全匹配但存在相关主题：\n\
+            问题：[用户原始问题]  \n备注：关于[相关主题]的一般政策，请参阅[政策X]。  \n具体案例请联系[部门]。  \n如果无相关政策：\n\
+            text\n问题：[用户原始问题]  \n政策：未找到相关政策。请联系[人力资源/安全/财务]获取指导。  \n示例输出\n用户查询：\n\
+            “如果Audiowell为秘密隧道雇佣承包商，是否需要多方竞标？”\n响应：\n问题：如果Audiowell为秘密隧道雇佣承包商，是否需要多方竞标？\
+            \  \n备注：采购的一般规则，请参阅 PROC-2022-003（超过3万元的项目需竞争性投标）。特殊情况请联系财务部。  \n用户查询：\n\
+            {{#sys.query#}}\n响应：\n问题：{{#sys.query#}}  \n政策：未找到跟{{#sys.query#}}有关的政策。紧急情况请联系设施管理部门。\
+            \  \n\n思考和回答的内容应该都是中文。"
+        selected: false
+        title: 问题搜索 LLM (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17530891963010'
+      position:
+        x: 3977
+        y: 635
+      positionAbsolute:
+        x: 3977
+        y: 635
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17530891963010.text#}}'
+        desc: ''
+        selected: false
+        title: 回答 (1)
+        type: answer
+        variables: []
+      height: 105
+      id: '17530891998540'
+      position:
+        x: 4311
+        y: 594
+      positionAbsolute:
+        x: 4311
+        y: 594
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 9KLUS9AgtgNoJx23Ji32peFxp2HFYt8il/o6Sg42090KmFSkvY4k11SUW15CF7gX
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 353
+        query_variable_selector:
+        - '1754959454031'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17530893013920'
+      position:
+        x: 4645
+        y: 765
+      positionAbsolute:
+        x: 4645
+        y: 765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17530893013920'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: d23d956a-6ff3-45ff-a198-13e76ea0716d
+          role: system
+          text: "您是一名行政规则专家，负责帮助新员工快速判断政策是否符合行政管理规定。\n从输入文本中提取所有政策条款\n{{#sys.query#}}\n\
+            符合以下标准的政策条款：\n包含\"必须\"、\"应\"、\"将\"或\"要求\"\n以\"员工/部门应...\"开头\n带编号条款（特别是含小数点的编号如1.1、2.3）\n\
+            定义的审批流程\n支出限额或授权规则\n报销规定\n办公管理标准\n然后将所有提取的政策条款与知识库{{#context#}}进行比对，扫描所有片段并选择最相似的。仅将提取的政策与知识库进行比对，不要与外部来源比较。\n\
+            合规性验证\n当用户输入包含场景（如\"我可以报销200美元的晚餐吗？\"）或具体政策的文件时，将提取的场景和政策与知识库中记录的政策进行比对\n\
+            返回明确的\"符合\"或\"不符合\"判断，并附上具体政策引用\n使用以下决策树和输出格式\n决策树：\n合规性判定规则\n✅ 符合标准\n\
+            要求：与知识库无实质性冲突，允许措辞差异\n示例：\n知识库：\"特殊/关键岗位实习期必须通过评估\"(MA-HC-003 5.1)\n对比\n\
+            输入政策：\"工作许可证必须通过评估后才能发放\"\n知识库：\"消防队必须配合专业消防队伍\"(MA-HC-021 附录1)\n对比\n\
+            输入政策：\"所有消防分队必须协助消防部门行动\"\n判定逻辑：\n政策措辞完全符合知识库要求\n或采用更严格的执行标准（如用\"必须\"\
+            替代\"应\"）\n或扩大了知识库要求的覆盖范围\n❌ 不符合标准\n要求：与知识库核心要求直接冲突\n示例：\n知识库：\"严禁使用饮料瓶盛装化学品\"\
+            (MA-HC-033 3.1)\n对比\n输入政策：\"实验室可临时使用饮料瓶盛装试剂\"\n知识库：\"厂牌不得转借他人\"(MA-HC-003\
+            \ 3.1)\n对比\n输入政策：\"经主管批准可临时借用厂牌\"\n判定逻辑：\n政策明确违反知识库禁令\n降低知识库要求的安全标准\n\
+            未经批准添加例外条款\n未匹配场景\n典型情况：\n知识库中无对应条款（如\"健康防护工作指南\"未规定强制体检）\n引用未定义的执行标准（如\"\
+            遵守消防规定\"但未明确具体条款）\n处理原则：\n标记为\"未找到匹配\"\n建议补充政策条款或引用具体标准\n特殊场景处理\n审批类条款：\n\
+            示例：知识库规定\"保密协议修改需经人力资源部批准\"(MA-HC-028 4.1)\n输入政策：\"部门主管可批准保密协议调整\"\n处理：判定为\"\
+            不符合\"（审批权限不匹配）\n隐含要求：\n示例：知识库要求\"保持消防通道畅通\"(MA-HC-021 附录3)\n输入政策：\"是否允许在楼梯间存放物品？\"\
+            \n处理：判定为禁止性要求（实际答案为否定）\n返回输出时，以以下摘要开头：\n总体状态: [完全符合/不符合]\n\n已分析政策数: [X]\n\
+            \n符合: [X]\n\n不符合: [Y]\n\n未找到匹配: [Z]\n\n然后对每个提取的政策，返回以下输出格式：\n政策分析原始输出格式:\n\
+            1. 输入政策: \"所有员工必须完成年度安全培训\"\n\n   知识库引用: HR-POL-004.2.1\n\n   符合状态: 符合\n\
+            \n   证据文本: \"第4.2.1条：全员需参加年度安全课程\"\n\n   证据位置: 《人力资源政策》 > 第四章第二节\n\n2.\
+            \ 输入政策: \"密码必须包含特殊字符\"\n\n   知识库引用: IT-POL-003.1.5\n\n   符合状态: 不符合\n\n\
+            \   证据文本: \"用户密码应包含至少一个非字母数字字符\"\n\n   证据位置: 《IT安全标准》 > 第1.5节\n\n冲突详情 (仅限\"\
+            不符合\"状态):\n\n[具体冲突1]\n\n[具体冲突2]\n\n改进措施 (仅限\"不符合\"状态):\n\n[行动] (负责人: [角色],\
+            \ 时限: [时间])\n\n[行动] (负责人: [角色], 时限: [时间])\n\n示例：\n输入政策: \"灭火行动组需配合专业消防队进行灭火抢险\"\
+            \n\n知识库引用: MA-HC-021 A4.附件一\n\n符合状态: 符合\n\n证据文本: \"负责按照预案或现场指挥员的指令扑救初期火灾，配合专业消防队进行灭火抢险战斗\"\
+            \n\n证据位置: 《消防安全应急预案》 > 附件一\n\n输入政策: \"允许临时共享厂证\"\n\n知识库引用: MA-HC-003 A4.3.1\n\
+            \n符合状态: 不符合\n\n冲突详情:\n\n知识库明确禁止:\"凡是非持证(卡)人亲自或经公司特别批准委托使用的行为，均视为盗用、挪用、借用厂证(卡)的情形，一律定义为违规行为\"\
+            \n\n改进措施:\n\n立即停止共享厂证行为 (负责人: 各部门主管, 时限: 立即)\n\n加强厂证使用规范培训 (负责人: 人力资源部,\
+            \ 时限: 1周)\n\n思考和回答的内容应该都是中文。\n\n\n\n"
+        selected: false
+        title: 合规检查器 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17530893047840'
+      position:
+        x: 4979
+        y: 765
+      positionAbsolute:
+        x: 4979
+        y: 765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17530893047840.text#}}'
+        desc: ''
+        selected: false
+        title: 回答 (1)
+        type: answer
+        variables: []
+      height: 105
+      id: '17530893079680'
+      position:
+        x: 5313
+        y: 765
+      positionAbsolute:
+        x: 5313
+        y: 765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 合规检查类
+        - id: '2'
+          name: 常规问答类
+        desc: ''
+        instruction: "# 文本分类规则\n\n用户问题： {{#sys.query#}}\n\n## 分类标准\n\n### Class 1（合规检查类）\n\
+          **满足以下任一条件时选择：**\n1. 用户**明确要求**进行合规性检查（使用以下关键词）：\n   - \"是否符合\"\n   - \"\
+          是否合规\"\n   - \"检查合规性\"\n   - \"验证是否符合\"\n2. 输入文本为无法解析的内容：\n   - 完全乱码（如\"\
+          fhoiearon\"）\n   - 空内容\n\n### Class 2（常规问答类）\n**默认归类，适用于以下情况：**\n1. 询问流程/职责相关问题：\n\
+          \   - \"需要哪些具体职责\"\n   - \"如何确保...被满足\"\n   - \"应该记录什么\"\n2. 请求文档操作：\n \
+          \  - \"重写此文档\"\n   - \"优化以下内容\"\n   - \"解释这条政策\"\n3. 其他所有不明确要求合规检查的查询\n\n\
+          ## 决策流程\n1. 首先检查是否满足Class 1的明确条件\n2. 如果不确定，默认选择Class 2\n3. 特别注意事项：\n   -\
+          \ 包含\"要求\"、\"标准\"等词但未明确要求检查的 → Class 2\n   - 询问\"如何做到合规\" → Class 2\n  \
+          \ - 直接问\"这个合规吗\" → Class 1\n\n## 示例说明\n| 用户问题 | 正确分类 |\n|---------|----------|\n\
+          | \"这份政策是否符合ISO标准？\" | Class 1 |\n| \"需要哪些职责来确保需求被满足？\" | Class 2 | \n|\
+          \ \"fhewuih\" (乱码) | Class 1 |\n| \"如何修改这份文件使其合规？\" | Class 2 |"
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-8B
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        query_variable_selector:
+        - '1752221234516'
+        - sys.query
+        selected: false
+        title: '问题分类器 (1) '
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 172
+      id: '1754557272172'
+      position:
+        x: 2984.7282302663048
+        y: 294
+      positionAbsolute:
+        x: 2984.7282302663048
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器 (1)
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '17545573627800'
+      position:
+        x: 3309
+        y: 431.5
+      positionAbsolute:
+        x: 3309
+        y: 431.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17545573627800'
+          - text
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: c3ba62b2-314c-454e-bec9-fe1131eef22f
+          role: system
+          text: 你的角色是仅输出 {{#context#}} 中的文本
+        selected: false
+        title: 文本
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17545573659010'
+      position:
+        x: 3643
+        y: 431.5
+      positionAbsolute:
+        x: 3643
+        y: 431.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: '"思考"移除 (1)'
+        type: code
+        variables:
+        - value_selector:
+          - '17545573659010'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17545573690830'
+      position:
+        x: 3977
+        y: 465
+      positionAbsolute:
+        x: 3977
+        y: 465
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 9KLUS9AgtgNoJx23Ji32peFxp2HFYt8il/o6Sg42090KmFSkvY4k11SUW15CF7gX
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 464
+        query_variable_selector:
+        - '17545573690830'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识库 7 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17545573723470'
+      position:
+        x: 4311
+        y: 412.5
+      positionAbsolute:
+        x: 4311
+        y: 412.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17545573723470'
+          - result
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: b34560a4-be97-4016-ac93-ee64135a71dd
+          role: system
+          text: '你的角色是执行{{#sys.query#}}所指定的任务。
+
+            用户所引用的文件是{{#17545573627800.text#}}
+
+            你的上下文是{{#context#}}。仅使用文件或上下文中的信息，不要使用外部来源。同时，不要编造任何内容。不要提供虚假政策或虚构的知识
+
+            如果用户的请求不在你的知识库范围内，请回复：
+
+            对不起，知识库里面没有跟{{#sys.query#}}的主题有关的内容。'
+        selected: false
+        title: 机器
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17545573863630'
+      position:
+        x: 4645
+        y: 437.09479341998815
+      positionAbsolute:
+        x: 4645
+        y: 437.09479341998815
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17545573863630.text#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 105
+      id: '17545573913870'
+      position:
+        x: 4979
+        y: 425.7411011265923
+      positionAbsolute:
+        x: 4979
+        y: 425.7411011265923
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '已提取出以下问题/条款：
+
+
+          {{#1754959105426.text#}}'
+        desc: ''
+        selected: false
+        title: 问题/条款回复
+        type: answer
+        variables: []
+      height: 121
+      id: '1754959087644'
+      position:
+        x: 3977
+        y: 294
+      positionAbsolute:
+        x: 3977
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17530831926320'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: b55337d0-91ee-45ec-a0f5-dc663d108dac
+          role: system
+          text: '**总则：请全程使用中文进行思考和回答。**
+
+
+            你的任务是从用户提供的文本（`{{#context#}}`）中，识别并分别提取两种类型的信息：**1) 政策条款** 和 **2) 政策问题**。
+
+
+            请严格按照以下定义和格式进行操作。
+
+
+            ---
+
+
+            ### **任务一：识别和提取“政策条款”**
+
+
+            **“政策条款”** 是指描述公司强制性要求、操作标准、合规义务或明确责任的陈述句。
+
+
+            **识别标准（满足以下任一即可）：**
+
+            *   **强制性词语：** 包含“**必须**”、“**应**”、“**将**”、“**要求**”、“**规定**”、“**禁止**”等词语。
+
+            *   **明确的责任：** 明确了特定角色（如员工、供应商、承包商）的责任或义务。
+
+            *   **技术/管理控制：** 描述了具体的安全或操作控制措施（如“使用VPN”、“加密存储”、“记录日志”）。
+
+            *   **合规性要求：** 明确引用了外部法律法规或行业标准作为行为依据（如“**符合GDPR**”、“**满足《网络安全法》要求**”、“**遵循ISO27001标准**”）。
+
+            *   **标准操作程序（SOP）：** 带有编号（特别是带小数点的，如 `3.1.2`）并描述具体操作步骤或规则的条款。
+
+
+            **示例原文：**
+
+            *   “供应商必须签署保密协议。”
+
+            *   “个人数据应加密存储，以满足《网络安全法》要求。”
+
+            *   “4.2.1 所有对生产数据库的访问都必须通过双因素认证（2FA）。”
+
+
+            ---
+
+
+            ### **任务二：识别和提取“政策问题”**
+
+
+            **“政策问题”** 是指为了验证某项政策是否被遵守而提出的疑问句或检查项。
+
+
+            **识别标准：**
+
+            *   **疑问形式：** 通常以“**是否**”、“**如何**”、“**有没有**”等词开头，或以问号“**？**”结尾。
+
+            *   **审核性陈述：** 以“**检查项**”、“**审核点**”、“**验证**”、“**确保**”等词语引导的，用于确认合规状态的陈述句。
+
+            *   **内容相关性：** 问题的核心内容直接关联到某项规则的执行情况。
+
+
+            **示例原文：**
+
+            *   “是否对所有个人数据实施加密存储？”
+
+            *   “是否要求所有供应商签署保密协议？”
+
+            *   “检查项：确认所有数据库访问均已记录日志。”
+
+
+            ---
+
+
+            ### **输出要求**
+
+
+            请将所有识别出的结果汇总到一个**表格**中进行输出。
+
+
+            *   **表格格式**：表格应包含三列，依次为：**“序号”**、**“类型”**和**“内容”**。
+
+            *   **“序号”列**：从1开始的自动递增编号。
+
+            *   **“类型”列**：明确标注该条目是“**政策条款**”还是“**政策问题**”。
+
+            *   **“内容”列**：填入从原文中提取的完整句子。
+
+
+            **输出表示例：**
+
+
+            | 序号 | 类型 | 内容 |
+
+            | :--- | :--- | :--- |
+
+            | 1 | 政策条款 | 供应商必须签署保密协议。 |
+
+            | 2 | 政策条款 | 个人数据应加密存储，以满足《网络安全法》要求。 |
+
+            | 3 | 政策问题 | 是否对所有个人数据实施加密存储？ |
+
+            | 4 | 政策问题 | 检查项：确认所有数据库访问均已记录日志。 |
+
+
+
+            **重要提示：**
+
+            *   如果原文中没有找到任何符合条件的内容，则输出一个空表。
+
+            *   不要自己创造或改写内容，严格从原文中提取。
+
+            *   **再次强调，必须全程使用中文进行思考和回答，并以包含序号的三列表格形式呈现最终结果。**'
+        selected: false
+        title: 问题/条款提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754959105426'
+      position:
+        x: 3643
+        y: 294
+      positionAbsolute:
+        x: 3643
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: '"思考"移除 (1)'
+        type: code
+        variables:
+        - value_selector:
+          - '1754959105426'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17549592267480'
+      position:
+        x: 4311
+        y: 294
+      positionAbsolute:
+        x: 4311
+        y: 294
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 12a4809c-cabf-4857-9d3f-06f28f2ac252
+          role: system
+          text: '**总则：请全程使用中文进行思考和回答。**
+
+
+            你的任务是从用户提供的文本（`{{#context#}}`）中，识别并分别提取两种类型的信息：**1) 政策条款** 和 **2) 政策问题**。
+
+
+            请严格按照以下定义和格式进行操作。
+
+
+            ---
+
+
+            ### **任务一：识别和提取“政策条款”**
+
+
+            **“政策条款”** 是指描述公司强制性要求、操作标准、合规义务或明确责任的陈述句。
+
+
+            **识别标准（满足以下任一即可）：**
+
+            *   **强制性词语：** 包含“**必须**”、“**应**”、“**将**”、“**要求**”、“**规定**”、“**禁止**”等词语。
+
+            *   **明确的责任：** 明确了特定角色（如员工、供应商、承包商）的责任或义务。
+
+            *   **技术/管理控制：** 描述了具体的安全或操作控制措施（如“使用VPN”、“加密存储”、“记录日志”）。
+
+            *   **合规性要求：** 明确引用了外部法律法规或行业标准作为行为依据（如“**符合GDPR**”、“**满足《网络安全法》要求**”、“**遵循ISO27001标准**”）。
+
+            *   **标准操作程序（SOP）：** 带有编号（特别是带小数点的，如 `3.1.2`）并描述具体操作步骤或规则的条款。
+
+
+            **示例原文：**
+
+            *   “供应商必须签署保密协议。”
+
+            *   “个人数据应加密存储，以满足《网络安全法》要求。”
+
+            *   “4.2.1 所有对生产数据库的访问都必须通过双因素认证（2FA）。”
+
+
+            ---
+
+
+            ### **任务二：识别和提取“政策问题”**
+
+
+            **“政策问题”** 是指为了验证某项政策是否被遵守而提出的疑问句或检查项。
+
+
+            **识别标准：**
+
+            *   **疑问形式：** 通常以“**是否**”、“**如何**”、“**有没有**”等词开头，或以问号“**？**”结尾。
+
+            *   **审核性陈述：** 以“**检查项**”、“**审核点**”、“**验证**”、“**确保**”等词语引导的，用于确认合规状态的陈述句。
+
+            *   **内容相关性：** 问题的核心内容直接关联到某项规则的执行情况。
+
+
+            **示例原文：**
+
+            *   “是否对所有个人数据实施加密存储？”
+
+            *   “是否要求所有供应商签署保密协议？”
+
+            *   “检查项：确认所有数据库访问均已记录日志。”
+
+
+            ---
+
+
+            ### **输出要求**
+
+
+            请将所有识别出的结果汇总到一个**表格**中进行输出。
+
+
+            *   **表格格式**：表格应包含三列，依次为：**“序号”**、**“类型”**和**“内容”**。
+
+            *   **“序号”列**：从1开始的自动递增编号。
+
+            *   **“类型”列**：明确标注该条目是“**政策条款**”还是“**政策问题**”。
+
+            *   **“内容”列**：填入从原文中提取的完整句子。
+
+
+            **输出表示例：**
+
+
+            | 序号 | 类型 | 内容 |
+
+            | :--- | :--- | :--- |
+
+            | 1 | 政策条款 | 供应商必须签署保密协议。 |
+
+            | 2 | 政策条款 | 个人数据应加密存储，以满足《网络安全法》要求。 |
+
+            | 3 | 政策问题 | 是否对所有个人数据实施加密存储？ |
+
+            | 4 | 政策问题 | 检查项：确认所有数据库访问均已记录日志。 |
+
+
+
+            **重要提示：**
+
+            *   如果原文中没有找到任何符合条件的内容，则输出一个空表。
+
+            *   不要自己创造或改写内容，严格从原文中提取。
+
+            *   **再次强调，必须全程使用中文进行思考和回答，并以包含序号的三列表格形式呈现最终结果。**'
+        selected: false
+        title: 问题/条款提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754959300427'
+      position:
+        x: 3643
+        y: 765
+      positionAbsolute:
+        x: 3643
+        y: 765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '已提取出以下问题/条款：
+
+
+          {{#1754959300427.text#}}'
+        desc: ''
+        selected: false
+        title: 问题/条款回复
+        type: answer
+        variables: []
+      height: 121
+      id: '1754959330044'
+      position:
+        x: 3977
+        y: 765
+      positionAbsolute:
+        x: 3977
+        y: 765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: '"思考"移除 (1)'
+        type: code
+        variables:
+        - value_selector:
+          - '1754959300427'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1754959454031'
+      position:
+        x: 4305
+        y: 765
+      positionAbsolute:
+        x: 4305
+        y: 765
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击左上角开启新对话~
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1754959563992'
+      position:
+        x: 789
+        y: 454.5
+      positionAbsolute:
+        x: 789
+        y: 454.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '用户问题：{{#sys.query#}}
+
+
+
+
+
+
+
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 07f80c86-5310-4ef0-b49c-2abc81ed68b0
+          role: system
+          text: '#### **# 核心任务**
+
+            你的任务是作为一个智能分类器。分析给定的 `[记忆窗口]` (即上下文) 和 `[用户问题]`，判断该问题是否**强依赖**于`[记忆窗口]`来生成一个准确、连贯且符合用户意图的回答。
+
+             
+
+            ---
+
+             
+
+            #### **# 输入定义**
+
+            *   `[记忆窗口]`：代表之前的对话历史或背景信息。
+
+            *   `[用户问题]`：代表用户当前提出的问题。
+
+             
+
+            ---
+
+             
+
+            #### **# 判断规则**
+
+             
+
+            **首要规则：**
+
+            *   如果 `[记忆窗口]` 为空，**必须**输出 "no"。
+
+             
+
+            **特殊指令覆盖：**
+
+            *   如果 `[用户问题]` 中明确包含“无需检索知识库”或类似表述，**必须**输出 "yes"。
+
+             
+
+            **如果满足以下任一条件，输出 "yes" (代表“依赖上下文”)：**
+
+             
+
+            1.  **直接引用与显式指令**：问题直接询问、引用 `[记忆窗口]` 的内容，或包含明确指令要求基于上下文进行操作。
+
+                *   **关键词示例**：“根据上面说的”、“总结一下”、“继续”、“那这个呢？”、“详细说说”、“为什么会这样？”
+
+             
+
+            2.  **上下文延续与深化**：问题是 `[记忆窗口]` 话题的自然延续、追问、比较、要求举例、或进行推断。即使没有明确的指代词，逻辑上也紧密相连。
+
+                *   **示例**：
+
+                    *   记忆窗口：“苹果公司发布了新款iPhone。”
+
+                    *   用户问题：“它的摄像头有多少像素？”
+
+             
+
+            3.  **寻求相关替代方案**：问题在探讨与 `[记忆窗口]` 主题相关的其他选项、解决方案或可能性。
+
+                *   **示例**：
+
+                    *   记忆窗口：“A方案的优点是成本低。”
+
+                    *   用户问题：“那B方案呢？”
+
+             
+
+            **如果满足以下任一条件，输出 "no" (代表“不依赖上下文”)：**
+
+             
+
+            1.  **开启全新话题**：问题与 `[记忆窗口]` 的主题、实体、意图完全无关。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我们来讨论一下全球气候变化。”
+
+                    *   用户问题：“给我讲个笑话吧。”
+
+             '
+        selected: false
+        title: 判断是否需要根据上下文窗口回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754959624535'
+      position:
+        x: 1121.680492089227
+        y: 454.5
+      positionAbsolute:
+        x: 1121.680492089227
+        y: 454.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: '"思考"移除 (1)'
+        type: code
+        variables:
+        - value_selector:
+          - '1754959624535'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17549597705010'
+      position:
+        x: 1457
+        y: 454.5
+      positionAbsolute:
+        x: 1457
+        y: 454.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: e7162882-94bd-4765-bc0f-541123c60e95
+            value: 'yes'
+            varType: string
+            variable_selector:
+            - '17549597705010'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 3
+        type: if-else
+      height: 126
+      id: '1754959782677'
+      position:
+        x: 1789.680492089227
+        y: 454.5
+      positionAbsolute:
+        x: 1789.680492089227
+        y: 454.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '问题如下：{{#sys.query#}}
+
+
+
+
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 91a8f107-6ca7-4cf7-bccd-d5dd516c084b
+          role: system
+          text: "## 核心任务\n严格按照以下逻辑和信息源优先级，生成一个与用户问题高度相关、准确且连贯的回答。\n\n## 信息源优先级\n1.\
+            \  **记忆窗口内容（最高）**\n2.  **（可选）外部知识库**\n3.  **模型内置知识（最低，用于补充和润色）**\n\n##\
+            \ 执行逻辑 (IF-ELSE结构)\n**IF** 用户明确表示“无需检索知识库”：\n    *   **THEN** 执行【**流程A：无知识库检索**】。\n\
+            **ELSE** (默认情况):\n    *   **THEN** 执行【**流程B：标准检索**】。\n\n---\n### 【流程A：无知识库检索】\n\
+            1.  **分析**：仅分析“记忆窗口内容”（如果存在）。\n2.  **整合**：以“记忆窗口内容”为核心，结合模型内置知识进行回答。\n\
+            3.  **生成**：生成直接回应用户问题的答案。\n\n### 【流程B：标准检索】\n1.  **分析**：分析“记忆窗口内容”、“外部知识库”中的所有相关信息。\n\
+            2.  **整合**：\n    *   以“记忆窗口内容”为最高优先级信息，整合所有来源的信息。\n    *   如果信息源之间存在冲突，优先采信“记忆窗口内容”。\n\
+            3.  **生成**：结合模型内置知识，生成一个连贯、准确且直接回应用户问题的答案。"
+        selected: false
+        title: 回答上下文窗口问题
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754959823181'
+      position:
+        x: 2216
+        y: 336
+      positionAbsolute:
+        x: 2216
+        y: 336
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754959823181.text#}}'
+        desc: ''
+        selected: false
+        title: 记忆回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1754959873721'
+      position:
+        x: 2550
+        y: 336
+      positionAbsolute:
+        x: 2550
+        y: 336
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -667.2224311567838
+      y: 92.38191722931992
+      zoom: 0.6597539553864469
