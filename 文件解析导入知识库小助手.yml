@@ -1,0 +1,807 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 文件解析导入知识库小助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: kalochin/pdf_process:0.0.4@29c7b0927a11333044049de20657119779a06e0eb003b6c5cffaec07e5204332
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.1.5@7dbcbe0af601ca66d0a4fade7e7258c42d7940c68862022056b775552fd3c5ee
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1758507149971-source-1758765623497-target
+      source: '1758507149971'
+      sourceHandle: source
+      target: '1758765623497'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: code
+      id: 1758763678717-source-1758783107471-target
+      selected: false
+      source: '1758763678717'
+      sourceHandle: source
+      target: '1758783107471'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1758783107471-source-1758763701485-target
+      source: '1758783107471'
+      sourceHandle: source
+      target: '1758763701485'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1758763678717'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1758763678717start-source-1758846072246-target
+      source: 1758763678717start
+      sourceHandle: source
+      target: '1758846072246'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1758763678717'
+        sourceType: tool
+        targetType: llm
+      id: 1758846072246-source-1758764132051-target
+      source: '1758846072246'
+      sourceHandle: source
+      target: '1758764132051'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1758765623497-a18b53cb-7c63-456d-8287-ca7c8756b910-1758846208565-target
+      source: '1758765623497'
+      sourceHandle: a18b53cb-7c63-456d-8287-ca7c8756b910
+      target: '1758846208565'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1758765623497-true-1758763678717-target
+      source: '1758765623497'
+      sourceHandle: 'true'
+      target: '1758763678717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1758846208565-source-1758853594947-target
+      source: '1758846208565'
+      sourceHandle: source
+      target: '1758853594947'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: variable-aggregator
+      id: 1758766211113-source-1758853594947-target
+      selected: false
+      source: '1758766211113'
+      sourceHandle: source
+      target: '1758853594947'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: list-operator
+      id: 1758765623497-false-1758874341819-target
+      source: '1758765623497'
+      sourceHandle: 'false'
+      target: '1758874341819'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: document-extractor
+      id: 1758874341819-source-1758766211113-target
+      source: '1758874341819'
+      sourceHandle: source
+      target: '1758766211113'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: list-operator
+      id: 1758765623497-72b01306-1b6f-4a00-83ab-290c7f0c5776-1758874341819-target
+      source: '1758765623497'
+      sourceHandle: 72b01306-1b6f-4a00-83ab-290c7f0c5776
+      target: '1758874341819'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: end
+      id: 1758853594947-source-1758507280976-target
+      source: '1758853594947'
+      sourceHandle: source
+      target: '1758507280976'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          label: input_files
+          max_length: 10
+          options: []
+          required: true
+          type: file-list
+          variable: input_files
+        - label: path
+          max_length: 256
+          options: []
+          required: true
+          type: text-input
+          variable: path
+        - label: dataset_id
+          max_length: 48
+          options: []
+          required: true
+          type: text-input
+          variable: dataset_id
+      height: 142
+      id: '1758507149971'
+      position:
+        x: 30
+        y: 311
+      positionAbsolute:
+        x: 30
+        y: 311
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1758853594947'
+          - output
+          value_type: string
+          variable: result
+        - value_selector:
+          - '1758507149971'
+          - path
+          value_type: string
+          variable: path
+        - value_selector:
+          - '1758507149971'
+          - dataset_id
+          value_type: string
+          variable: dataset_id
+        selected: false
+        title: 结束
+        type: end
+      height: 142
+      id: '1758507280976'
+      position:
+        x: 3410.508036104022
+        y: 536.4490363078631
+      positionAbsolute:
+        x: 3410.508036104022
+        y: 536.4490363078631
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 210
+        is_parallel: false
+        iterator_input_type: array[file]
+        iterator_selector:
+        - '1758507149971'
+        - input_files
+        output_selector:
+        - '1758764132051'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1758763678717start
+        title: 迭代
+        type: iteration
+        width: 926.8571428571429
+      height: 210
+      id: '1758763678717'
+      position:
+        x: 910.4285714285716
+        y: -121.57142857142858
+      positionAbsolute:
+        x: 910.4285714285716
+        y: -121.57142857142858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 927
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1758763678717start
+      parentId: '1758763678717'
+      position:
+        x: 60
+        y: 81
+      positionAbsolute:
+        x: 970.4285714285716
+        y: -40.571428571428584
+      selectable: false
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1758783107471'
+          - result
+          value_type: array[object]
+          variable: result
+        - value_selector:
+          - '1758507149971'
+          - path
+          value_type: string
+          variable: path
+        - value_selector:
+          - '1758507149971'
+          - dataset_id
+          value_type: string
+          variable: dataset_id
+        selected: false
+        title: 结束 2
+        type: end
+      height: 142
+      id: '1758763701485'
+      position:
+        x: 2296.5714285714284
+        y: 148.4285714285714
+      positionAbsolute:
+        x: 2296.5714285714284
+        y: 148.4285714285714
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1758763678717'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen2.5-VL-7B-Instruct-AWQ
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: 5af370af-c2a5-416d-a3d9-21a691874f0b
+          role: system
+          text: "  ** 角色和任务:你是图像处理识别专家，你的任务是识别收到的图像或PDF文件中的文字，并输出纯文本内容。\n ** 注意事项：\n\
+            - 1.需要特别注意印章的内容也需要提取。若印章在正文中间，提取时将印章内容置于正文前。\n- 2.若出现横向的内容，需要将内容旋转至正确的方向，按正常阅读顺序输出内容。\n\
+            \ -3.如果出现段落被截断的情况，需要完整输出已识别到的文字，即使不能表达完整的含义。\n -5.若没有传入文件，不输出任何值"
+        selected: true
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1758846072246'
+            - files
+          enabled: true
+      height: 90
+      id: '1758764132051'
+      parentId: '1758763678717'
+      position:
+        x: 620.6864172703245
+        y: 64
+      positionAbsolute:
+        x: 1531.114988698896
+        y: -57.571428571428584
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: all of
+            id: a7979ef7-c8c2-47ff-ab89-2436da53f00f
+            sub_variable_condition:
+              case_id: 67f85dec-5764-49ae-a5a0-ccc5afd77f05
+              conditions:
+              - comparison_operator: is
+                id: a8eddc64-92e5-4a94-91dd-feb54badbf1a
+                key: extension
+                value: pdf
+                varType: string
+              logical_operator: and
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1758507149971'
+            - input_files
+          id: 'true'
+          logical_operator: and
+        - case_id: a18b53cb-7c63-456d-8287-ca7c8756b910
+          conditions:
+          - comparison_operator: all of
+            id: b49e6bd5-0995-42d8-880a-75577db4adf3
+            sub_variable_condition:
+              case_id: af909a86-5c02-489f-8308-2d84b29c10f5
+              conditions:
+              - comparison_operator: in
+                id: ef06d089-02e4-4f0c-842e-e568d94e32ff
+                key: type
+                value:
+                - image
+                varType: string
+              logical_operator: and
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1758507149971'
+            - input_files
+          id: a18b53cb-7c63-456d-8287-ca7c8756b910
+          logical_operator: and
+        - case_id: 72b01306-1b6f-4a00-83ab-290c7f0c5776
+          conditions:
+          - comparison_operator: all of
+            id: fb68e09e-47d7-4bb1-b7be-627a6a748bb5
+            sub_variable_condition:
+              case_id: 97a9930e-66a2-4bf1-bf5d-b4dcf38bf62b
+              conditions:
+              - comparison_operator: is
+                id: d3fa1d75-c9a4-412c-9a86-1005f60b79f8
+                key: extension
+                value: xls
+                varType: string
+              logical_operator: and
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1758507149971'
+            - input_files
+          - comparison_operator: contains
+            id: 8b66bab4-a809-488d-9516-064e43302296
+            sub_variable_condition:
+              case_id: a9dfea53-7a91-4fda-a3a8-aba4a3881f0d
+              conditions:
+              - comparison_operator: is
+                id: 4939ec0c-5521-4695-b750-b4601c045c82
+                key: extension
+                value: xlsx
+                varType: string
+              logical_operator: and
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1758507149971'
+            - input_files
+          id: 72b01306-1b6f-4a00-83ab-290c7f0c5776
+          logical_operator: or
+        desc: ''
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 344
+      id: '1758765623497'
+      position:
+        x: 364
+        y: 311
+      positionAbsolute:
+        x: 364
+        y: 311
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1758874341819'
+        - first_record
+      height: 94
+      id: '1758766211113'
+      position:
+        x: 1515.7630765639087
+        y: 865.2857142857143
+      positionAbsolute:
+        x: 1515.7630765639087
+        y: 865.2857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(files_text_list: list[str], path: str, dataset_id: str)\
+          \ -> dict:\n    full_text = ''\n    for text in files_text_list:\n     \
+          \   full_text += text\n    \n    return {\n        \"result\": full_text,\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 模型输出聚合
+        type: code
+        variables:
+        - value_selector:
+          - '1758763678717'
+          - output
+          value_type: array[string]
+          variable: files_text_list
+        - value_selector:
+          - '1758507149971'
+          - path
+          value_type: string
+          variable: path
+        - value_selector:
+          - '1758507149971'
+          - dataset_id
+          value_type: string
+          variable: dataset_id
+      height: 54
+      id: '1758783107471'
+      position:
+        x: 1974.0000000000005
+        y: 91.28571428571422
+      positionAbsolute:
+        x: 1974.0000000000005
+        y: 91.28571428571422
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        default_value:
+        - key: text
+          type: string
+          value: pdf_error
+        - key: json
+          type: array[object]
+          value: '[]'
+        desc: ''
+        error_strategy: default-value
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1758763678717'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: PDF file to convert to PNG images
+            ja_JP: PDF file to convert to PNG images
+            pt_BR: PDF file to convert to PNG images
+            zh_Hans: 要转换为PNG图片的PDF文件
+          label:
+            en_US: PDF Content
+            ja_JP: PDF Content
+            pt_BR: PDF Content
+            zh_Hans: PDF 内容
+          llm_description: PDF file content to be converted to PNG images
+          max: null
+          min: null
+          name: pdf_content
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: 2
+          form: llm
+          human_description:
+            en_US: Zoom factor for image quality (default is 2)
+            ja_JP: Zoom factor for image quality (default is 2)
+            pt_BR: Zoom factor for image quality (default is 2)
+            zh_Hans: 图像质量的缩放因子（默认为2）
+          label:
+            en_US: Zoom Factor
+            ja_JP: Zoom Factor
+            pt_BR: Zoom Factor
+            zh_Hans: 缩放因子
+          llm_description: Zoom factor to control the quality of output PNG images
+          max: null
+          min: null
+          name: zoom
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          pdf_content: ''
+          zoom: ''
+        provider_id: kalochin/pdf_process/pdf_process
+        provider_name: kalochin/pdf_process/pdf_process
+        provider_type: builtin
+        selected: false
+        title: PDF转PNG转换器
+        tool_configurations: {}
+        tool_description: 一个将PDF文件转换为PNG图片的工具
+        tool_label: PDF转PNG转换器
+        tool_name: pdf_to_png
+        tool_node_version: '2'
+        tool_parameters:
+          pdf_content:
+            type: variable
+            value:
+            - '1758763678717'
+            - item
+          zoom:
+            type: constant
+            value: 1
+        type: tool
+      height: 90
+      id: '1758846072246'
+      parentId: '1758763678717'
+      position:
+        x: 264
+        y: 80.00000000000006
+      positionAbsolute:
+        x: 1174.4285714285716
+        y: -41.57142857142853
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen2.5-VL-7B-Instruct-AWQ
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: c020fcad-69da-47b9-b0e8-b5d32634cab5
+          role: system
+          text: " ** 角色和任务:你是图像处理识别专家，你的任务是识别收到的图像或PDF文件中的文字，并输出纯文本内容。\n ** 注意事项：\n\
+            - 1.对于同时有行标题和列标题的复杂表格，需要正确设置框线和换行，确保单元格位置内容和图片一致。若列标题由于文档被截断而缺失，不要自行补充列标题。\n\
+            - 2.需要特别注意印章的内容也需要提取。若印章的内容不全，则根据文件其他印章和上下文推断。若印章在正文中间，提取时将印章内容置于正文前。\n\
+            - 3.若出现横向的内容，需要将内容旋转至正确的方向，按正常阅读顺序输出内容。\n -4.如果出现段落被截断的情况，需要完整输出已识别到的文字，即使不能表达完整的含义。"
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+            variable_selector:
+            - '1758507149971'
+            - input_files
+          enabled: true
+      height: 90
+      id: '1758846208565'
+      position:
+        x: 1194
+        y: 402.57142857142856
+      positionAbsolute:
+        x: 1194
+        y: 402.57142857142856
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1758846208565'
+          - text
+        - - '1758766211113'
+          - text
+      height: 136
+      id: '1758853594947'
+      position:
+        x: 2900.7346567838076
+        y: 462.44146765084315
+      positionAbsolute:
+        x: 2900.7346567838076
+        y: 462.44146765084315
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        extract_by:
+          enabled: true
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: contains
+            key: name
+            value: ''
+          enabled: false
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: name
+          value: desc
+        selected: false
+        title: 列表操作
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - '1758507149971'
+        - input_files
+      height: 94
+      id: '1758874341819'
+      position:
+        x: 1084.4832645642473
+        y: 865.2857142857143
+      positionAbsolute:
+        x: 1084.4832645642473
+        y: 865.2857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -594.5412139522521
+      y: 236.20940316205375
+      zoom: 0.700000000000001

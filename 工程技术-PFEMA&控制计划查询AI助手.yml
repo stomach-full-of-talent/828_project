@@ -1,0 +1,1474 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 工程技术-PFEMA&控制计划查询AI助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: junjiem/mcp_sse:0.1.6@3f84177cce122b1d965ee32d2e63902605b9f74bc34bd73105d21693f0320d7f
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: c18ba6a2-94af-4b84-903d-ef8342cbc837
+    name: answer_question
+    selector:
+    - conversation
+    - answer_question
+    value: ''
+    value_type: string
+  - description: ''
+    id: 2b5ee785-b42c-44db-9b12-c4cc0c6f8239
+    name: temp
+    selector:
+    - conversation
+    - temp
+    value:
+    - '1'
+    value_type: array[string]
+  - description: ''
+    id: c76eee5e-4733-4207-8bfe-e92763a5bf93
+    name: dataset_name
+    selector:
+    - conversation
+    - dataset_name
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: true
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1749718449223-source-1749718486728-target
+      selected: false
+      source: '1749718449223'
+      sourceHandle: source
+      target: '1749718486728'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1749624670334-source-1749624686750-target
+      selected: false
+      source: '1749624670334'
+      sourceHandle: source
+      target: '1749624686750'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1749718353263-true-1749718449223-target
+      selected: false
+      source: '1749718353263'
+      sourceHandle: 'true'
+      target: '1749718449223'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1749718353263-false-1749813734778-target
+      selected: false
+      source: '1749718353263'
+      sourceHandle: 'false'
+      target: '1749813734778'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752108443561'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1752108443561start-source-1752108487762-target
+      selected: false
+      source: 1752108443561start
+      sourceHandle: source
+      target: '1752108487762'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752108443561'
+        sourceType: tool
+        targetType: code
+      id: 1752108487762-source-1752108559754-target
+      selected: false
+      source: '1752108487762'
+      sourceHandle: source
+      target: '1752108559754'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: llm
+      id: 1752108443561-source-1749624670334-target
+      selected: false
+      source: '1752108443561'
+      sourceHandle: source
+      target: '1749624670334'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        sourceType: tool
+        targetType: code
+      id: 1752558794838-source-1752558849485-target
+      selected: false
+      source: '1752558794838'
+      sourceHandle: source
+      target: '1752558849485'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        sourceType: code
+        targetType: llm
+      id: 1752558849485-source-1752559166472-target
+      selected: false
+      source: '1752558849485'
+      sourceHandle: source
+      target: '1752559166472'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        sourceType: llm
+        targetType: code
+      id: 1752559166472-source-1752559231880-target
+      selected: false
+      source: '1752559166472'
+      sourceHandle: source
+      target: '1752559231880'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1752559231880-source-1752559279209-target
+      selected: false
+      source: '1752559231880'
+      sourceHandle: source
+      target: '1752559279209'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: iteration
+      id: 1752558763397-source-1752108443561-target
+      selected: false
+      source: '1752558763397'
+      sourceHandle: source
+      target: '1752108443561'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1749718353263-20c3d66c-b5b3-4f3b-81cd-79205b5389a1-1752558763397-target
+      selected: false
+      source: '1749718353263'
+      sourceHandle: 20c3d66c-b5b3-4f3b-81cd-79205b5389a1
+      target: '1752558763397'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1749718132341-e06b2772-651e-4b58-933d-e7b78951c009-1752558763397-target
+      selected: false
+      source: '1749718132341'
+      sourceHandle: e06b2772-651e-4b58-933d-e7b78951c009
+      target: '1752558763397'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1749718132341-d88aac5f-db90-431b-bc2c-54ee33fe5147-1752558763397-target
+      selected: false
+      source: '1749718132341'
+      sourceHandle: d88aac5f-db90-431b-bc2c-54ee33fe5147
+      target: '1752558763397'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        sourceType: iteration-start
+        targetType: answer
+      id: 1752562256671start-source-1752562279390-target
+      selected: false
+      source: 1752562256671start
+      sourceHandle: source
+      target: '1752562279390'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        sourceType: answer
+        targetType: llm
+      id: 1752562279390-source-1752562292599-target
+      selected: false
+      source: '1752562279390'
+      sourceHandle: source
+      target: '1752562292599'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: if-else
+      id: 1752562256671-source-1749718353263-target
+      selected: false
+      source: '1752562256671'
+      sourceHandle: source
+      target: '1749718353263'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        sourceType: llm
+        targetType: assigner
+      id: 1752562292599-source-1752571142194-target
+      selected: false
+      source: '1752562292599'
+      sourceHandle: source
+      target: '1752571142194'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        sourceType: assigner
+        targetType: code
+      id: 1752571142194-source-1752562329383-target
+      selected: false
+      source: '1752571142194'
+      sourceHandle: source
+      target: '1752562329383'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        sourceType: iteration-start
+        targetType: answer
+      id: 1752558763397start-source-1752628056801-target
+      selected: false
+      source: 1752558763397start
+      sourceHandle: source
+      target: '1752628056801'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        sourceType: answer
+        targetType: tool
+      id: 1752628056801-source-1752558794838-target
+      selected: false
+      source: '1752628056801'
+      sourceHandle: source
+      target: '1752558794838'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1749538911191-source-1752628223434-target
+      selected: false
+      source: '1749538911191'
+      sourceHandle: source
+      target: '1752628223434'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1749718132341-false-1752562256671-target
+      selected: false
+      source: '1749718132341'
+      sourceHandle: 'false'
+      target: '1752562256671'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1752628223434-source-1749718132341-target
+      source: '1752628223434'
+      sourceHandle: source
+      target: '1749718132341'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 是否开启上下文记忆功能（默认不开启，检索知识库更迅速。开启后模型可以根据对话之前的内容进行回答，用时会增加）
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: false
+          type: select
+          variable: memory
+      height: 90
+      id: '1749538911191'
+      position:
+        x: 30
+        y: 335
+      positionAbsolute:
+        x: 30
+        y: 335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1752558763397'
+          - output
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: cfc8435c-2716-4ae2-9fee-c1938f6ab91c
+          role: system
+          text: '{{#1752108443561.output#}}'
+        - id: 46f92718-1a0c-43f0-b7e0-0fa25740802e
+          role: user
+          text: '知识库上下文：{{#context#}}
+
+            用户问题：{{#sys.query#}}'
+        selected: false
+        structured_output_enabled: false
+        title: 最终回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1749624670334'
+      position:
+        x: 7103
+        y: 827
+      positionAbsolute:
+        x: 7103
+        y: 827
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1749624670334.text#}}
+
+
+          如小助手回答结果不准确，请缩窄提问范围以获得更加精确的结果。
+
+
+          注：仅上传文档到知识库并不能直接使用小助手问问题，还需联系信息中心管理员检查知识库内容未出现格式错误并将知识库编入Dify工作流后才能正常使用小助手问问题。'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 201
+      id: '1749624686750'
+      position:
+        x: 7437
+        y: 827
+      positionAbsolute:
+        x: 7437
+        y: 827
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: e06b2772-651e-4b58-933d-e7b78951c009
+          conditions:
+          - comparison_operator: empty
+            id: 0f43769e-d067-4d45-b18d-eb4f1022e1b2
+            value: ''
+            varType: string
+            variable_selector:
+            - '1749538911191'
+            - memory
+          id: e06b2772-651e-4b58-933d-e7b78951c009
+          logical_operator: and
+        - case_id: d88aac5f-db90-431b-bc2c-54ee33fe5147
+          conditions:
+          - comparison_operator: is
+            id: 3abb11dd-5305-4fb8-91ce-99895219738d
+            value: 否
+            varType: string
+            variable_selector:
+            - '1749538911191'
+            - memory
+          id: d88aac5f-db90-431b-bc2c-54ee33fe5147
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 174
+      id: '1749718132341'
+      position:
+        x: 964
+        y: 335
+      positionAbsolute:
+        x: 964
+        y: 335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 534d296d-815b-4e8f-998b-7165563b3bd9
+            value: 'yes'
+            varType: array[string]
+            variable_selector:
+            - '1752562256671'
+            - output
+          id: 'true'
+          logical_operator: and
+        - case_id: 20c3d66c-b5b3-4f3b-81cd-79205b5389a1
+          conditions:
+          - comparison_operator: contains
+            id: 4aa00f21-6c80-4058-80d2-507ed7145b27
+            value: 'no'
+            varType: array[string]
+            variable_selector:
+            - '1752562256671'
+            - output
+          id: 20c3d66c-b5b3-4f3b-81cd-79205b5389a1
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 判断是否需要根据上下文记忆窗口回复
+        type: if-else
+      height: 174
+      id: '1749718353263'
+      position:
+        x: 3324
+        y: 335
+      positionAbsolute:
+        x: 3324
+        y: 335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: cdce6bce-b613-4ab8-bfd2-d833191b12b5
+          role: system
+          text: "## 核心任务\n严格按照以下逻辑和信息源优先级，生成一个与用户问题高度相关、准确且连贯的回答。\n\n## 信息源优先级\n1.\
+            \  **记忆窗口内容（最高）**\n2.  **（可选）外部知识库**\n3.  **模型内置知识（最低，用于补充和润色）**\n\n##\
+            \ 执行逻辑 (IF-ELSE结构)\n**IF** 用户明确表示“无需检索知识库”：\n    *   **THEN** 执行【**流程A：无知识库检索**】。\n\
+            **ELSE** (默认情况):\n    *   **THEN** 执行【**流程B：标准检索**】。\n\n---\n### 【流程A：无知识库检索】\n\
+            1.  **分析**：仅分析“记忆窗口内容”（如果存在）。\n2.  **整合**：以“记忆窗口内容”为核心，结合模型内置知识进行回答。\n\
+            3.  **生成**：生成直接回应用户问题的答案。\n\n### 【流程B：标准检索】\n1.  **分析**：分析“记忆窗口内容”、“外部知识库”中的所有相关信息。\n\
+            2.  **整合**：\n    *   以“记忆窗口内容”为最高优先级信息，整合所有来源的信息。\n    *   如果信息源之间存在冲突，优先采信“记忆窗口内容”。\n\
+            3.  **生成**：结合模型内置知识，生成一个连贯、准确且直接回应用户问题的答案。\n"
+        selected: false
+        title: 回答上下文窗口问题
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1749718449223'
+      position:
+        x: 3749
+        y: 566.5
+      positionAbsolute:
+        x: 3749
+        y: 566.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1749718449223.text#}}
+
+
+          如小助手回答结果不准确，请缩窄提问范围以获得更加精确的结果。
+
+          注：仅上传文档到知识库并不能直接使用小助手问问题，还需联系信息中心管理员检查知识库内容未出现格式错误并将知识库编入Dify工作流后才能正常使用小助手问问题。'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 201
+      id: '1749718486728'
+      position:
+        x: 4959.842834334896
+        y: 521.0285030046881
+      positionAbsolute:
+        x: 4959.842834334896
+        y: 521.0285030046881
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          {{#1752562256671.output#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: '1749813734778'
+      position:
+        x: 6485
+        y: 335
+      positionAbsolute:
+        x: 6485
+        y: 335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 174
+        is_parallel: true
+        iterator_input_type: array[string]
+        iterator_selector:
+        - '1752628223434'
+        - result
+        output_selector:
+        - '1752108487762'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1752108443561start
+        title: 最终回复提示词迭代
+        type: iteration
+        width: 812
+      height: 174
+      id: '1752108443561'
+      position:
+        x: 6201
+        y: 792.5
+      positionAbsolute:
+        x: 6201
+        y: 792.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 812
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1752108443561start
+      parentId: '1752108443561'
+      position:
+        x: 60
+        y: 63
+      positionAbsolute:
+        x: 6261
+        y: 855.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1752108443561'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Name of the tool to execute.
+            ja_JP: Name of the tool to execute.
+            pt_BR: Name of the tool to execute.
+            zh_Hans: 要执行的工具的名称。
+          label:
+            en_US: Tool Name
+            ja_JP: Tool Name
+            pt_BR: Tool Name
+            zh_Hans: 工具名称
+          llm_description: Name of the tool to execute.
+          max: null
+          min: null
+          name: tool_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Tool arguments (JSON string in the python dict[str, Any] format).
+            ja_JP: Tool arguments (JSON string in the python dict[str, Any] format).
+            pt_BR: Tool arguments (JSON string in the python dict[str, Any] format).
+            zh_Hans: 工具的参数。
+          label:
+            en_US: Arguments
+            ja_JP: Arguments
+            pt_BR: Arguments
+            zh_Hans: 参数
+          llm_description: Tool arguments (JSON string in the python dict[str, Any]
+            format).
+          max: null
+          min: null
+          name: arguments
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          arguments: ''
+          tool_name: ''
+        provider_id: junjiem/mcp_sse/mcp_sse
+        provider_name: junjiem/mcp_sse/mcp_sse
+        provider_type: builtin
+        selected: false
+        title: MCP查询”最终回复“提示词
+        tool_configurations: {}
+        tool_description: 调用 MCP 服务端工具。
+        tool_label: 调用 MCP 工具
+        tool_name: mcp_sse_call_tool
+        tool_node_version: '2'
+        tool_parameters:
+          arguments:
+            type: mixed
+            value: '{"sqlcmd": "SELECT * FROM `提示词库` WHERE `阶段` = ''最终回答'' AND `知识库`
+              REGEXP ''工程技术-工艺验证数据库、工程技术-工艺流程文件库'' LIMIT 50"}'
+          tool_name:
+            type: mixed
+            value: 提示词查询助手
+        type: tool
+      height: 54
+      id: '1752108487762'
+      parentId: '1752108443561'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 6405
+        y: 852.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\nimport ast\n\ndef main(input_data: str) -> dict:\n   \
+          \ def extract_prompt(data_str):\n        try:\n            # 分割字符串，提取列表部分\n\
+          \            _, list_str = data_str.split(': ', 1)\n            \n     \
+          \       # 使用ast解析Python列表（处理单引号）\n            results = ast.literal_eval(list_str)\n\
+          \            first_result = results[0]\n            \n            # 获取内部JSON字符串\n\
+          \            inner_text = first_result['text']\n            \n         \
+          \   # 解析内部JSON对象\n            inner_data = json.loads(inner_text)\n    \
+          \        \n            # 提取提示词\n            prompt = inner_data['data'][0]['提示词']\n\
+          \            \n            return prompt  # 成功时返回提示词\n            \n   \
+          \     except (KeyError, IndexError, json.JSONDecodeError, ValueError) as\
+          \ e:\n            return f\"解析失败：{str(e)}\"\n    \n    # 调用解析函数并返回结果\n \
+          \   return {\"result\": extract_prompt(input_data)}"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752108443561'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行-“最终回复”提示词代码处理
+        type: code
+        variables:
+        - value_selector:
+          - '1752108487762'
+          - text
+          value_type: string
+          variable: input_data
+      height: 54
+      id: '1752108559754'
+      parentId: '1752108443561'
+      position:
+        x: 508
+        y: 60
+      positionAbsolute:
+        x: 6709
+        y: 852.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 240
+        is_parallel: true
+        iterator_input_type: array[string]
+        iterator_selector:
+        - '1752628223434'
+        - result
+        output_selector:
+        - '1752559279209'
+        - result
+        output_type: array[object]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1752558763397start
+        title: 迭代处理知识库查询
+        type: iteration
+        width: 2028
+      height: 240
+      id: '1752558763397'
+      position:
+        x: 4083
+        y: 807.5
+      positionAbsolute:
+        x: 4083
+        y: 807.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 2028
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1752558763397start
+      parentId: '1752558763397'
+      position:
+        x: 60
+        y: 96
+      positionAbsolute:
+        x: 4143
+        y: 903.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1752558763397'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Name of the tool to execute.
+            ja_JP: Name of the tool to execute.
+            pt_BR: Name of the tool to execute.
+            zh_Hans: 要执行的工具的名称。
+          label:
+            en_US: Tool Name
+            ja_JP: Tool Name
+            pt_BR: Tool Name
+            zh_Hans: 工具名称
+          llm_description: Name of the tool to execute.
+          max: null
+          min: null
+          name: tool_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Tool arguments (JSON string in the python dict[str, Any] format).
+            ja_JP: Tool arguments (JSON string in the python dict[str, Any] format).
+            pt_BR: Tool arguments (JSON string in the python dict[str, Any] format).
+            zh_Hans: 工具的参数。
+          label:
+            en_US: Arguments
+            ja_JP: Arguments
+            pt_BR: Arguments
+            zh_Hans: 参数
+          llm_description: Tool arguments (JSON string in the python dict[str, Any]
+            format).
+          max: null
+          min: null
+          name: arguments
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          arguments: ''
+          tool_name: ''
+        provider_id: junjiem/mcp_sse/mcp_sse
+        provider_name: junjiem/mcp_sse/mcp_sse
+        provider_type: builtin
+        selected: true
+        title: MCP查询“关键词提取”提示词
+        tool_configurations: {}
+        tool_description: 调用 MCP 服务端工具。
+        tool_label: 调用 MCP 工具
+        tool_name: mcp_sse_call_tool
+        tool_node_version: '2'
+        tool_parameters:
+          arguments:
+            type: mixed
+            value: '{"sqlcmd": "SELECT * FROM `提示词库` WHERE `阶段` = ''关键词提取'' AND `知识库`
+              REGEXP ''工程技术-工艺验证数据库、工程技术-工艺流程文件库'' LIMIT 50"}'
+          tool_name:
+            type: mixed
+            value: 提示词查询助手
+        type: tool
+      height: 54
+      id: '1752558794838'
+      parentId: '1752558763397'
+      position:
+        x: 504
+        y: 93
+      positionAbsolute:
+        x: 4587
+        y: 900.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\nimport ast\n\ndef main(input_data: str) -> dict:\n   \
+          \ def extract_prompt(data_str):\n        try:\n            # 分割字符串，提取列表部分\n\
+          \            _, list_str = data_str.split(': ', 1)\n            \n     \
+          \       # 使用ast解析Python列表（处理单引号）\n            results = ast.literal_eval(list_str)\n\
+          \            first_result = results[0]\n            \n            # 获取内部JSON字符串\n\
+          \            inner_text = first_result['text']\n            \n         \
+          \   # 解析内部JSON对象\n            inner_data = json.loads(inner_text)\n    \
+          \        \n            # 提取提示词\n            prompt = inner_data['data'][0]['提示词']\n\
+          \            \n            return prompt  # 成功时返回提示词\n            \n   \
+          \     except (KeyError, IndexError, json.JSONDecodeError, ValueError) as\
+          \ e:\n            return f\"解析失败：{str(e)}\"\n    \n    # 调用解析函数并返回结果\n \
+          \   return {\"result\": extract_prompt(input_data)}"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: MCP内容处理-“关键词提取”提示词
+        type: code
+        variables:
+        - value_selector:
+          - '1752558794838'
+          - text
+          value_type: string
+          variable: input_data
+      height: 54
+      id: '1752558849485'
+      parentId: '1752558763397'
+      position:
+        x: 808
+        y: 93
+      positionAbsolute:
+        x: 4891
+        y: 900.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1752558794838'
+          - text
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: bd354ade-360f-46ac-b95b-31a44aed385b
+          role: system
+          text: '{{#context#}}'
+        - id: c4c1947f-1a6d-441a-bb79-558f22312c7c
+          role: user
+          text: 问题如下：{{#sys.query#}}
+        selected: false
+        title: 关键词提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1752559166472'
+      parentId: '1752558763397'
+      position:
+        x: 1112
+        y: 75
+      positionAbsolute:
+        x: 5195
+        y: 882.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗代码
+        type: code
+        variables:
+        - value_selector:
+          - '1752559166472'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1752559231880'
+      parentId: '1752558763397'
+      position:
+        x: 1416
+        y: 93
+      positionAbsolute:
+        x: 5499
+        y: 900.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        dataset_ids:
+        - YqpH4dKziq+ol+jkhsCLWIiQbCr/49dghkbk/GI4NO0hyj3ZNISAMqbf+hlljEFT
+        - qsr8jYLc5H20s/ZWtt1Wto6azCcEw3gW+Jc1gfYTKHu12PBK05/peyTFYOwkD+CK
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 57
+        query_variable_selector:
+        - '1752559231880'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索-工程技术-工艺验证数据库、工程技术-工艺流程文件库
+        type: knowledge-retrieval
+      height: 120
+      id: '1752559279209'
+      parentId: '1752558763397'
+      position:
+        x: 1720
+        y: 60
+      positionAbsolute:
+        x: 5803
+        y: 867.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 270
+        is_parallel: true
+        iterator_input_type: array[string]
+        iterator_selector:
+        - '1752628223434'
+        - result
+        output_selector:
+        - '1752562329383'
+        - result
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1752562256671start
+        title: 判断是否需要根据上下文窗口回答
+        type: iteration
+        width: 1420
+      height: 270
+      id: '1752562256671'
+      position:
+        x: 1814
+        y: 335
+      positionAbsolute:
+        x: 1814
+        y: 335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1420
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1752562256671start
+      parentId: '1752562256671'
+      position:
+        x: 60
+        y: 103
+      positionAbsolute:
+        x: 1874
+        y: 438
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请再次点击对话记忆按钮关闭~
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1752562279390'
+      parentId: '1752562256671'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 2018
+        y: 395
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 42748ed0-8a74-47f0-97dd-d710c8b04ed8
+          role: system
+          text: "# 核心任务\n你的任务是作为一个智能分类器。分析给定的 [记忆窗口] (即上下文) 和 [用户问题]，判断该问题是否强依赖于 [记忆窗口]\
+            \ 来生成一个准确、连贯且符合用户意图的回答。\n\n# 输入定义\n[记忆窗口]：代表之前的对话历史或背景信息。\n[用户问题]：代表用户当前提出的问题。\n\
+            \n# 判断规则\n\n首要规则：\n如果 [记忆窗口] 为空，必须输出 \"no\"。\n\n特殊指令覆盖 (优先于后续规则)：\n如果\
+            \ [用户问题] 中明确包含“无需检索知识库”或类似表述，必须输出 \"yes\"。\n如果 [用户问题] 中明确包含“重新检索知识库”或类似表述，必须输出\
+            \ \"no\"。\n\n如果满足以下任一条件，输出 \"yes\" (代表“依赖上下文”)：\n\n直接引用与显式指令：问题直接询问、引用\
+            \ [记忆窗口] 的内容，或包含明确指令要求基于上下文进行操作。\n    关键词示例：“根据上面说的”、“总结一下”、“继续”、“那这个呢？”、“详细说说”、“为什么会这样？”\n\
+            \n上下文延续与深化：问题是 [记忆窗口] 话题的自然延续、追问、比较、要求举例、或进行推断。即使没有明确的指代词，逻辑上也紧密相连。\n\
+            \    示例：\n        记忆窗口：“苹果公司发布了新款iPhone。”\n        用户问题：“它的摄像头有多少像素？”\n\
+            \n寻求相关替代方案：问题在探讨与 [记忆窗口] 主题相关的其他选项、解决方案或可能性。\n    示例：\n        记忆窗口：“A方案的优点是成本低。”\n\
+            \        用户问题：“那B方案呢？”\n\n如果满足以下任一条件，输出 \"no\" (代表“不依赖上下文”)：\n\n开启全新话题：问题与\
+            \ [记忆窗口] 的主题、实体、意图完全无关。\n    示例：\n        记忆窗口：“我们来讨论一下全球气候变化。”\n    \
+            \    用户问题：“给我讲个笑话吧。”\n\n可独立回答的通用问题：问题虽然可能与上下文主题有微弱关联，但它是一个可以独立、完整回答的通用知识性问题，无需依赖\
+            \ [记忆窗口] 的具体信息。\n    示例：\n        记忆窗口：“我正在看关于特斯拉Model Y的评测。”\n      \
+            \  用户问题：“特斯拉是哪个国家的公司？” (这个问题本身是独立的，不需要评测的具体内容)\n\n# 案例学习\n\n案例 1 (yes)\n\
+            \    [记忆窗口]：“AI的发展为社会带来了许多便利，例如在医疗领域的智能诊断和金融领域的风险控制。”\n    [用户问题]：“它在未来还可能有哪些应用？”\n\
+            \    分析：属于“上下文延续与深化”。\n\n案例 2 (yes)\n    [记忆窗口]：“配料：面粉500克，水250克，酵母5克，糖10克。首先将酵母和糖溶于温水中。”\n\
+            \    [用户问题]：“然后呢？”\n    分析：属于“直接引用与显式指令”。\n\n案例 3 (no)\n    [记忆窗口]：“我计划下周去北京旅游，有什么推荐的景点吗？”\n\
+            \    [用户问题]：“推荐一部最近好看的电影。”\n    分析：属于“开启全新话题”。\n\n案例 4 (no)\n    [记忆窗口]：“iPhone\
+            \ 15 Pro Max采用了A17 Pro芯片，性能非常强大。”\n    [用户问题]：“苹果公司的股价是多少？”\n    分析：属于“可独立回答的通用问题”。虽然都和苹果有关，但回答股价问题无需知道芯片信息。\n\
+            \n案例 5 (no)\n    [记忆窗口]： (空)\n    [用户问题]：“你好。”\n    分析：“首要规则”。\n\n案例 6\
+            \ (no) - (新增案例)\n    [记忆窗口]：“太阳系有八大行星。”\n    [用户问题]：“请重新检索知识库，告诉我太阳系最新的行星数量。”\n\
+            \    分析：包含“重新检索知识库”这一特殊指令，表示用户希望忽略已有上下文，发起一个全新的、独立的查询。\n\n# 输出要求\n严格遵循上述规则，仅输出\
+            \ \"yes\" 或 \"no\"。\n禁止添加任何解释、理由或其他无关字符。"
+        selected: false
+        title: 判断是否需要根据上下文窗口回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1752562292599'
+      parentId: '1752562256671'
+      position:
+        x: 508
+        y: 82
+      positionAbsolute:
+        x: 2322
+        y: 417
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752562256671'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1752562292599'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1752562329383'
+      parentId: '1752562256671'
+      position:
+        x: 1116
+        y: 100
+      positionAbsolute:
+        x: 2930
+        y: 435
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1752562292599'
+          - text
+          variable_selector:
+          - conversation
+          - answer_question
+          write_mode: over-write
+        iteration_id: '1752562256671'
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 86
+      id: '1752571142194'
+      parentId: '1752562256671'
+      position:
+        x: 812
+        y: 83
+      positionAbsolute:
+        x: 2626
+        y: 418
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: '
+
+          正在进行知识库查询，请耐心等待~'
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1752558763397'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1752628056801'
+      parentId: '1752558763397'
+      position:
+        x: 161.7161154970454
+        y: 90.51271267629681
+      positionAbsolute:
+        x: 4244.716115497045
+        y: 898.0127126762968
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main() -> dict:\n    arg1=[\"a\"]\n    return {\n        \"result\"\
+          : arg1,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: array[string]
+        selected: false
+        title: 定义一个单元素列表
+        type: code
+        variables: []
+      height: 54
+      id: '1752628223434'
+      position:
+        x: 364
+        y: 335
+      positionAbsolute:
+        x: 364
+        y: 335
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -2165.770951620183
+      y: -69.0673536514783
+      zoom: 0.5581547208441755

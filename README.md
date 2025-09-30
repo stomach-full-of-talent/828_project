@@ -1,1 +1,5 @@
 # 828_project
+files_upload2dify.py 用于将本地文件上传至dify工作流并执行。上传时，需要先上传文件，并获得文件ID，然后执行工作流时仅上传文件ID，Dify会通过ID引用已上传的文件传入工作流。还尝试上传本地文件的相对路径，为处理成功的文件添加元数据，但时间不足尚未实现。将Dify处理成功的文件响应传回本地处理，以json格式按照读取的相对路径存储于processed_data中。
+files_upload2dataset.py 用于将处理完成的文件上传至知识库，处理规则的设置参见Dify官方文档
+batch_process_dify.py 用于批量修改知识库处理文档的规则，如分段方式，召回方式
+.env 用于存储环境变量，如Dify_Upload_App_Key dify工作流的Key 和Dify_Dataset_Key 知识库的key，后续如果要更换知识库，需要在这里修改
