@@ -39,7 +39,7 @@ def find_files_id(dataset_id):
 def change_rules(file_id,dataset_id):
     body = {
         'process_rule': {
-                "mode": "hierarchical",
+                "mode": "custom",
                 "rules": {
                     'pre_processing_rules':[{
                         'id':'remove_extra_spaces',
@@ -51,10 +51,6 @@ def change_rules(file_id,dataset_id):
                     "segmentation": {
                         'separator': '\n\n\n',
                         "max_tokens": 1024},
-                    "parent_mode": "paragraph",
-                    "subchunk_segmentation": {
-                        "max_tokens": 256,
-                        "chunk_overlap": 64}
                 }
         }
     }
@@ -71,5 +67,6 @@ def main():
         files_id = find_files_id(dataset_id)
         for f_id in files_id:
             change_rules(f_id,dataset_id)
+    time.sleep(1)
 if __name__ == "__main__":
     main()

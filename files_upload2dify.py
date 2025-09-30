@@ -8,12 +8,10 @@ from dotenv import load_dotenv
 import mimetypes
 from concurrent.futures import ThreadPoolExecutor,as_completed
 load_dotenv(verbose=True)
-Dify_Dataset_Key = os.getenv('Dify_Dataset_Key',default=None)
 Dify_Upload_App_Key = os.getenv('Dify_Upload_App_Key',default=None)
-dataset_header = {'Authorization': f'Bearer {Dify_Dataset_Key}','Content-Type': 'application/json'}
 app_header = {'Authorization': f'Bearer {Dify_Upload_App_Key}'}
 base_url = 'http://aiserver.adw.com/v1'
-#读取本地文件，用树的方式存储文件和路径
+#读取本地文件，用迭代器的方式存储文件和路径
 base_workspace = './公司数据'
 def read_paths(dir):
     path_tree = os.walk(dir)
@@ -175,6 +173,7 @@ def process_file(path):
                 json.dump(json_output, pf,indent=6)
             with open('uploaded.txt', 'a',encoding='utf-8') as uploaded_file_list:
                 uploaded_file_list.writelines(path + '\n')
+                #维护一个已上传文件列表，只有完整上传并处理成功的文件才会记录
         return path
     except ConnectionError as e:
         print(e)
@@ -182,6 +181,7 @@ def process_file(path):
             log.writelines(path+'\n')
         raise e
 if __name__ == '__main__':
+    # 尝试使用线程池加速上传，但因Dify只能搭载1个多模态模型，而Qwen2.5-VL-7B-instruct不支持多GPU，此尝试起不到加速效果，反而会引起单个工作流，工作流节点超时
     with ThreadPoolExecutor(max_workers=1) as executor:
         futures = [executor.submit(process_file,path) for path in paths]
         for future in as_completed(futures):

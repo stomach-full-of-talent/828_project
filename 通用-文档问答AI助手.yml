@@ -1,0 +1,1537 @@
+app:
+  description: ''
+  icon: 📑
+  icon_background: '#E0F2FE'
+  mode: advanced-chat
+  name: 通用-文档问答AI助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/mineru:0.2.0@98b3e5f620678944aac704ceccc04ffa3bd32baec6d72e0798b54ea9cb036148
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: bb85fac8-dd50-408c-89d4-91b742639c9b
+    name: doc_name
+    selector:
+    - conversation
+    - doc_name
+    value: []
+    value_type: array[string]
+  - description: ''
+    id: 39dd66fa-e795-4bfe-a694-724bc2c97d4b
+    name: documents_content
+    selector:
+    - conversation
+    - documents_content
+    value: []
+    value_type: array[string]
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      - document
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 10
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1748565399968-source-1748565411287-target
+      selected: false
+      source: '1748565399968'
+      sourceHandle: source
+      target: '1748565411287'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17521366013370-source-17521366013371-target
+      selected: false
+      source: '17521366013370'
+      sourceHandle: source
+      target: '17521366013371'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1752136545464-true-1752136676370-target
+      source: '1752136545464'
+      sourceHandle: 'true'
+      target: '1752136676370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1752136676370-source-1748565399968-target
+      selected: false
+      source: '1752136676370'
+      sourceHandle: source
+      target: '1748565399968'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1752136545464-false-17521366013370-target
+      source: '1752136545464'
+      sourceHandle: 'false'
+      target: '17521366013370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: list-operator
+      id: 1711528914102-source-1755242748893-target
+      selected: false
+      source: '1711528914102'
+      sourceHandle: source
+      target: '1755242748893'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: list-operator
+      id: 1711528914102-source-1755243099311-target
+      source: '1711528914102'
+      sourceHandle: source
+      target: '1755243099311'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: assigner
+      id: 1755219655098-source-1755244646916-target
+      source: '1755219655098'
+      sourceHandle: source
+      target: '1755244646916'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: if-else
+      id: 1755244646916-source-1752136545464-target
+      source: '1755244646916'
+      sourceHandle: source
+      target: '1752136545464'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1755246637712'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1755246637712start-source-1755246691049-target
+      source: 1755246637712start
+      sourceHandle: source
+      target: '1755246691049'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1755246637712'
+        sourceType: tool
+        targetType: assigner
+      id: 1755246691049-source-1755246744058-target
+      source: '1755246691049'
+      sourceHandle: source
+      target: '1755246744058'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: if-else
+      id: 1755246637712-source-1752136545464-target
+      source: '1755246637712'
+      sourceHandle: source
+      target: '1752136545464'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: list-operator
+      id: 1711528914102-source-1755246936010-target
+      source: '1711528914102'
+      sourceHandle: source
+      target: '1755246936010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1755247149116-true-1755219655098-target
+      source: '1755247149116'
+      sourceHandle: 'true'
+      target: '1755219655098'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1755247171044-true-1755246637712-target
+      source: '1755247171044'
+      sourceHandle: 'true'
+      target: '1755246637712'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: if-else
+      id: 1755246936010-source-1755247196052-target
+      source: '1755246936010'
+      sourceHandle: source
+      target: '1755247196052'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: list-operator
+      id: 1755242748893-source-1755247286261-target
+      source: '1755242748893'
+      sourceHandle: source
+      target: '1755247286261'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: if-else
+      id: 1755247286261-source-1755247149116-target
+      source: '1755247286261'
+      sourceHandle: source
+      target: '1755247149116'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: list-operator
+      id: 1755243099311-source-1755247306374-target
+      source: '1755243099311'
+      sourceHandle: source
+      target: '1755247306374'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: list-operator
+        targetType: if-else
+      id: 1755247306374-source-1755247171044-target
+      source: '1755247306374'
+      sourceHandle: source
+      target: '1755247171044'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: iteration
+      id: 1755247196052-true-1755247625506-target
+      source: '1755247196052'
+      sourceHandle: 'true'
+      target: '1755247625506'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: answer
+      id: 1755247625506-source-1755246954122-target
+      source: '1755247625506'
+      sourceHandle: source
+      target: '1755246954122'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1755247625506'
+        sourceType: iteration-start
+        targetType: assigner
+      id: 1755247625506start-source-1755247664282-target
+      source: 1755247625506start
+      sourceHandle: source
+      target: '1755247664282'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1755247625506'
+        sourceType: assigner
+        targetType: code
+      id: 1755247664282-source-1755247735243-target
+      source: '1755247664282'
+      sourceHandle: source
+      target: '1755247735243'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1755247171044-false-1752136545464-target
+      source: '1755247171044'
+      sourceHandle: 'false'
+      target: '1752136545464'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 是否开启上下文记忆功能（默认不开启，检索知识库更迅速。开启后模型可以根据对话之前的内容进行回答，用时会增加）
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: false
+          type: select
+          variable: memory
+      height: 90
+      id: '1711528914102'
+      position:
+        x: 30
+        y: 263
+      positionAbsolute:
+        x: 30
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - conversation
+          - documents_content
+        desc: ''
+        memory:
+          query_prompt_template: 用户问题：{{#sys.query#}}
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 90dc22b4-f8a1-4e73-89fd-cef861797aec
+          role: system
+          text: "#### 角色\n你是一个严谨、专业的文档问答专家。\n\n#### 核心使命\n你的唯一任务是基于用户提供的【文档内容】进行回答。你必须忠于原文，并清晰地标明信息来源。当文档无法解答时，需明确告知并切换到通用知识模式作为补充。\n\
+            \n#### 文档内容\n```\n{{#context#}}\n```\n\n#### 工作流程 (逐步执行)\n1.  **指令类型预判**\
+            \ **（关键修改）**\n    *   首先，分析用户的指令类型。\n    *   **A. 如果是内容提取指令**：\n     \
+            \   *   当用户指令为“提取文件内容”、“显示原文”、“输出文档”或类似直接请求时，执行此路径。\n        *   **检查【文档内容】的结构**：\n\
+            \            *   **如果内容本身明显是表格数据**（例如，通过制表符、逗号、竖线或固定的空格分隔的行列），则**必须将其整理为标准的\
+            \ Markdown 表格再输出**。输出后任务结束。**空值处理**：如果原文中对应的单元格为空或无数据，则输出时也**保持留空**，不得填写\
+            \ `N/A`、`nan` 或任何占位符。\n            *   **如果内容是常规段落文本**，则直接完整地输出【文档内容】的原文，无需任何修改。输出后任务结束。\n\
+            \    *   **B. 如果是内容问答指令**：\n        *   若非上述提取指令，则视为对文档内容的提问，进入步骤 2 继续执行。\n\
+            \n2.  **分析问题**\n    *   仔细分析用户问题的核心意图。判断问题是需要**概括性回答**、**提取特定数据**，还是**整理表格**。\n\
+            \n3.  **检索文档**\n    *   在【文档内容】中进行精确检索，定位与问题最相关的信息片段。\n\n4.  **决策判断**\n\
+            \    *   **如果找到直接或间接答案** -> 进入步骤 5。\n    *   **如果完全找不到答案** -> 进入步骤 6。\n\
+            \n5.  **根据文档回答 (首选路径)**\n    *   **常规回答**：对于一般性问题，使用简洁、清晰的语言总结或引用文档内容作答。\n\
+            \    *   **表格提取**：如果用户要求提取或总结表格信息，严格按照下面的【输出格式】要求生成表格。\n    *   回答的最后必须附上来源声明。\n\
+            \n6.  **文档无答案时的后备方案**\n    *   **明确声明**：必须先说：“抱歉，您提供的文档中未提及相关内容。”\n  \
+            \  *   **知识补充**：然后，用一句话自然过渡，如：“不过，根据我的通用知识库：”\n    *   **提供参考**：基于通用知识，给出有帮助的回答或建议。\n\
+            \n#### 输出格式与规则\n*   **来源标注**：所有基于文档的**问答**，必须在末尾新起一行，标注 `(来源: 您提供的文档)`。（注意：直接提取原文时无需标注）\n\
+            *   **表格格式**：\n    *   必须使用标准 Markdown 格式。\n    *   表格内容需与文档原文保持一致。\n\
+            \    *   **空值处理**：如果原文中对应的单元格为空或无数据，则输出时也**保持留空**，不得填写 `N/A`、`nan` 或任何占位符。\n\
+            *   **信息区分**：严禁将通用知识与文档信息混淆。两种来源的回答必须清晰地分开。\n*   **诚实原则**：绝不杜撰【文档内容】中不存在的信息。\n\
+            \n#### 输出风格\n*   **专业严谨**：语言精确，避免口语化和模棱两可的表述。\n*   **客观中立**：在回答时保持客观，不添加个人观点。\n\
+            *   **简洁高效**：直奔主题，用最少的话提供最核心的信息。"
+        selected: false
+        title: 最终回复
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1748565399968'
+      position:
+        x: 3929
+        y: 392
+      positionAbsolute:
+        x: 3929
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1748565399968.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: '1748565411287'
+      position:
+        x: 4263
+        y: 392
+      positionAbsolute:
+        x: 4263
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 353b692f-36b8-4dc3-be41-5e937db7b60e
+            value: 是
+            varType: string
+            variable_selector:
+            - '1711528914102'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 126
+      id: '1752136545464'
+      position:
+        x: 3170
+        y: 529
+      positionAbsolute:
+        x: 3170
+        y: 529
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - conversation
+          - documents_content
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 90dc22b4-f8a1-4e73-89fd-cef861797aec
+          role: system
+          text: "#### 角色\n你是一个严谨、专业的文档问答专家。\n\n#### 核心使命\n你的唯一任务是基于用户提供的【文档内容】进行回答。你必须忠于原文，并清晰地标明信息来源。当文档无法解答时，需明确告知并切换到通用知识模式作为补充。\n\
+            \n#### 文档内容\n```\n{{#context#}}\n```\n\n#### 工作流程 (逐步执行)\n1.  **指令类型预判**\
+            \ **（关键修改）**\n    *   首先，分析用户的指令类型。\n    *   **A. 如果是内容提取指令**：\n     \
+            \   *   当用户指令为“提取文件内容”、“显示原文”、“输出文档”或类似直接请求时，执行此路径。\n        *   **检查【文档内容】的结构**：\n\
+            \            *   **如果内容本身明显是表格数据**（例如，通过制表符、逗号、竖线或固定的空格分隔的行列），则**必须将其整理为标准的\
+            \ Markdown 表格再输出**。输出后任务结束。**空值处理**：如果原文中对应的单元格为空或无数据，则输出时也**保持留空**，不得填写\
+            \ `N/A`、`nan` 或任何占位符。\n            *   **如果内容是常规段落文本**，则直接完整地输出【文档内容】的原文，无需任何修改。输出后任务结束。\n\
+            \    *   **B. 如果是内容问答指令**：\n        *   若非上述提取指令，则视为对文档内容的提问，进入步骤 2 继续执行。\n\
+            \n2.  **分析问题**\n    *   仔细分析用户问题的核心意图。判断问题是需要**概括性回答**、**提取特定数据**，还是**整理表格**。\n\
+            \n3.  **检索文档**\n    *   在【文档内容】中进行精确检索，定位与问题最相关的信息片段。\n\n4.  **决策判断**\n\
+            \    *   **如果找到直接或间接答案** -> 进入步骤 5。\n    *   **如果完全找不到答案** -> 进入步骤 6。\n\
+            \n5.  **根据文档回答 (首选路径)**\n    *   **常规回答**：对于一般性问题，使用简洁、清晰的语言总结或引用文档内容作答。\n\
+            \    *   **表格提取**：如果用户要求提取或总结表格信息，严格按照下面的【输出格式】要求生成表格。\n    *   回答的最后必须附上来源声明。\n\
+            \n6.  **文档无答案时的后备方案**\n    *   **明确声明**：必须先说：“抱歉，您提供的文档中未提及相关内容。”\n  \
+            \  *   **知识补充**：然后，用一句话自然过渡，如：“不过，根据我的通用知识库：”\n    *   **提供参考**：基于通用知识，给出有帮助的回答或建议。\n\
+            \n#### 输出格式与规则\n*   **来源标注**：所有基于文档的**问答**，必须在末尾新起一行，标注 `(来源: 您提供的文档)`。（注意：直接提取原文时无需标注）\n\
+            *   **表格格式**：\n    *   必须使用标准 Markdown 格式。\n    *   表格内容需与文档原文保持一致。\n\
+            \    *   **空值处理**：如果原文中对应的单元格为空或无数据，则输出时也**保持留空**，不得填写 `N/A`、`nan` 或任何占位符。\n\
+            *   **信息区分**：严禁将通用知识与文档信息混淆。两种来源的回答必须清晰地分开。\n*   **诚实原则**：绝不杜撰【文档内容】中不存在的信息。\n\
+            \n#### 输出风格\n*   **专业严谨**：语言精确，避免口语化和模棱两可的表述。\n*   **客观中立**：在回答时保持客观，不添加个人观点。\n\
+            *   **简洁高效**：直奔主题，用最少的话提供最核心的信息。"
+        - id: f8ca64eb-cfb3-4fb2-8d94-d90c65391f86
+          role: user
+          text: 用户问题：{{#sys.query#}}
+        selected: false
+        title: 最终回复2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17521366013370'
+      position:
+        x: 3929
+        y: 549
+      positionAbsolute:
+        x: 3929
+        y: 549
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          {{#17521366013370.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: '17521366013371'
+      position:
+        x: 4263
+        y: 549
+      positionAbsolute:
+        x: 4263
+        y: 549
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击再次点击记忆按钮~'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1752136676370'
+      position:
+        x: 3595
+        y: 392
+      positionAbsolute:
+        x: 3595
+        y: 392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1755247286261'
+        - result
+      height: 94
+      id: '1755219655098'
+      position:
+        x: 1934
+        y: 263
+      positionAbsolute:
+        x: 1934
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: is not
+            key: extension
+            value: .pdf
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: 列表操作
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - sys
+        - files
+      height: 94
+      id: '1755242748893'
+      position:
+        x: 364
+        y: 263
+      positionAbsolute:
+        x: 364
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: is
+            key: extension
+            value: .pdf
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: 列表操作
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - sys
+        - files
+      height: 94
+      id: '1755243099311'
+      position:
+        x: 364
+        y: 782
+      positionAbsolute:
+        x: 364
+        y: 782
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: extend
+          value:
+          - '1755219655098'
+          - text
+          variable_selector:
+          - conversation
+          - documents_content
+          write_mode: over-write
+        selected: false
+        title: 变量赋值
+        type: assigner
+        version: '2'
+      height: 86
+      id: '1755244646916'
+      position:
+        x: 2552
+        y: 263
+      positionAbsolute:
+        x: 2552
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 366
+        is_parallel: false
+        iterator_input_type: array[file]
+        iterator_selector:
+        - '1755247306374'
+        - result
+        output_selector:
+        - '1755246691049'
+        - text
+        output_type: array[string]
+        parallel_nums: 10
+        selected: true
+        start_node_id: 1755246637712start
+        title: 迭代
+        type: iteration
+        width: 812
+      height: 366
+      id: '1755246637712'
+      position:
+        x: 2268
+        y: 389
+      positionAbsolute:
+        x: 2268
+        y: 389
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 812
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1755246637712start
+      parentId: '1755246637712'
+      position:
+        x: 60
+        y: 159
+      positionAbsolute:
+        x: 2328
+        y: 548
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: true
+        iteration_id: '1755246637712'
+        output_schema:
+          properties:
+            full_zip_url:
+              description: The zip URL of the complete parsed result
+              type: string
+            images:
+              description: The images extracted from the file
+              items:
+                type: object
+              type: array
+          type: object
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: the file to be parsed(support pdf, ppt, pptx, doc, docx, png, jpg,
+              jpeg)
+            ja_JP: 解析するファイル(pdf、ppt、pptx、doc、docx、png、jpg、jpegをサポート)
+            pt_BR: the file to be parsed(support pdf, ppt, pptx, doc, docx, png, jpg,
+              jpeg)
+            zh_Hans: 用于解析的文件(支持 pdf, ppt, pptx, doc, docx, png, jpg, jpeg)
+          label:
+            en_US: file
+            ja_JP: file
+            pt_BR: file
+            zh_Hans: file
+          llm_description: the file to be parsed (support pdf, ppt, pptx, doc, docx,
+            png, jpg, jpeg)
+          max: null
+          min: null
+          name: file
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: file
+        - auto_generate: null
+          default: auto
+          form: form
+          human_description:
+            en_US: (For local deployment service)Parsing method, can be auto, ocr,
+              or txt. Default is auto. If results are not satisfactory, try ocr
+            ja_JP: （ローカルデプロイメントサービス用）解析方法は、auto、ocr、またはtxtのいずれかです。デフォルトはautoです。結果が満足できない場合は、ocrを試してください
+            pt_BR: (For local deployment service)Parsing method, can be auto, ocr,
+              or txt. Default is auto. If results are not satisfactory, try ocr
+            zh_Hans: （用于本地部署服务）解析方法，可以是auto, ocr, 或 txt。默认是auto。如果结果不理想，请尝试ocr
+          label:
+            en_US: parse method
+            ja_JP: 解析方法
+            pt_BR: parse method
+            zh_Hans: 解析方法
+          llm_description: Parsing method, can be auto, ocr, or txt. Default is auto.
+            If results are not satisfactory, try ocr
+          max: null
+          min: null
+          name: parse_method
+          options:
+          - icon: ''
+            label:
+              en_US: auto
+              ja_JP: auto
+              pt_BR: auto
+              zh_Hans: auto
+            value: auto
+          - icon: ''
+            label:
+              en_US: ocr
+              ja_JP: ocr
+              pt_BR: ocr
+              zh_Hans: ocr
+            value: ocr
+          - icon: ''
+            label:
+              en_US: txt
+              ja_JP: txt
+              pt_BR: txt
+              zh_Hans: txt
+            value: txt
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: (For official API) Whether to enable formula recognition
+            ja_JP: （公式API用）数式認識を有効にするかどうか
+            pt_BR: (For official API) Whether to enable formula recognition
+            zh_Hans: （用于官方API）是否开启公式识别
+          label:
+            en_US: Enable formula recognition
+            ja_JP: 数式認識を有効にする
+            pt_BR: Enable formula recognition
+            zh_Hans: 开启公式识别
+          llm_description: (For official API) Whether to enable formula recognition
+          max: null
+          min: null
+          name: enable_formula
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: 1
+          form: form
+          human_description:
+            en_US: (For official API) Whether to enable table recognition
+            ja_JP: （公式API用）表認識を有効にするかどうか
+            pt_BR: (For official API) Whether to enable table recognition
+            zh_Hans: （用于官方API）是否开启表格识别
+          label:
+            en_US: Enable table recognition
+            ja_JP: 表認識を有効にする
+            pt_BR: Enable table recognition
+            zh_Hans: 开启表格识别
+          llm_description: (For official API) Whether to enable table recognition
+          max: null
+          min: null
+          name: enable_table
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: doclayout_yolo
+          form: form
+          human_description:
+            en_US: '(For official API) Optional values: doclayout_yolo, layoutlmv3,
+              default value is doclayout_yolo. doclayout_yolo is a self-developed
+              model with better effect'
+            ja_JP: （公式API用）オプション値：doclayout_yolo、layoutlmv3、デフォルト値は doclayout_yolo。doclayout_yolo
+              は自己開発モデルで、効果がより良い
+            pt_BR: '(For official API) Optional values: doclayout_yolo, layoutlmv3,
+              default value is doclayout_yolo. doclayout_yolo is a self-developed
+              model with better effect'
+            zh_Hans: （用于官方API）可选值：doclayout_yolo、layoutlmv3，默认值为 doclayout_yolo。doclayout_yolo
+              为自研模型，效果更好
+          label:
+            en_US: Layout model
+            ja_JP: レイアウト検出モデル
+            pt_BR: Layout model
+            zh_Hans: 布局检测模型
+          llm_description: '(For official API) Optional values: doclayout_yolo, layoutlmv3,
+            default value is doclayout_yolo. doclayout_yolo is a self-developed model
+            withbetter effect'
+          max: null
+          min: null
+          name: layout_model
+          options:
+          - icon: ''
+            label:
+              en_US: doclayout_yolo
+              ja_JP: doclayout_yolo
+              pt_BR: doclayout_yolo
+              zh_Hans: doclayout_yolo
+            value: doclayout_yolo
+          - icon: ''
+            label:
+              en_US: layoutlmv3
+              ja_JP: layoutlmv3
+              pt_BR: layoutlmv3
+              zh_Hans: layoutlmv3
+            value: layoutlmv3
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: auto
+          form: form
+          human_description:
+            en_US: '(For official API) Specify document language, default ch, can
+              be set to auto, when auto, the model will automatically identify document
+              language, other optional value list see: https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5'
+            ja_JP: （公式API用）ドキュメント言語を指定します。デフォルトはchで、autoに設定できます。autoの場合、モデルはドキュメント言語を自動的に識別します。他のオプション値リストについては、次を参照してください：https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5
+            pt_BR: '(For official API) Specify document language, default ch, can
+              be set to auto, when auto, the model will automatically identify document
+              language, other optional value list see: https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5'
+            zh_Hans: （用于官方API）指定文档语言，默认 ch，可以设置为auto，当为auto时模型会自动识别文档语言，其他可选值列表详见：https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5
+          label:
+            en_US: Document language
+            ja_JP: ドキュメント言語
+            pt_BR: Document language
+            zh_Hans: 文档语言
+          llm_description: '(For official API) Specify document language, default
+            ch, can be set to auto, when auto, the model will automatically identify
+            document language, other optional value list see: https://paddlepaddle.github.io/PaddleOCR/latest/ppocr/blog/multi_languages.html#5'
+          max: null
+          min: null
+          name: language
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 0
+          form: form
+          human_description:
+            en_US: (For official API) Whether to enable OCR recognition
+            ja_JP: （公式API用）OCR認識を有効にするかどうか
+            pt_BR: (For official API) Whether to enable OCR recognition
+            zh_Hans: （用于官方API）是否开启OCR识别
+          label:
+            en_US: Enable OCR recognition
+            ja_JP: OCR認識を有効にする
+            pt_BR: Enable OCR recognition
+            zh_Hans: 开启OCR识别
+          llm_description: (For official API) Whether to enable OCR recognition
+          max: null
+          min: null
+          name: enable_ocr
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: boolean
+        - auto_generate: null
+          default: '[]'
+          form: form
+          human_description:
+            en_US: '(For official API) Example: ["docx","html"], markdown, json are
+              the default export formats, no need to set, this parameter only supports
+              one or more of docx, html, latex'
+            ja_JP: （公式API用）例：["docx","html"]、markdown、jsonはデフォルトのエクスポート形式であり、設定する必要はありません。このパラメータは、docx、html、latexの3つの形式のいずれかまたは複数のみをサポートします
+            pt_BR: '(For official API) Example: ["docx","html"], markdown, json are
+              the default export formats, no need to set, this parameter only supports
+              one or more of docx, html, latex'
+            zh_Hans: （用于官方API）示例：["docx","html"],markdown、json为默认导出格式，无须设置，该参数仅支持docx、html、latex三种格式中的一个或多个
+          label:
+            en_US: Extra export formats
+            ja_JP: 追加のエクスポート形式
+            pt_BR: Extra export formats
+            zh_Hans: 额外导出格式
+          llm_description: '(For official API) Example: ["docx","html"], markdown,
+            json are the default export formats, no need to set, this parameter only
+            supports one or more of docx, html, latex'
+          max: null
+          min: null
+          name: extra_formats
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          enable_formula: ''
+          enable_ocr: ''
+          enable_table: ''
+          extra_formats: ''
+          file: ''
+          language: ''
+          layout_model: ''
+          parse_method: ''
+        provider_id: langgenius/mineru/mineru
+        provider_name: langgenius/mineru/mineru
+        provider_type: builtin
+        selected: false
+        title: 文件解析
+        tool_configurations:
+          enable_formula:
+            type: constant
+            value: true
+          enable_ocr:
+            type: constant
+            value: true
+          enable_table:
+            type: constant
+            value: true
+          extra_formats:
+            type: mixed
+            value: '[]'
+          language:
+            type: mixed
+            value: auto
+          layout_model:
+            type: constant
+            value: doclayout_yolo
+          parse_method:
+            type: constant
+            value: ocr
+        tool_description: 一个用于解析文本，表格和图片的工具，支持pdf,pptx,docx等多种格式。支持英语，中文等多种语言
+        tool_label: Parse File
+        tool_name: parse-file
+        tool_node_version: '2'
+        tool_parameters:
+          file:
+            type: variable
+            value:
+            - '1755246637712'
+            - item
+        type: tool
+      height: 246
+      id: '1755246691049'
+      parentId: '1755246637712'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 2472
+        y: 449
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1755246691049'
+          - text
+          variable_selector:
+          - conversation
+          - documents_content
+          write_mode: over-write
+        iteration_id: '1755246637712'
+        selected: false
+        title: 变量赋值 3
+        type: assigner
+        version: '2'
+      height: 86
+      id: '1755246744058'
+      parentId: '1755246637712'
+      position:
+        x: 508
+        y: 140
+      positionAbsolute:
+        x: 2776
+        y: 529
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: is
+            key: extension
+            value: .doc
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: 列表操作 3
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - sys
+        - files
+      height: 94
+      id: '1755246936010'
+      position:
+        x: 364
+        y: 988
+      positionAbsolute:
+        x: 364
+        y: 988
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '请注意：您上传的文件中包含了.doc文件，该格式的文件无法正常解析，请将所有的.doc文件转换为.docx格式再上传。
+
+
+          所有.doc格式的文件包括：
+
+          {{#conversation.doc_name#}}
+
+
+          正在解析其余文件并回复您的问题，请稍后...
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 186
+      id: '1755246954122'
+      position:
+        x: 1934
+        y: 942
+      positionAbsolute:
+        x: 1934
+        y: 942
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 356c6bda-42ce-4b2e-ae56-15a873682f23
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1755247286261'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 126
+      id: '1755247149116'
+      position:
+        x: 1316
+        y: 263
+      positionAbsolute:
+        x: 1316
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 7955c7e2-6cd2-492f-b1d0-81db6ea76848
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1755247306374'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支 3
+        type: if-else
+      height: 126
+      id: '1755247171044'
+      position:
+        x: 1316
+        y: 782
+      positionAbsolute:
+        x: 1316
+        y: 782
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 3dd8c39a-2cc2-4d6d-ba90-975aa4ff24d8
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - '1755246936010'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支 4
+        type: if-else
+      height: 126
+      id: '1755247196052'
+      position:
+        x: 698
+        y: 972
+      positionAbsolute:
+        x: 698
+        y: 972
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: is not
+            key: extension
+            value: .doc
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: 列表操作 4
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - '1755242748893'
+        - result
+      height: 94
+      id: '1755247286261'
+      position:
+        x: 698
+        y: 263
+      positionAbsolute:
+        x: 698
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        extract_by:
+          enabled: false
+          serial: '1'
+        filter_by:
+          conditions:
+          - comparison_operator: is not
+            key: extension
+            value: .doc
+          enabled: true
+        item_var_type: file
+        limit:
+          enabled: false
+          size: 10
+        order_by:
+          enabled: false
+          key: ''
+          value: asc
+        selected: false
+        title: 列表操作 5
+        type: list-operator
+        var_type: array[file]
+        variable:
+        - '1755243099311'
+        - result
+      height: 94
+      id: '1755247306374'
+      position:
+        x: 698
+        y: 782
+      positionAbsolute:
+        x: 698
+        y: 782
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 206
+        is_parallel: false
+        iterator_input_type: array[file]
+        iterator_selector:
+        - '1755246936010'
+        - result
+        output_selector:
+        - '1755247735243'
+        - result
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1755247625506start
+        title: 迭代 2
+        type: iteration
+        width: 812
+      height: 206
+      id: '1755247625506'
+      position:
+        x: 1032
+        y: 948
+      positionAbsolute:
+        x: 1032
+        y: 948
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 812
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1755247625506start
+      parentId: '1755247625506'
+      position:
+        x: 60
+        y: 79
+      positionAbsolute:
+        x: 1092
+        y: 1027
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        items:
+        - input_type: variable
+          operation: append
+          value:
+          - '1755247625506'
+          - item
+          - name
+          variable_selector:
+          - conversation
+          - doc_name
+          write_mode: over-write
+        iteration_id: '1755247625506'
+        selected: false
+        title: 变量赋值 3
+        type: assigner
+        version: '2'
+      height: 86
+      id: '1755247664282'
+      parentId: '1755247625506'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 1236
+        y: 1008
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main() -> dict:\n    return {\n        \"result\": \" \",\n   \
+          \ }\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1755247625506'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables: []
+      height: 54
+      id: '1755247735243'
+      parentId: '1755247625506'
+      position:
+        x: 508
+        y: 76
+      positionAbsolute:
+        x: 1540
+        y: 1024
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: -751.9928126378493
+      y: -57.32512637792331
+      zoom: 0.6093853943072879
