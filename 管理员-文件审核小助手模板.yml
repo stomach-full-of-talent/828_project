@@ -1,0 +1,1010 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 管理员-文件审核小助手模板
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions: []
+      allowed_file_types:
+      - document
+      - image
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: true
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: document-extractor
+      id: 1750034118381-source-1750034237158-target
+      source: '1750034118381'
+      sourceHandle: source
+      target: '1750034237158'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1750034237158-source-llm-target
+      selected: false
+      source: '1750034237158'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: llm-source-1750041322895-target
+      selected: false
+      source: llm
+      sourceHandle: source
+      target: '1750041322895'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1750041322895-source-1750041786372-target
+      selected: false
+      source: '1750041322895'
+      sourceHandle: source
+      target: '1750041786372'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1750041786372-source-1750040700730-target
+      selected: false
+      source: '1750041786372'
+      sourceHandle: source
+      target: '1750040700730'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1750040700730-source-1750044060424-target
+      selected: false
+      source: '1750040700730'
+      sourceHandle: source
+      target: '1750044060424'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1750044060424-source-answer-target
+      selected: false
+      source: '1750044060424'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1750033870530-source-1750052641349-target
+      source: '1750033870530'
+      sourceHandle: source
+      target: '1750052641349'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1750052641349-false-1750034118381-target
+      source: '1750052641349'
+      sourceHandle: 'false'
+      target: '1750034118381'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1750052641349-true-1750053165823-target
+      source: '1750052641349'
+      sourceHandle: 'true'
+      target: '1750053165823'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1750053165823-true-1750052679943-target
+      source: '1750053165823'
+      sourceHandle: 'true'
+      target: '1750052679943'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1750053165823-false-1750053266296-target
+      source: '1750053165823'
+      sourceHandle: 'false'
+      target: '1750053266296'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: document-extractor
+      id: 1750053266296-source-1750053325841-target
+      source: '1750053266296'
+      sourceHandle: source
+      target: '1750053325841'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: document-extractor
+      id: 1750053325841-source-1750053329423-target
+      source: '1750053325841'
+      sourceHandle: source
+      target: '1750053329423'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17500533834555-source-17500533834551-target
+      source: '17500533834555'
+      sourceHandle: source
+      target: '17500533834551'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1750053329423-source-17500533834555-target
+      source: '1750053329423'
+      sourceHandle: source
+      target: '17500533834555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 1.选择单个文件与知识库对比 or 两份文件进行对比（单个文件与知识库对比请点击右下角的回形针图标上传单个文件）（该选项不填默认为“单个文件与知识库对比”）
+          max_length: 48
+          options:
+          - 单个文件与知识库对比
+          - 两份文件进行对比
+          required: false
+          type: select
+          variable: choice
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 2.上传单个待审核文件（1中选择“两份文件进行对比”才可以上传）
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: file1
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 3.上传单个审核模板或审核标准（1中选择“两份文件进行对比”才可以上传）
+          max_length: 48
+          options: []
+          required: false
+          type: file
+          variable: file2
+      height: 142
+      id: '1750033870530'
+      position:
+        x: 30
+        y: 275
+      positionAbsolute:
+        x: 30
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1750034237158'
+          - text
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: f935088d-a7fc-446c-b83e-c7741dd9144c
+          role: system
+          text: '# 角色
+
+            你是一个专业的文档预审助理。
+
+             
+
+            # 背景
+
+            你正在处理一个自动化审核工作流。你的首要任务是对输入文档进行深度分析，提取其核心特征。你的分析结果将作为查询条件，从企业知识库中精准检索出适用的审核规范、政策红线和最佳实践指南。成功的关键在于提取的信息能精准反映文档的审核要点。
+
+             
+
+            # 任务指令
+
+            请对下方的待审核文档进行全面分析，并严格按照指定的JSON格式输出以下信息：
+
+             
+
+            1.  **文档类型 (document_type)**：精确识别文档的类别（例如：API接口设计文档、社交媒体营销文案、软件采购合同、季度财务报表、用户隐私政策更新草案等）。
+
+            2.  **涉及领域 (domain)**：识别文档内容涉及的主要业务或专业领域（例如：金融科技、人工智能、数据安全、人力资源、供应链管理、法律事务等）。
+
+            3.  **关键实体与操作 (key_entities_and_actions)**：列出文档中提到的核心产品、项目名称、关键人物/部门，以及描述的核心操作或承诺（例如：项目“天狼星”、产品“智信”、操作“用户数据跨境传输”）。
+
+            4.  **潜在风险点 (potential_risks)**：基于文档内容，初步判断可能涉及的风险类型（例如：数据隐私泄露、合规性风险、品牌声誉风险、技术实现难度、预算超支等）。此项有助于匹配更严格的审核标准。
+
+            5.  **综合查询语句 (query)**：结合以上所有信息，精心构造一条或多条（最多3条，放在一个数组里）高效的语义查询语句。这些语句应能全面覆盖文档的审核要点，以便在知识库中找到最相关的标准。
+
+             
+
+            # 约束
+
+            - 严格以JSON格式输出，不要包含任何额外的解释性文字。
+
+            - 所有字段都必须存在，如果无法提取到有效信息，请使用 "N/A"。
+
+            - `query` 字段应生成最凝练、信息含量最高的搜索问句。
+
+             
+
+            # 待审核文档
+
+            {{document_content}}
+
+             
+
+            # 输出格式
+
+            ```json
+
+            {
+
+              "document_type": "...",
+
+              "domain": ["...", "..."],
+
+              "key_entities_and_actions": ["...", "...", "..."],
+
+              "potential_risks": ["...", "..."],
+
+              "query": [
+
+                "...",
+
+                "..."
+
+              ]
+
+            }
+
+
+            # 文档内容
+
+            {{#context#}}'
+        selected: true
+        title: 关键信息提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm
+      position:
+        x: 1246
+        y: 284.23655537541026
+      positionAbsolute:
+        x: 1246
+        y: 284.23655537541026
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1750044060424.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 2766
+        y: 275
+      positionAbsolute:
+        x: 2766
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          目前只支持单份文件上传进行审核，请点击右下角的回形针图标上传单份文件！然后在聊天框输入“审核”并按下回车即可进行审核。'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 150
+      id: '1750034118381'
+      position:
+        x: 638
+        y: 275
+      positionAbsolute:
+        x: 638
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '1750034237158'
+      position:
+        x: 942
+        y: 275
+      positionAbsolute:
+        x: 942
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - Pm4jh7gH+oFuQPGYjtGyDqR2lJtPC7frv3b93bsvf3EDQXZQVHkYyaoDmDPurglM
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: true
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          top_k: 4
+        query_variable_selector:
+        - '1750041786372'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 92
+      id: '1750040700730'
+      position:
+        x: 2203.4531102073865
+        y: 259.5921660313944
+      positionAbsolute:
+        x: 2203.4531102073865
+        y: 259.5921660313944
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清洗思考
+        type: code
+        variables:
+        - value_selector:
+          - llm
+          - text
+          variable: arg1
+      height: 54
+      id: '1750041322895'
+      position:
+        x: 1550
+        y: 275
+      positionAbsolute:
+        x: 1550
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import json\n\ndef main(arg1):\n    # 1. 正确使用函数参数 arg1 作为原始文本字符串\n\
+          \    raw_text = arg1\n\n    # 2. 清理字符串，提取出纯净的 JSON 部分\n    start_index =\
+          \ raw_text.find('{')\n    end_index = raw_text.rfind('}')\n\n    if start_index\
+          \ == -1 or end_index == -1:\n        return {\n            \"error\": \"\
+          输入字符串中未找到有效的 JSON 对象括号 {}\"\n        }\n    \n    json_string = raw_text[start_index\
+          \ : end_index + 1]\n\n    # 3. 清洗非标准空白字符\n    cleaned_json_string = json_string.replace('\\\
+          u00A0', ' ')\n\n    # 4. 使用 json.loads() 将清洗后的 JSON 字符串解析成 Python 字典\n \
+          \   try:\n        data = json.loads(cleaned_json_string)\n    except json.JSONDecodeError\
+          \ as e:\n        return {\n            \"error\": f\"JSON 解析失败: {e}\",\n\
+          \            \"attempted_string\": cleaned_json_string\n        }\n\n  \
+          \  # 5. 从字典中通过键 'query' 提取对应的值\n    query_list = data.get('query')\n\n \
+          \   # ==================== 这是本次修改的核心部分 ====================\n    # 6. 将列表转换为用空格分隔的字符串\n\
+          \    #    首先检查 query_list 是否是一个有效的列表\n    if query_list and isinstance(query_list,\
+          \ list):\n        # 使用 \" \".join() 方法将列表元素用空格连接起来\n        result_string\
+          \ = \" \".join(query_list)\n    else:\n        # 如果 'query' 键不存在或其值不是列表，则返回一个空字符串\n\
+          \        result_string = \"\"\n    # =============================================================\n\
+          \n    # 7. 返回包含最终字符串的结果\n    return {\n        \"result\": result_string,\n\
+          \    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 获取query字段
+        type: code
+        variables:
+        - value_selector:
+          - '1750041322895'
+          - result
+          variable: arg1
+      height: 54
+      id: '1750041786372'
+      position:
+        x: 1854
+        y: 275
+      positionAbsolute:
+        x: 1854
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1750040700730'
+          - result
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 6789900f-e687-44d9-aefa-6a1d6ed51991
+          role: system
+          text: "# 角色\n你是一位逻辑严谨、经验丰富的合规审计专家和报告撰写人。你不仅擅长对比分析，更具备出色的判断力，能够从众多规定中精确筛选出与待审文件真正相关的审核标准。\n\
+            \n# 背景\n你的任务是接收一份待审核的文件内容和一批从知识库中检索出的、可能相关的审核标准。你的工作分为两个阶段：\n1.  **筛选阶段**：首先，判断这批审核标准中，哪些是与待审文件的**主题和范围**直接相关的。\n\
+            2.  **分析阶段**：然后，仅使用你筛选出的**相关标准**，对文件内容进行深入的差异对比分析。\n最终，你需要生成一份格式化的、包含筛选过程和对比结果的综合审计报告。\n\
+            \n# 输入数据\n\n--- 文件内容开始 ---\n{{#1750034237158.text#}}\n--- 文件内容结束 ---\n\
+            \n--- 知识库检索结果（待筛选的审核标准）开始 ---\n{{#context#}}\n--- 知识库检索结果（待筛选的审核标准）结束\
+            \ ---\n\n# 任务指令\n请严格按照以下步骤执行：\n1.  **进行相关性筛选 (最重要的一步)**：\n    *   仔细阅读并理解“文件内容”的主题和核心议题。\n\
+            \    *   逐一评估“知识库检索结果”中的每一项规定/标准，判断其内容是否与“文件内容”的主题直接相关。\n    *   在心中形成一个“相关标准清单”和一个“不相关标准清单”，并记下判断理由。\n\
+            \n2.  **确认审计依据**：将上一步筛选出的“相关标准清单”作为本次对比分析的唯一依据。\n\n3.  **逐条对比分析**：以“相关标准清单”为基准，逐条检查“文件内容”是否满足每一项相关标准的要求。\n\
+            \n4.  **识别所有差异点**：\n    *   **不符合项**：明确指出文件内容中直接违反或未达到相关标准要求的具体描述。\n \
+            \   *   **缺失项**：指出相关标准中有要求，但文件内容中完全没有提及的部分。\n    *   **模糊项**：指出文件内容中表述不清，可能导致误解或未来不合规的潜在风险点。\n\
+            \n5.  **分析并提出建议**：对于每一个识别出的差异点，进行简要的分析，包括可能带来的影响或风险，并提出具体的改进建议。\n\n6.\
+            \  **生成报告**：将所有分析结果汇总成一份结构化的报告。报告必须清晰地体现出你的筛选过程。\n\n# 输出格式\n请严格按照以下Markdown格式生成报告，确保报告的专业性和可读性：\n\
+            \n# [文件名或主题] - 合规性审计报告\n\n## 1. 报告摘要 (Executive Summary)\n- **审计日期**:\
+            \ [今天的日期]\n- **审计对象**: [文件名或主题]\n- **核心结论**: [一句话总结，例如：经筛选，确认2项相关标准。对比发现3个主要差异点，建议立即整改。或：经审核，文件内容完全符合所有相关标准。]\n\
+            \n## 2. 审计范围与依据确认 (Scope and Basis Confirmation)\n[此部分至关重要，用于展示你的筛选过程]\n\
+            - **文件主题分析**: [简要说明你理解的待审文件核心主题，例如：本文件主要规范员工的国内差旅报销流程。]\n- **相关标准确认**:\n\
+            \    - **[标准1的名称]** - **采纳理由**: [简述为何此标准相关，例如：该规定是公司差旅报销的根本依据。]\n    -\
+            \ **[标准2的名称]** - **采纳理由**: [例如：该规定详细说明了财务审批流程，与报销相关。]\n- **排除的标准说明**:\n\
+            \    - **[标准A的名称]** - **排除理由**: [简述为何此标准不相关，例如：该规定是关于办公室资产管理的，与差旅报销无关。]\n\
+            \    - **[标准B的名称]** - **排除理由**: [例如：该规定是关于员工行为准则的，未涉及具体的财务报销细节。]\n\n##\
+            \ 3. 总体评估 (Overall Assessment)\n[基于与**相关标准**的对比，对整体合规情况进行简要评价。]\n\n##\
+            \ 4. 差异点详细分析 (Detailed Discrepancy Analysis)\n---\n### **差异点 1: [差异点的简要标题]**\n\
+            - **涉及标准条款**: [引用**相关标准**中的具体条款编号和内容]\n- **文件内容描述**: [引用文件中相关的原文或描述]\n\
+            - **差异描述**: [清晰说明文件内容与标准的具体差异是什么]\n- **潜在风险/影响**: [分析该差异可能导致的负面后果]\n-\
+            \ **改进建议**: [提出具体、可操作的修改建议]\n\n---\n*(根据实际差异点数量，重复此结构)*\n\n## 5. 结论与后续步骤\
+            \ (Conclusion & Next Steps)\n[对整个报告进行总结，并建议下一步的行动计划。]\n"
+        selected: false
+        title: 对比分析找差异
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1750044060424'
+      position:
+        x: 2462
+        y: 275
+      positionAbsolute:
+        x: 2462
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 46c6906e-b454-4182-913f-da6c6fff6026
+            value: 两份文件进行对比
+            varType: string
+            variable_selector:
+            - '1750033870530'
+            - choice
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 126
+      id: '1750052641349'
+      position:
+        x: 335.8543442102995
+        y: 275
+      positionAbsolute:
+        x: 335.8543442102995
+        y: 275
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          请分别上传单个待审核文件和单个审核标准，然后在聊天框输入“审核”并按下回车即可进行审核。'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1750052679943'
+      position:
+        x: 942
+        y: 445
+      positionAbsolute:
+        x: 942
+        y: 445
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not exists
+            id: 3e300111-08e2-428b-ad7f-71917cacb9d2
+            value: ''
+            varType: file
+            variable_selector:
+            - '1750033870530'
+            - file1
+          - comparison_operator: not exists
+            id: 18b360bf-5186-44b6-a1d7-dea016754de3
+            value: ''
+            varType: file
+            variable_selector:
+            - '1750033870530'
+            - file2
+          id: 'true'
+          logical_operator: or
+        desc: ''
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 152
+      id: '1750053165823'
+      position:
+        x: 638
+        y: 465
+      positionAbsolute:
+        x: 638
+        y: 465
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          文档正在对比，请稍候~'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1750053266296'
+      position:
+        x: 942
+        y: 619
+      positionAbsolute:
+        x: 942
+        y: 619
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器 1
+        type: document-extractor
+        variable_selector:
+        - '1750033870530'
+        - file1
+      height: 94
+      id: '1750053325841'
+      position:
+        x: 1246
+        y: 623
+      positionAbsolute:
+        x: 1246
+        y: 623
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器 2
+        type: document-extractor
+        variable_selector:
+        - '1750033870530'
+        - file2
+      height: 94
+      id: '1750053329423'
+      position:
+        x: 1550
+        y: 605
+      positionAbsolute:
+        x: 1550
+        y: 605
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17500533834555.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 105
+      id: '17500533834551'
+      position:
+        x: 2158
+        y: 617.5
+      positionAbsolute:
+        x: 2158
+        y: 617.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 6789900f-e687-44d9-aefa-6a1d6ed51991
+          role: system
+          text: '# 角色
+
+            你是一位逻辑严谨、经验丰富的合规审计专家和报告撰写人。你不仅擅长对比分析，更具备出色的判断力，能够精确解读审核标准，并判断其内部哪些条款与待审文件的具体内容直接相关。
+
+             
+
+            # 背景
+
+            你的任务是接收一份待审核的文件内容和一份**指定的审核标准/模板**。你的工作分为两个阶段：
+
+            1.  **适用性分析阶段**：首先，深入理解待审文件的**主题和范围**。然后，通读完整的审核标准文件，精确识别出其中与待审文件主题**直接相关的章节和条款**。
+
+            2.  **差异分析阶段**：然后，仅使用你筛选出的**相关章节和条款**，对文件内容进行深入的差异对比分析。
+
+             
+
+            最终，你需要生成一份格式化的、包含适用性分析过程和对比结果的综合审计报告。
+
+             
+
+            # 输入数据
+
+             
+
+            --- 待审核文件内容 开始 ---
+
+            {{#1750053325841.text#}}
+
+            --- 待审核文件内容 结束 ---
+
+             
+
+            --- 审核标准/模板文件内容 开始 ---
+
+            {{#1750053329423.text#}}
+
+            --- 审核标准/模板文件内容 结束 ---
+
+             
+
+            # 任务指令
+
+            请严格按照以下步骤执行：
+
+            1.  **进行适用性分析 (最重要的一步)**：
+
+                *   仔细阅读并理解“待审核文件内容”的主题和核心议题。
+
+                *   逐一评估“审核标准/模板文件内容”中的**各个章节、条款或要求**，判断其是否与“待审核文件内容”的主题和范围直接相关。
+
+                *   在心中形成一个“适用条款清单”和一个“不适用条款清单”，并清晰记录判断理由。对于大型标准，你可能需要判断整个章节是否适用。
+
+             
+
+            2.  **确认审计基准**：将上一步筛选出的“适用条款清单”作为本次对比分析的唯一依据。
+
+             
+
+            3.  **逐条对比分析**：以“适用条款清单”为基准，逐条检查“待审核文件内容”是否满足每一项相关要求。
+
+             
+
+            4.  **识别所有差异点**：
+
+                *   **不符合项**：明确指出文件内容中直接违反或未达到相关条款要求的具体描述。
+
+                *   **缺失项**：指出相关条款中有要求，但文件内容中完全没有提及的部分。
+
+                *   **模糊项**：指出文件内容中表述不清，可能导致误解或未来不合规的潜在风险点。
+
+             
+
+            5.  **分析并提出建议**：对于每一个识别出的差异点，进行简要的分析，包括可能带来的影响或风险，并提出具体的改进建议。
+
+             
+
+            6.  **生成报告**：将所有分析结果汇总成一份结构化的报告。报告必须清晰地体现出你的适用性分析过程。
+
+             
+
+            # 输出格式
+
+            请严格按照以下Markdown格式生成报告，确保报告的专业性和可读性：
+
+             
+
+            # [待审核文件主题] - 合规性审计报告
+
+             
+
+            ## 1. 报告摘要 (Executive Summary)
+
+            - **审计日期**: [今天的日期]
+
+            - **审计对象**: [待审核文件的名称或主题]
+
+            - **审计依据**: [审核标准/模板文件的名称]
+
+            - **核心结论**: [一句话总结，例如：经分析，标准中的3个章节适用。对比发现3个主要差异点，建议立即整改。或：经审核，文件内容完全符合所有适用条款。]
+
+             
+
+            ## 2. 审计范围与依据确认 (Scope and Basis Confirmation)
+
+            [此部分至关重要，用于展示你的适用性分析过程]
+
+            - **文件主题分析**: [简要说明你理解的待审文件核心主题，例如：本文件主要规范员工的国内差旅报销流程。]
+
+            - **适用条款确认**:
+
+                - **[标准章节/条款 1 的编号和名称]** - **采纳理由**: [简述为何此章节/条款适用，例如：该章节是公司差旅报销的核心规定，与文件主题完全匹配。]
+
+                - **[标准章节/条款 2 的编号和名称]** - **采纳理由**: [例如：该条款详细说明了财务审批流程，是报销流程中的关键环节。]
+
+            - **范围外条款说明 (可选)**:
+
+                - **[标准章节/条款 A 的编号和名称]** - **排除理由**: [简述为何此章节/条款不适用，例如：该章节规范的是海外差旅，而本次审核文件仅涉及国内差旅，故不适用。]
+
+                - **[标准章节/条款 B 的编号和名称]** - **排除理由**: [例如：该条款关于董事会成员的特殊报销政策，与普通员工无关，故排除。]
+
+             
+
+            ## 3. 总体评估 (Overall Assessment)
+
+            [基于与**适用条款**的对比，对整体合规情况进行简要评价。]
+
+             
+
+            ## 4. 差异点详细分析 (Detailed Discrepancy Analysis)
+
+            ---
+
+            ### **差异点 1: [差异点的简要标题]**
+
+            - **涉及标准条款**: [引用**审核标准**中的具体条款编号和内容]
+
+            - **文件内容描述**: [引用待审核文件中相关的原文或描述]
+
+            - **差异描述**: [清晰说明文件内容与条款的具体差异是什么]
+
+            - **潜在风险/影响**: [分析该差异可能导致的负面后果]
+
+            - **改进建议**: [提出具体、可操作的修改建议]
+
+             
+
+            ---
+
+            *(根据实际差异点数量，重复此结构)*
+
+             
+
+            ## 5. 结论与后续步骤 (Conclusion & Next Steps)
+
+            [对整个报告进行总结，并建议下一步的行动计划。]'
+        selected: false
+        title: '对比分析找差异 '
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17500533834555'
+      position:
+        x: 1854
+        y: 606
+      positionAbsolute:
+        x: 1854
+        y: 606
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 96.67910700424852
+      y: 92.6577913034867
+      zoom: 0.6597539553864477

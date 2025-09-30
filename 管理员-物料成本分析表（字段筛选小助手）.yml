@@ -1,0 +1,295 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 管理员-物料成本分析表（字段筛选小助手）
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 开始提取
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 开始提取
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: document-extractor
+      id: 1745888444355-source-1745888584244-target
+      source: '1745888444355'
+      sourceHandle: source
+      target: '1745888584244'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: code
+      id: 1745888584244-source-1745888770250-target
+      source: '1745888584244'
+      sourceHandle: source
+      target: '1745888770250'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1745888770250-source-1745888793089-target
+      source: '1745888770250'
+      sourceHandle: source
+      target: '1745888793089'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1745888793089-source-answer-target
+      source: '1745888793089'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: 请上传待筛选的文件（格式为：第一行是标题，其他行是内容）
+          max_length: 48
+          options: []
+          required: true
+          type: file
+          variable: wenjian
+      height: 90
+      id: '1745888444355'
+      position:
+        x: 31.428571428571416
+        y: 252.5
+      positionAbsolute:
+        x: 31.428571428571416
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '字段匹配筛选结果：
+
+          {{#1745888793089.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 121
+      id: answer
+      position:
+        x: 1240.7219683569085
+        y: 252.5
+      positionAbsolute:
+        x: 1240.7219683569085
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: false
+        selected: false
+        title: 文档提取器
+        type: document-extractor
+        variable_selector:
+        - '1745888444355'
+        - wenjian
+      height: 94
+      id: '1745888584244'
+      position:
+        x: 333.52629355918333
+        y: 252.5
+      positionAbsolute:
+        x: 333.52629355918333
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    match_answer = re.search(r'^.*?(?=\\\
+          n)', arg1)\n    final_answer = match_answer.group(0)\n    return {\n   \
+          \     \"result\": final_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1745888584244'
+          - text
+          variable: arg1
+      height: 54
+      id: '1745888770250'
+      position:
+        x: 638
+        y: 252.5
+      positionAbsolute:
+        x: 638
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1745888770250'
+          - result
+        desc: ''
+        model:
+          completion_params: {}
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 9663c2a9-5631-40d3-b577-22296a296985
+          role: system
+          text: '## 角色
+
+            你是奥迪威公司采购部的表单字段筛选小助手。
+
+
+            ## 背景
+
+            严格根据模板筛选用户提交的表单字段，对于后续数据处理至关重要。你必须确保只有模板中存在的字段才会被筛选出来。
+
+
+            ## 任务
+
+            请将用户提供的表单字段列表，与下方提供的“表单模板”进行精确匹配。请逐一检查用户提交的每一项字段，判断它是否存在于模板中。
+
+
+            ## 表单模板
+
+            ["供应商名称", "供应商代码", "品名", "编号", "平台", "到货地点", "供应商品名", "规格型号", "交易账期",
+            "报价单位", "第几次报价", "MOQ（pcs）", "采购周期", "供应商发运地", "材质类别", "单件重量（g）", "水口重量(g/个)",
+            "原材料成本(元/克）", "损耗率(%)", "金额", "机台规格（T)", "成型周期(S/啤)", "机台费用（元/小时）", "开机人数（人）",
+            "人工（元/小时）", "成型费", "检测和包装费", "管理费用", "运输", "毛利率", "净价", "税率", "合计单价"]
+
+
+            ## 示例
+
+            - **用户输入:** ["供应商名称", "品名", "联系电话", "合计单价", "公司地址"]
+
+            - **你的输出:** ["供应商名称", "品名", "合计单价"]
+
+
+            ## 规则与输出格式
+
+            1.  **精确匹配：** 只有当用户提交的字段与“表单模板”中的某个字段完全相同时，才算作匹配成功。
+
+            2.  **忽略不匹配项：** 如果用户提交的字段在“表单模板”中不存在，请直接忽略，不要在最终结果中输出。
+
+            3.  **输出格式：** 将所有匹配成功的字段，以JSON列表（List）的格式输出。'
+        - id: 24df436b-cf8e-4001-9423-9732425ca260
+          role: user
+          text: 现在，请处理以下用户提供的字段：{{#context#}}
+        selected: true
+        title: 字段相似匹配
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1745888793089'
+      position:
+        x: 942
+        y: 252.5
+      positionAbsolute:
+        x: 942
+        y: 252.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -172.68142291496633
+      y: 198.27627372703193
+      zoom: 0.6597539553864479

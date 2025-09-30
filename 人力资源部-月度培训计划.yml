@@ -1,0 +1,898 @@
+app:
+  description: 按年度培训计划，自动生成月度培训计划并按时发布培训通知
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 人力资源部-月度培训计划
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 这是一个生成月度培训计划的AI助手。请输入您的部门和您想要的培训计划类型。
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1753251533020-source-1754637368549-target
+      source: '1753251533020'
+      sourceHandle: source
+      target: '1754637368549'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1754637368549-true-1753251877701-target
+      source: '1754637368549'
+      sourceHandle: 'true'
+      target: '1753251877701'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1754637368549-false-1754637485126-target
+      selected: false
+      source: '1754637368549'
+      sourceHandle: 'false'
+      target: '1754637485126'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1754637485126-source-1754637495316-target
+      source: '1754637485126'
+      sourceHandle: source
+      target: '1754637495316'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1754637495316-source-1754637614782-target
+      source: '1754637495316'
+      sourceHandle: source
+      target: '1754637614782'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1754637614782-source-1754637648376-target
+      source: '1754637614782'
+      sourceHandle: source
+      target: '1754637648376'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: knowledge-retrieval
+      id: 1754637648376-true-1753251877701-target
+      source: '1754637648376'
+      sourceHandle: 'true'
+      target: '1753251877701'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1754637648376-false-1754637678344-target
+      source: '1754637648376'
+      sourceHandle: 'false'
+      target: '1754637678344'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754637678344-source-1754637708518-target
+      source: '1754637678344'
+      sourceHandle: source
+      target: '1754637708518'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1755678692458-source-llm-target
+      source: '1755678692458'
+      sourceHandle: source
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: code
+      id: 1753251877701-source-1755678692458-target
+      source: '1753251877701'
+      sourceHandle: source
+      target: '1755678692458'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 记忆
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: memory
+      height: 90
+      id: '1753251533020'
+      position:
+        x: 30
+        y: 263
+      positionAbsolute:
+        x: 30
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1753251877701'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: e117a4ad-8439-4580-b722-357dcd75f592
+          role: system
+          text: "语言  \n将{{#1755678692458.result#}}的内容全部翻译成中文。  \n请全程使用中文进行思考，并以中文输出答案。\
+            \  \n\n角色  \n你的唯一职责是将{{#1755678692458.result#}}中的序号替换为知识库中对应的序号。  \n\n\
+            扫描{{#1755678692458.result#}}，并将表格中的每一行与知识库片段（位于{{#context#}}中）进行匹配。  \n\
+            \n仅关注{{#1755678692458.result#}}中的表格：  \n1. 将表格中的序号替换为你在上下文中找到的正确序号。为表格中的所有15个项目执行此操作。\
+            \  \n2. 对于所有15门课程的“月份”列，第一行标记为“一月”，第二行标记为“二月”，第三行标记为“三月”，依此类推，直至“十二月”。然后重新从“一月”开始，因为月历是循环的。"
+        selected: true
+        title: 生成培训计划器
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: llm
+      position:
+        x: 3241
+        y: 263
+      positionAbsolute:
+        x: 3241
+        y: 263
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 3575
+        y: 263
+      positionAbsolute:
+        x: 3575
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - tDj5h3rdLXA+xR27lVGzaxH2SnM4CVTNd4cZ19MWa3qLxh/2k1zXM9SNOAZFqjjk
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 152
+        query_variable_selector:
+        - '1753251533020'
+        - sys.query
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索系统
+        type: knowledge-retrieval
+      height: 92
+      id: '1753251877701'
+      position:
+        x: 2309.165309380729
+        y: 263
+      positionAbsolute:
+        x: 2309.165309380729
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 640803da-038e-4382-87e1-65460e00ce6b
+            value: 否
+            varType: string
+            variable_selector:
+            - '1753251533020'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1754637368549'
+      position:
+        x: 364
+        y: 263
+      positionAbsolute:
+        x: 364
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击左上角开启新对话~
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 134
+      id: '1754637485126'
+      position:
+        x: 880
+        y: 379
+      positionAbsolute:
+        x: 880
+        y: 379
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: 用户问题：{{#sys.query#}}
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 7e11ce3f-3d16-425e-addb-40de1afb1771
+          role: system
+          text: '#### **# 核心任务**
+
+            你的任务是作为一个智能分类器。分析给定的 `[记忆窗口]` (即上下文) 和 `[用户问题]`，判断该问题是否**强依赖**于`[记忆窗口]`来生成一个准确、连贯且符合用户意图的回答。
+
+             
+
+            ---
+
+             
+
+            #### **# 输入定义**
+
+            *   `[记忆窗口]`：代表之前的对话历史或背景信息。
+
+            *   `[用户问题]`：代表用户当前提出的问题。
+
+             
+
+            ---
+
+             
+
+            #### **# 判断规则**
+
+             
+
+            **首要规则：**
+
+            *   如果 `[记忆窗口]` 为空，**必须**输出 "no"。
+
+             
+
+            **特殊指令覆盖：**
+
+            *   如果 `[用户问题]` 中明确包含“无需检索知识库”或类似表述，**必须**输出 "yes"。
+
+             
+
+            **如果满足以下任一条件，输出 "yes" (代表“依赖上下文”)：**
+
+             
+
+            1.  **直接引用与显式指令**：问题直接询问、引用 `[记忆窗口]` 的内容，或包含明确指令要求基于上下文进行操作。
+
+                *   **关键词示例**：“根据上面说的”、“总结一下”、“继续”、“那这个呢？”、“详细说说”、“为什么会这样？”
+
+             
+
+            2.  **上下文延续与深化**：问题是 `[记忆窗口]` 话题的自然延续、追问、比较、要求举例、或进行推断。即使没有明确的指代词，逻辑上也紧密相连。
+
+                *   **示例**：
+
+                    *   记忆窗口：“苹果公司发布了新款iPhone。”
+
+                    *   用户问题：“它的摄像头有多少像素？”
+
+             
+
+            3.  **寻求相关替代方案**：问题在探讨与 `[记忆窗口]` 主题相关的其他选项、解决方案或可能性。
+
+                *   **示例**：
+
+                    *   记忆窗口：“A方案的优点是成本低。”
+
+                    *   用户问题：“那B方案呢？”
+
+             
+
+            **如果满足以下任一条件，输出 "no" (代表“不依赖上下文”)：**
+
+             
+
+            1.  **开启全新话题**：问题与 `[记忆窗口]` 的主题、实体、意图完全无关。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我们来讨论一下全球气候变化。”
+
+                    *   用户问题：“给我讲个笑话吧。”
+
+             
+
+            2.  **可独立回答的通用问题**：问题虽然可能与上下文主题有微弱关联，但它是一个可以独立、完整回答的通用知识性问题，无需依赖 `[记忆窗口]`
+            的具体信息。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我正在看关于特斯拉Model Y的评测。”
+
+                    *   用户问题：“特斯拉是哪个国家的公司？” (这个问题本身是独立的，不需要评测的具体内容)
+
+             
+
+            ---
+
+             
+
+            #### **# 案例学习**
+
+             
+
+            *   **案例 1 (yes)**
+
+                *   `[记忆窗口]`：“AI的发展为社会带来了许多便利，例如在医疗领域的智能诊断和金融领域的风险控制。”
+
+                *   `[用户问题]`：“它在未来还可能有哪些应用？”
+
+                *   **分析**：属于“上下文延续与深化”。
+
+             
+
+            *   **案例 2 (yes)**
+
+                *   `[记忆窗口]`：“配料：面粉500克，水250克，酵母5克，糖10克。首先将酵母和糖溶于温水中。”
+
+                *   `[用户问题]`：“然后呢？”
+
+                *   **分析**：属于“直接引用与显式指令”。
+
+             
+
+            *   **案例 3 (no)**
+
+                *   `[记忆窗口]`：“我计划下周去北京旅游，有什么推荐的景点吗？”
+
+                *   `[用户问题]`：“推荐一部最近好看的电影。”
+
+                *   **分析**：属于“开启全新话题”。
+
+             
+
+            *   **案例 4 (no)**
+
+                *   `[记忆窗口]`：“iPhone 15 Pro Max采用了A17 Pro芯片，性能非常强大。”
+
+                *   `[用户问题]`：“苹果公司的股价是多少？”
+
+                *   **分析**：属于“可独立回答的通用问题”。虽然都和苹果有关，但回答股价问题无需知道芯片信息。
+
+             
+
+            *   **案例 5 (no)**
+
+                *   `[记忆窗口]`： (空)
+
+                *   `[用户问题]`：“你好。”
+
+                *   **分析**：“首要规则”。
+
+             
+
+            ---
+
+             
+
+            #### **# 输出要求**
+
+            *   严格遵循上述规则，仅输出 "yes" 或 "no"。
+
+            *   禁止添加任何解释、理由或其他无关字符。'
+        selected: false
+        title: 判断是否需要根据上下文窗口回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754637495316'
+      position:
+        x: 1216.4872873237032
+        y: 379
+      positionAbsolute:
+        x: 1216.4872873237032
+        y: 379
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 思考移除
+        type: code
+        variables:
+        - value_selector:
+          - '1754637495316'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1754637614782'
+      position:
+        x: 1548
+        y: 379
+      positionAbsolute:
+        x: 1548
+        y: 379
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 56f24b2e-8b02-4838-ad08-51997c107b7b
+            value: 'no'
+            varType: string
+            variable_selector:
+            - '1754637614782'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 126
+      id: '1754637648376'
+      position:
+        x: 1882
+        y: 379
+      positionAbsolute:
+        x: 1882
+        y: 379
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: 问题如下：{{#sys.query#}}
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 7e4d3370-c4ab-47fc-854a-8d04deb1353b
+          role: system
+          text: "## 核心任务\n严格按照以下逻辑和信息源优先级，生成一个与用户问题高度相关、准确且连贯的回答。\n\n## 信息源优先级\n1.\
+            \  **记忆窗口内容（最高）**\n2.  **（可选）外部知识库**\n3.  **模型内置知识（最低，用于补充和润色）**\n\n##\
+            \ 执行逻辑 (IF-ELSE结构)\n**IF** 用户明确表示“无需检索知识库”：\n    *   **THEN** 执行【**流程A：无知识库检索**】。\n\
+            **ELSE** (默认情况):\n    *   **THEN** 执行【**流程B：标准检索**】。\n\n---\n### 【流程A：无知识库检索】\n\
+            1.  **分析**：仅分析“记忆窗口内容”（如果存在）。\n2.  **整合**：以“记忆窗口内容”为核心，结合模型内置知识进行回答。\n\
+            3.  **生成**：生成直接回应用户问题的答案。\n\n### 【流程B：标准检索】\n1.  **分析**：分析“记忆窗口内容”、“外部知识库”中的所有相关信息。\n\
+            2.  **整合**：\n    *   以“记忆窗口内容”为最高优先级信息，整合所有来源的信息。\n    *   如果信息源之间存在冲突，优先采信“记忆窗口内容”。\n\
+            3.  **生成**：结合模型内置知识，生成一个连贯、准确且直接回应用户问题的答案。"
+        selected: false
+        title: 记忆大模型
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754637678344'
+      position:
+        x: 2641
+        y: 408
+      positionAbsolute:
+        x: 2641
+        y: 408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754637678344.text#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1754637708518'
+      position:
+        x: 2975
+        y: 408
+      positionAbsolute:
+        x: 2975
+        y: 408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\nimport json\nfrom collections import defaultdict\nfrom typing\
+          \ import List, Dict, Any, Union\n\ndef extract_courses_from_metadata(metadata_list:\
+          \ List[Dict]) -> List[Dict]:\n    \"\"\"\n    Extract course information\
+          \ from Dify metadata format.\n    \"\"\"\n    courses = []\n    \n    for\
+          \ item in metadata_list:\n        try:\n            content = item.get('content',\
+          \ '')\n            \n            if '序号' in content and '课程名称' in content:\n\
+          \                course_entries = content.strip().split('\\n')\n       \
+          \         \n                for entry in course_entries:\n             \
+          \       try:\n                        pattern = r'\\\"([^\\\"]+)\\\":\\\"\
+          ([^\\\"]*)\\\"'\n                        matches = re.findall(pattern, entry)\n\
+          \                        \n                        course_data = {}\n  \
+          \                      for key, value in matches:\n                    \
+          \        clean_key = key.strip().replace('\\\"', '')\n                 \
+          \           clean_value = value.strip().replace('\\\"', '')\n          \
+          \                  course_data[clean_key] = clean_value\n              \
+          \          \n                        if course_data:\n                 \
+          \           courses.append(course_data)\n                            \n\
+          \                    except Exception as e:\n                        print(f\"\
+          Error parsing entry: {entry}\")\n                        continue\n    \
+          \        \n        except Exception as e:\n            print(f\"Error processing\
+          \ metadata item: {item.get('title', 'Unknown')}\")\n            continue\n\
+          \    \n    return courses\n\ndef preprocess_and_filter_courses(metadata_list:\
+          \ List[Dict], user_query: str) -> List[Dict]:\n    \"\"\"\n    Code-based\
+          \ preprocessing and broad filtering\n    Returns relevant courses while\
+          \ preserving all original data\n    \"\"\"\n    # Extract all courses from\
+          \ metadata\n    all_courses = extract_courses_from_metadata(metadata_list)\n\
+          \    \n    if not all_courses:\n        return []\n    \n    if not user_query\
+          \ or user_query.strip() == \"\":\n        # Return all courses if no query,\
+          \ but limit to reasonable number\n        return all_courses[:30]  # Increased\
+          \ to 30 to allow for 12-month selection\n    \n    # Basic keyword matching\
+          \ (broad filter)\n    query_lower = user_query.lower()\n    query_keywords\
+          \ = [word for word in query_lower.split() if len(word) > 2]\n    \n    relevant_courses\
+          \ = []\n    \n    for course in all_courses:\n        relevance_score =\
+          \ 0\n        \n        # Course name match (highest weight)\n        course_name\
+          \ = course.get('课程名称', '').lower()\n        for keyword in query_keywords:\n\
+          \            if keyword in course_name:\n                relevance_score\
+          \ += 30\n                break\n        \n        # Department/audience\
+          \ match\n        audience = course.get('培训对象', '').lower() + ' ' + course.get('培训对象1',\
+          \ '').lower()\n        for keyword in query_keywords:\n            if keyword\
+          \ in audience:\n                relevance_score += 20\n                break\n\
+          \        \n        # Trainer match\n        trainer = course.get('培训讲师',\
+          \ '').lower()\n        for keyword in query_keywords:\n            if keyword\
+          \ in trainer:\n                relevance_score += 15\n                break\n\
+          \        \n        # Category match\n        category = course.get('类别',\
+          \ '').lower()\n        for keyword in query_keywords:\n            if keyword\
+          \ in category:\n                relevance_score += 10\n                break\n\
+          \        \n        # Year match\n        year = course.get('年度', '').lower()\n\
+          \        for keyword in query_keywords:\n            if keyword in year:\n\
+          \                relevance_score += 5\n                break\n        \n\
+          \        # If no keyword matches, check for partial matches\n        if\
+          \ relevance_score == 0:\n            for field in ['课程名称', '培训对象', '培训对象1',\
+          \ '培训讲师', '类别']:\n                field_value = course.get(field, '').lower()\n\
+          \                for keyword in query_keywords:\n                    if\
+          \ keyword in field_value:\n                        relevance_score += 5\n\
+          \                        break\n        \n        if relevance_score > 0:\n\
+          \            relevant_courses.append((relevance_score, course))\n    \n\
+          \    # If we found relevant courses, sort and return them\n    if relevant_courses:\n\
+          \        relevant_courses.sort(key=lambda x: x[0], reverse=True)\n     \
+          \   return [course for score, course in relevant_courses]\n    else:\n \
+          \       # If no keyword matches, return all courses\n        return all_courses\n\
+          \ndef create_llm_selection_prompt(courses: List[Dict], user_query: str)\
+          \ -> str:\n    \"\"\"\n    Create a prompt for LLM to select 12 courses\
+          \ for 12 months\n    \"\"\"\n    courses_json = json.dumps(courses, ensure_ascii=False,\
+          \ indent=2)\n    \n    prompt = f\"\"\"\n# TRAINING COURSE SELECTION TASK\n\
+          \n## USER QUERY:\n\"{user_query}\"\n\n## BACKGROUND:\nYou are an expert\
+          \ training coordinator. Select 8-15 courses to create a balanced monthly\
+          \ training plan. If fewer than 12 relevant courses exist, include the most\
+          \ relevant ones available.\n\n## COURSE DATABASE:\n{courses_json}\n\n##\
+          \ SELECTION CRITERIA:\n1. **RELEVANCE**: Match the user's query\n2. **MANDATORY\
+          \ STATUS**: Prioritize courses with 备注 containing \"必修\", \"必须\", or \"\
+          强制\"\n3. **RECENCY**: Prefer 2023-2025 courses\n4. **VARIETY**: Ensure different\
+          \ course types and trainers\n5. **BALANCE**: Distribute across different\
+          \ months\n\n## OUTPUT REQUIREMENTS:\nReturn ONLY a valid markdown table\
+          \ with 8-15 courses (or all available if fewer):\n\n| 序号 | 月份 | 课程名称 | 培训讲师\
+          \ | 考核 | 课时 | 培训对象 |\n|------|------|----------|----------|------|------|----------|\n\
+          | original value | original value | original value | original value | original\
+          \ value | original value | original value |\n| ...continue extracting and\
+          \ filling the remaining rows with actual course data... |\n\n## IMPORTANT:\n\
+          - PRESERVE ORIGINAL 序号 VALUES extracted from the metadata context - do not\
+          \ renumber courses\n- Include all original field values exactly as provided\n\
+          - Select 15 courses if available, or all relevant courses if fewer\n- Return\
+          \ ONLY the markdown table, no explanations\n\"\"\"\n\n    return prompt\n\
+          \ndef llm_final_selection(courses: List[Dict], query: str) -> str:\n   \
+          \ \"\"\"\n    Select courses for 12-month plan, preserving original numbers\n\
+          \    \"\"\"\n    print(f\"\U0001F4CA Processing {len(courses)} courses for\
+          \ query: '{query}'\")\n    \n    # Prioritize courses while preserving original\
+          \ data\n    prioritized = []\n    for course in courses:\n        score\
+          \ = 0\n        \n        # Mandatory courses first\n        if any(keyword\
+          \ in course.get('备注', '') for keyword in ['必修', '必须', '强制']):\n        \
+          \    score += 100\n        \n        # Recent courses\n        if '2024'\
+          \ in course.get('年度', '') or '2025' in course.get('年度', ''):\n         \
+          \   score += 30\n        \n        # Department-specific\n        if course.get('培训对象1',\
+          \ '') and course['培训对象1'] != '':\n            score += 20\n        \n  \
+          \      # Query relevance\n        query_lower = query.lower()\n        for\
+          \ field in ['课程名称', '培训对象', '培训对象1', '类别']:\n            field_value = course.get(field,\
+          \ '').lower()\n            if field_value and any(keyword in field_value\
+          \ for keyword in query_lower.split()):\n                score += 15\n  \
+          \              break\n        \n        prioritized.append((score, course))\n\
+          \    \n    prioritized.sort(key=lambda x: x[0], reverse=True)\n    \n  \
+          \  # Select up to 12 courses, but preserve all if fewer than 12\n    selected_courses\
+          \ = [course for score, course in prioritized]\n    if len(selected_courses)\
+          \ > 15:\n        selected_courses = selected_courses[:15]\n    \n    print(f\"\
+          ✅ Selected {len(selected_courses)} courses for 12-month plan\")\n    \n\
+          \    # Create Markdown table with ORIGINAL course numbers\n    markdown_lines\
+          \ = []\n    markdown_lines.append(\"| 序号 | 月份 | 课程名称 | 培训讲师 | 考核 | 课时 |\
+          \ 培训对象 |\")\n    markdown_lines.append(\"|------|------|----------|----------|------|------|----------|\"\
+          )\n    \n    for course in selected_courses:\n        row = [\n        \
+          \    course.get('序号', ''),\n            course.get('月份', ''),\n        \
+          \    course.get('课程名称', ''),\n            course.get('培训讲师', ''),\n    \
+          \        course.get('考核', ''),\n            course.get('课时', ''),\n    \
+          \        course.get('培训对象', course.get('培训对象1', ''))\n        ]\n      \
+          \  # Clean empty values but preserve original data\n        clean_row =\
+          \ [str(item).strip() if item else '' for item in row]\n        markdown_lines.append(f\"\
+          | {' | '.join(clean_row)} |\")\n    \n    return \"\\n\".join(markdown_lines)\n\
+          \ndef create_monthly_plan_markdown(courses_markdown: str) -> str:\n    \"\
+          \"\"\n    Create monthly distribution for the selected courses\n    \"\"\
+          \"\n    # Parse the markdown to extract courses\n    lines = courses_markdown.strip().split('\\\
+          n')\n    courses_data = []\n    \n    for line in lines[2:]:  # Skip header\
+          \ lines\n        if line.startswith('|') and len(line.split('|')) > 3:\n\
+          \            cells = [cell.strip() for cell in line.split('|')[1:-1]]\n\
+          \            if len(cells) >= 8:\n                course_data = {\n    \
+          \                '序号': cells[0],\n                    '月份': cells[1],\n\
+          \                    '课程名称': cells[3]\n                }\n             \
+          \   courses_data.append(course_data)\n    \n    # Distribute across 12 months\n\
+          \    monthly_plan = {}\n    months = ['January', 'February', 'March', 'April',\
+          \ 'May', 'June', \n              'July', 'August', 'September', 'October',\
+          \ 'November', 'December']\n    \n    for i, course in enumerate(courses_data):\n\
+          \        month_idx = i % 12\n        month_name = months[month_idx]\n  \
+          \      if month_name not in monthly_plan:\n            monthly_plan[month_name]\
+          \ = []\n        monthly_plan[month_name].append(course['课程名称'])\n    \n\
+          \    # Build output\n    output_lines = []\n    output_lines.append(\"#\
+          \ \U0001F4C5 AI优化培训计划 (12个月)\")\n    output_lines.append(\"\")\n    output_lines.append(\"\
+          ## \U0001F3AF 精选课程列表\")\n    output_lines.append(\"\")\n    output_lines.append(courses_markdown)\n\
+          \    output_lines.append(\"\")\n    output_lines.append(\"## \U0001F4CA\
+          \ 月度分布建议\")\n    output_lines.append(\"\")\n    \n    for month in months:\n\
+          \        if month in monthly_plan and monthly_plan[month]:\n           \
+          \ output_lines.append(f\"### \U0001F4CD {month}\")\n            output_lines.append(\"\
+          \")\n            for course_name in monthly_plan[month]:\n             \
+          \   output_lines.append(f\"- {course_name}\")\n            output_lines.append(\"\
+          \")\n    \n    output_lines.append(\"---\")\n    output_lines.append(f\"\
+          ✅ 培训计划生成完成！共 {len(courses_data)} 门课程平衡分布在12个月中\")\n    \n    return \"\\\
+          n\".join(output_lines)\n\ndef main(input_data: Union[Dict, List[Dict]],\
+          \ query: str = None) -> dict:\n    \"\"\"\n    Main function that preserves\
+          \ original course numbers and expands to 12-month plan\n    \"\"\"\n   \
+          \ try:\n        # Handle input format\n        if isinstance(input_data,\
+          \ dict):\n            metadata_list = [input_data]\n        elif isinstance(input_data,\
+          \ list):\n            metadata_list = input_data\n        else:\n      \
+          \      raise ValueError(f\"Unexpected input type: {type(input_data)}\")\n\
+          \        \n        if not query:\n            query = \"所有培训课程\"\n     \
+          \   \n        # Get all relevant courses\n        potential_courses = preprocess_and_filter_courses(metadata_list,\
+          \ query)\n        \n        if not potential_courses:\n            return\
+          \ {\"result\": \"❌ 未找到匹配的培训课程数据。\"}\n        \n        # Select courses\
+          \ for 12-month plan\n        markdown_output = llm_final_selection(potential_courses,\
+          \ query)\n        \n        # Create final presentation\n        final_output\
+          \ = create_monthly_plan_markdown(markdown_output)\n        \n        return\
+          \ {\"result\": final_output}\n        \n    except Exception as e:\n   \
+          \     return {\"result\": f\"❌ 错误: {str(e)}\"}"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Code 2
+        type: code
+        variables:
+        - value_selector:
+          - '1753251877701'
+          - result
+          value_type: array[object]
+          variable: input_data
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: query
+      height: 54
+      id: '1755678692458'
+      position:
+        x: 2941
+        y: 263
+      positionAbsolute:
+        x: 2941
+        y: 263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -1884.7729330461598
+      y: 74.50125452939
+      zoom: 0.7140011265948383

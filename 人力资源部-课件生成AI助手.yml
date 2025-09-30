@@ -1,0 +1,753 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 人力资源部-课件生成AI助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: junjiem/mcp_sse:0.1.6@3f84177cce122b1d965ee32d2e63902605b9f74bc34bd73105d21693f0320d7f
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1753347234289-source-1753347622471-target
+      source: '1753347234289'
+      sourceHandle: source
+      target: '1753347622471'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1753347622471-source-1753411892794-target
+      selected: false
+      source: '1753347622471'
+      sourceHandle: source
+      target: '1753411892794'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1753423420091-true-1753347234289-target
+      source: '1753423420091'
+      sourceHandle: 'true'
+      target: '1753347234289'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1753423420091-9ac9dc26-ec2a-43ce-a2b2-e444ed663b08-1753423582450-target
+      source: '1753423420091'
+      sourceHandle: 9ac9dc26-ec2a-43ce-a2b2-e444ed663b08
+      target: '1753423582450'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1753423582450-source-1753424048339-target
+      selected: false
+      source: '1753423582450'
+      sourceHandle: source
+      target: '1753424048339'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: tool
+      id: 1753411892794-source-1753769344541-target
+      source: '1753411892794'
+      sourceHandle: source
+      target: '1753769344541'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1753769344541-source-1753842970848-target
+      source: '1753769344541'
+      sourceHandle: source
+      target: '1753842970848'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1753842970848-source-1753841878667-target
+      source: '1753842970848'
+      sourceHandle: source
+      target: '1753841878667'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: if-else
+      id: 1753262335002-source-1753423420091-target
+      source: '1753262335002'
+      sourceHandle: source
+      target: '1753423420091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1753262199154-source-1753941302152-target
+      source: '1753262199154'
+      sourceHandle: source
+      target: '1753941302152'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1753941302152-source-1754006815194-target
+      source: '1753941302152'
+      sourceHandle: source
+      target: '1754006815194'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1754006815194-source-1753262335002-target
+      source: '1754006815194'
+      sourceHandle: source
+      target: '1753262335002'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 是否需要生成课件？
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: ppt_req
+      height: 90
+      id: '1753262199154'
+      position:
+        x: 31.414213376280117
+        y: 378
+      positionAbsolute:
+        x: 31.414213376280117
+        y: 378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - tDj5h3rdLXA+xR27lVGzaxH2SnM4CVTNd4cZ19MWa3qLxh/2k1zXM9SNOAZFqjjk
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 104
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: /home/user/Desktop/MODELFILE/bge-m3
+              embedding_provider_name: langgenius/openai_api_compatible/openai_api_compatible
+              vector_weight: 0.7
+        query_variable_selector:
+        - '1754006815194'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 92
+      id: '1753262335002'
+      position:
+        x: 1033.0826546903645
+        y: 378
+      positionAbsolute:
+        x: 1033.0826546903645
+        y: 378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1753262335002'
+          - result
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - edition_type: basic
+          id: ae682c6f-b591-4d0c-97ae-153075861492
+          jinja2_text: "## 目的\r\n您是一名专业的PPT演示文稿创作助手，能够将用户需求转化为清晰、专注的Markdown格式演示文本。\r\
+            \n\r\n## 知识库\r\n{}\r\n\r\n## Markdown PPT格式指南\r\n\r\n### 标题与结构\r\n- 使用\
+            \ `#` 表示标题幻灯片（通常一张幻灯片）\r\n- 使用 `##` 表示幻灯片标题\r\n- 如需副标题使用 `###`\r\n- 使用水平线\
+            \ `---` 分隔幻灯片\r\n\r\n### 内容格式\r\n- 使用无序列表（`*` 或 `-`）表示要点\r\n- 使用有序列表（`1.`、`2.`）表示顺序步骤\r\
+            \n- 段落间用空行分隔\r\n- 使用三个反引号表示代码块\r\n- 可选：包含表格和图片链接\r\n\r\n## 处理流程\r\n\r\n\
+            ### 1. 理解用户需求\r\n- 仔细阅读所有提供的信息\r\n- 注意：\r\n  * 演示主题\r\n  * 目标受众\r\n  *\
+            \ 关键信息\r\n  * 演示时长\r\n  * 特定风格或格式要求\r\n\r\n### 2. 提取核心内容\r\n- 确定最重要的要点\r\
+            \n- 请记住：PPT支持演讲，而非替代演讲\r\n\r\n### 3. 组织内容结构\r\n典型结构包括：\r\n- 标题页\r\n- 引言/议程\r\
+            \n- 主体（多个部分）\r\n- 总结/结论\r\n- 可选问答环节\r\n\r\n### 4. 创建Markdown演示文稿\r\n-\
+            \ 确保每张幻灯片只突出一个主要观点\r\n- 使用简洁有力的语言\r\n- 使用项目符号强调要点\r\n- 使用合适的标题层级\r\n\r\
+            \n### 5. 审核与优化\r\n- 检查完整性\r\n- 优化文本格式\r\n- 确保可读性\r\n\r\n## 重要指南\r\n- 不要猜测或添加未提供的信息\r\
+            \n- 如有需要请提出澄清问题\r\n- 简化详细或冗长的信息\r\n- 突出Markdown优势（易于编辑、版本控制）\r\n\r\n##\
+            \ 输入处理规则\r\n- 仔细分析用户输入\r\n- 提取关键演示元素\r\n- 将输入转换为结构化Markdown格式\r\n- 保持清晰和逻辑流畅\r\
+            \n\r\n## 示例用户输入\r\n\"帮我创建一个关于'如何提高团队协作效率'的演示文稿，面向项目经理。内容包括：定义团队目标、建立沟通机制、使用Slack和Microsoft\
+            \ Teams等协作工具、定期回顾和反馈。演示时长约15分钟。\"\r\n\r\n## 预期输出格式\r\n\r\n# 演示标题\r\n\r\
+            \n---\r\n\r\n## 议程\r\n\r\n- 要点1\r\n- 要点2\r\n- 要点3\r\n\r\n---\r\n\r\n##\
+            \ 详细幻灯片内容\r\n\r\n- 具体项目符号\r\n- 解释性细节\r\n- 关键收获\r\n\r\n---\r\n\r\n## 回复指南\r\
+            \n- 提供完整、可直接使用的Markdown演示文稿\r\n- 确保专业清晰的格式\r\n- 适应用户的特定场景和需求”"
+          role: system
+          text: "知识库：{{#context#}}\n\n你是一位资深PPT内容架构专家，专注于将用户的演讲需求精准转化为结构严谨、逻辑清晰、视觉友好的Markdown格式演示文稿。你必须严格依据用户提供的知识库内容进行创作，禁止添加任何外部信息、推测性内容或虚构数据。当用户提问内容不在知识库覆盖范围内时，请直接回复‘不知道’，无需推测或补充信息。\n\
+            \n输出目标\n- 按照规则生成美观、标准化的Markdown内容\n- 格式规范统一，层级清晰，易于阅读和维护\n\nMarkdown 格式规范（强制执行）\n\
+            \n- `#`：仅用于封面页标题，全文仅出现一次；\n- `##`：表示大的章节分隔（如“第一节、引言”、“第二节、核心分析”、“第三节、总结”），不对应具体幻灯片；\n\
+            - `###`：表示每一页实际幻灯片的标题，必须以\"\\n\\n \"结尾，随后包含本页主要内容；\n- 保证每页的内容充实饱满，每页至少包含5点内容；\n\
+            - 禁止使用 --- 分页符，换页仅通过 ### 新标题实现；\n- 在输出每页幻灯片具体内容时，使用*来实现换行；\n- 当一页需要展示多个并排内容时，使用卡片分点，卡片分点标题使用`####`，其必须以\"\
+            \\n\\n \"结尾；\n- 禁止在卡片内容中插入表格内容；\n-PPT中可以适当突出重点，考虑使用**文本** 来对关键词、句加粗；\n\
+            -严格禁止使用\\\\nmermaid\\\\ngraph LR语法；\n-你需要在封面标题后一页，写出目录，目录的内容为各“##”级别的标题；\n\
+            -任何表格都需要单独成一页展示，不要和其他内容嵌套到一起；\n-表格的名称一定不要用“**”等标识突出，只需要用普通文本\n\n输出格式要求（强制执行）\n\
+            最终输出仅输出markdown内容。\n\n标准化的示例格式如下：\n模型回答: \n\n# 演示文稿标题\n\n### 目录\n\n1.第一节：章名称1\n\
+            \n2.第二节：章名称2\n\n## 第一节：章名称1\n\n### 页标题1\n\n有序列表\n\n1. First item\n\n2.\
+            \ Second item\n\n3. Third item\n    1. Indented item    \n    2. Indented\
+            \ item\n\n4. Fourth item\n\n### 页标题2\n\n无序列表\n\n* First item\n* Second\
+            \ item\n* Third item\n    * Indented item\n    * Indented item\n* Fourth\
+            \ item\n\n### 页标题3\n\n*表格标题\n\n| 区间 | 最小目标百分比 | 最大目标百分比 | PI 值 |\\n|-----:|---------------:|---------------:|------:|\\\
+            n|  1   |       0        |       50       |  0.5  |\\n|  2   |      50\
+            \        |       60       |  0.6  |\\n|  3   |      60        |      \
+            \ 70       |  0.7  |\n\n\n"
+        - id: 3177ef02-a9c7-4465-ae81-416cda3f834b
+          role: user
+          text: 用户的问题为：{{#sys.query#}}，请生成对应的回答内容。
+        selected: false
+        title: LLM 2
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1753347234289'
+      position:
+        x: 1791
+        y: 260.5
+      positionAbsolute:
+        x: 1791
+        y: 260.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1753347234289.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 2
+        type: answer
+        variables: []
+      height: 105
+      id: '1753347622471'
+      position:
+        x: 2125
+        y: 260.5
+      positionAbsolute:
+        x: 2125
+        y: 260.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef transform_hyphens(text):\n    # 使用正则表达式按优先级处理\n    def\
+          \ replace_func(match):\n        s = match.group(0)\n        if len(s) ==\
+          \ 1:\n            return \"*\"\n        elif len(s) == 3:\n            return\
+          \ \"\"\n        else:\n            return s  # 保持原样，比如 2个、4个、5个及以上都不变\n\
+          \ \n    # 匹配连续的 '-'，按最长匹配（贪婪模式），然后在函数中判断长度\n    result = re.sub(r'-+', replace_func,\
+          \ text)\n    return result\n\n\ndef main(arg1: str) -> dict:\n    md_content\
+          \ = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n    final_answer\
+          \ = transform_hyphens(md_content)\n    final_answer = final_answer.replace('```markdown','')\n\
+          \    final_answer = final_answer.replace('```','')\n    \n    final_answer\
+          \ ='''template: Template2.pptx\n    presTitleSize: 60\n    sectionTitleSize:\
+          \ 36\n    pageTitleSize: 32\n    baseTextSize: 24\n    compactTables: 24\n\
+          \    numbers: yes\n    style.fgcolor.blue: 0000FF\n    style.fgcolor.red:\
+          \ FF0000\n    style.fgcolor.green: 00FF00\n    style.fgcolor.purple: FF00FF\n\
+          \    cardlayout: horizontal\n    baseTextSize: 24\n    CardColour: BACKGROUND\
+          \ 2\n    CardTitlePosition: inside\n    cardshadow: yes\n    cardshape:\
+          \ rounded\n    numbersFontSize: 18''' + final_answer\n\n    result = {\"\
+          md_content\": str(final_answer),\n        \"output_dir\":\"files\"\n   \
+          \     \n    }\n\n    return {\n        \"result\":  json.dumps(result,ensure_ascii=False)\n\
+          \    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1753347234289'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1753411892794'
+      position:
+        x: 2459
+        y: 260.5
+      positionAbsolute:
+        x: 2459
+        y: 260.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 17cc71d4-c030-407d-96e8-4e7c3897ca47
+            value: 是
+            varType: string
+            variable_selector:
+            - '1753262199154'
+            - ppt_req
+          id: 'true'
+          logical_operator: and
+        - case_id: 9ac9dc26-ec2a-43ce-a2b2-e444ed663b08
+          conditions:
+          - comparison_operator: contains
+            id: 20d5473b-4b36-42d4-b7c6-ee532491b5d7
+            value: 否
+            varType: string
+            variable_selector:
+            - '1753262199154'
+            - ppt_req
+          id: 9ac9dc26-ec2a-43ce-a2b2-e444ed663b08
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 174
+      id: '1753423420091'
+      position:
+        x: 1366
+        y: 378
+      positionAbsolute:
+        x: 1366
+        y: 378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1753262335002'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 54cc0ff1-7a09-46e8-9bde-290740940208
+          role: system
+          text: '请严格按照用户的问题进行回答，确保内容准确、直接，并完全符合问题要求。若问题涉及的信息在你的知识库范围内，请基于已有知识给出简洁、可靠的答复；若问题超出你的知识范围或涉及未知信息，请明确告知用户：‘该问题超出了我的已知信息范围’，不得编造、推测或引入外部知识。禁止进行与回答无关的思考或输出。
+
+
+            知识库内容：{{#context#}}'
+        - id: 0ed2f027-c9fe-421c-92c4-a9ceb0dfab3d
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 3
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1753423582450'
+      position:
+        x: 2125
+        y: 405.5
+      positionAbsolute:
+        x: 2125
+        y: 405.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1753423582450.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 105
+      id: '1753424048339'
+      position:
+        x: 2459
+        y: 372.5
+      positionAbsolute:
+        x: 2459
+        y: 372.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Name of the tool to execute.
+            ja_JP: Name of the tool to execute.
+            pt_BR: Name of the tool to execute.
+            zh_Hans: 要执行的工具的名称。
+          label:
+            en_US: Tool Name
+            ja_JP: Tool Name
+            pt_BR: Tool Name
+            zh_Hans: 工具名称
+          llm_description: Name of the tool to execute.
+          max: null
+          min: null
+          name: tool_name
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Tool arguments (JSON string in the python dict[str, Any] format).
+            ja_JP: Tool arguments (JSON string in the python dict[str, Any] format).
+            pt_BR: Tool arguments (JSON string in the python dict[str, Any] format).
+            zh_Hans: 工具的参数。
+          label:
+            en_US: Arguments
+            ja_JP: Arguments
+            pt_BR: Arguments
+            zh_Hans: 参数
+          llm_description: Tool arguments (JSON string in the python dict[str, Any]
+            format).
+          max: null
+          min: null
+          name: arguments
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          arguments: ''
+          tool_name: ''
+        provider_id: junjiem/mcp_sse/mcp_sse
+        provider_name: junjiem/mcp_sse/mcp_sse
+        provider_type: builtin
+        selected: false
+        title: 调用 MCP 工具
+        tool_configurations: {}
+        tool_description: 调用 MCP 服务端工具。
+        tool_label: 调用 MCP 工具
+        tool_name: mcp_sse_call_tool
+        tool_node_version: '2'
+        tool_parameters:
+          arguments:
+            type: mixed
+            value: '{{#1753411892794.result#}}'
+          tool_name:
+            type: mixed
+            value: PPT生成工具
+        type: tool
+      height: 54
+      id: '1753769344541'
+      position:
+        x: 2793
+        y: 260.5
+      positionAbsolute:
+        x: 2793
+        y: 260.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '<br>
+
+          课件链接：{{#1753842970848.result#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 3
+        type: answer
+        variables: []
+      height: 121
+      id: '1753841878667'
+      position:
+        x: 3461
+        y: 260.5
+      positionAbsolute:
+        x: 3461
+        y: 260.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    url_pattern = r'https?://[^\\\
+          s\\'\"}]+'\n \n    # 提取所有匹配的链接\n    urls = re.findall(url_pattern, arg1)\n\
+          \    return {\n        \"result\": f\"[PPT课件下载]({urls[0]})\",\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 2
+        type: code
+        variables:
+        - value_selector:
+          - '1753769344541'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1753842970848'
+      position:
+        x: 3127
+        y: 260.5
+      positionAbsolute:
+        x: 3127
+        y: 260.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 77060c14-dfa6-449a-a156-6495c6e48735
+          role: system
+          text: '用户问题：{{#sys.query#}}
+
+            你是一个专业的知识库检索引擎优化师。你的任务是将用户问题，转换为一个由空格分隔的、高度优化的关键词查询字符串。
+
+             
+
+            请遵循以下规则：
+
+            - 只提取核心的名词、技术术语、专有名词和关键操作。
+
+            - 过滤掉所有停止词、疑问词、口语化表达和不影响核心语义的词。
+
+            - 输出结果必须是一行文本，关键词之间用单个空格隔开，结尾不要有任何标点或说明。
+
+            - 输出3-5个重要关键词，该关键词一定是存在于用户句子中的词或短语。
+
+             '
+        selected: false
+        title: 关键词提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1753941302152'
+      position:
+        x: 364
+        y: 378
+      positionAbsolute:
+        x: 364
+        y: 378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行 3
+        type: code
+        variables:
+        - value_selector:
+          - '1753941302152'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1754006815194'
+      position:
+        x: 698
+        y: 378
+      positionAbsolute:
+        x: 698
+        y: 378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -1475.1086888663021
+      y: -19.30062697517269
+      zoom: 0.9330331143123967
