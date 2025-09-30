@@ -1,0 +1,2004 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 体系-ISO27001查询、对比AI小助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      - document
+      allowed_file_upload_methods:
+      - remote_url
+      - local_file
+      enabled: true
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1754376258222-source-1754376485257-target
+      source: '1754376258222'
+      sourceHandle: source
+      target: '1754376485257'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1754377103094-source-1754377110155-target
+      selected: false
+      source: '1754377103094'
+      sourceHandle: source
+      target: '1754377110155'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754377110155-source-1754377123481-target
+      selected: false
+      source: '1754377110155'
+      sourceHandle: source
+      target: '1754377123481'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1754376485257-true-1755067894547-target
+      selected: false
+      source: '1754376485257'
+      sourceHandle: 'true'
+      target: '1755067894547'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1755067894547-source-1755067937789-target
+      selected: false
+      source: '1755067894547'
+      sourceHandle: source
+      target: '1755067937789'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1755067937789-source-1755067975516-target
+      selected: false
+      source: '1755067937789'
+      sourceHandle: source
+      target: '1755067975516'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1755067975516-source-1755068017299-target
+      source: '1755067975516'
+      sourceHandle: source
+      target: '1755068017299'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1755068017299-true-1755068034472-target
+      source: '1755068017299'
+      sourceHandle: 'true'
+      target: '1755068034472'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1755068034472-source-1755068100735-target
+      source: '1755068034472'
+      sourceHandle: source
+      target: '1755068100735'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1755068017299-false-1755248564389-target
+      selected: false
+      source: '1755068017299'
+      sourceHandle: 'false'
+      target: '1755248564389'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 1755248778451-source-1755248806923-target
+      selected: false
+      source: '1755248778451'
+      sourceHandle: source
+      target: '1755248806923'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 1755248821393-source-1755248875090-target
+      selected: false
+      source: '1755248821393'
+      sourceHandle: source
+      target: '1755248875090'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1755248875090-source-1755248889863-target
+      selected: false
+      source: '1755248875090'
+      sourceHandle: source
+      target: '1755248889863'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1755248889863-source-1755248941618-target
+      selected: false
+      source: '1755248889863'
+      sourceHandle: source
+      target: '1755248941618'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 1755248564389-04b0b673-2b6a-44c7-866f-6165b8dafd55-1755248778451-target
+      selected: false
+      source: '1755248564389'
+      sourceHandle: 04b0b673-2b6a-44c7-866f-6165b8dafd55
+      target: '1755248778451'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1755248564389-false-1755316367973-target
+      selected: false
+      source: '1755248564389'
+      sourceHandle: 'false'
+      target: '1755316367973'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17553168074810-source-17553168074811-target
+      source: '17553168074810'
+      sourceHandle: source
+      target: '17553168074811'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17553168074811-source-17553168074812-target
+      source: '17553168074811'
+      sourceHandle: source
+      target: '17553168074812'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: document-extractor
+      id: 17553168074813-04b0b673-2b6a-44c7-866f-6165b8dafd55-17553168074814-target
+      source: '17553168074813'
+      sourceHandle: 04b0b673-2b6a-44c7-866f-6165b8dafd55
+      target: '17553168074814'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: document-extractor
+        targetType: llm
+      id: 17553168074814-source-17553168074815-target
+      source: '17553168074814'
+      sourceHandle: source
+      target: '17553168074815'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 17553168074816-source-17553168074817-target
+      source: '17553168074816'
+      sourceHandle: source
+      target: '17553168074817'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17553168074818-source-17553168074819-target
+      source: '17553168074818'
+      sourceHandle: source
+      target: '17553168074819'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17553168074817-source-17553168074818-target
+      source: '17553168074817'
+      sourceHandle: source
+      target: '17553168074818'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 17553168074813-false-175531680748110-target
+      source: '17553168074813'
+      sourceHandle: 'false'
+      target: '175531680748110'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1754376485257-false-17553168074813-target
+      source: '1754376485257'
+      sourceHandle: 'false'
+      target: '17553168074813'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1755248806923-source-1755478880922-target
+      source: '1755248806923'
+      sourceHandle: source
+      target: '1755478880922'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1755478880922-source-1755248821393-target
+      source: '1755478880922'
+      sourceHandle: source
+      target: '1755248821393'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17553168074815-source-17554791653920-target
+      source: '17553168074815'
+      sourceHandle: source
+      target: '17554791653920'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 17554791653920-source-17553168074816-target
+      source: '17554791653920'
+      sourceHandle: source
+      target: '17553168074816'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1755248564389-true-1755479721037-target
+      selected: false
+      source: '1755248564389'
+      sourceHandle: 'true'
+      target: '1755479721037'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1755479721037-source-17554797443260-target
+      selected: false
+      source: '1755479721037'
+      sourceHandle: source
+      target: '17554797443260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 17554797443260-source-1754377103094-target
+      selected: false
+      source: '17554797443260'
+      sourceHandle: source
+      target: '1754377103094'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 17553168074813-true-17554798567910-target
+      source: '17553168074813'
+      sourceHandle: 'true'
+      target: '17554798567910'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 17554798567910-source-17554798567911-target
+      source: '17554798567910'
+      sourceHandle: source
+      target: '17554798567911'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 17554798567911-source-17553168074810-target
+      source: '17554798567911'
+      sourceHandle: source
+      target: '17553168074810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 记忆
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: memory
+      height: 90
+      id: '1754376258222'
+      position:
+        x: 30
+        y: 929.5
+      positionAbsolute:
+        x: 30
+        y: 929.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: cd3fee4c-b716-41bc-baf0-2772bc8361d4
+            value: 是
+            varType: string
+            variable_selector:
+            - '1754376258222'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1754376485257'
+      position:
+        x: 364
+        y: 929.5
+      positionAbsolute:
+        x: 364
+        y: 929.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 713n5h2IjyhZRq/KdGW1CRAUu19WNp4SyJS+ARp5lVarNAauWuHIRlJyMCUB/xf9
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 250
+        query_variable_selector:
+        - '17554797443260'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: ISO 27001知识库检索
+        type: knowledge-retrieval
+      height: 92
+      id: '1754377103094'
+      position:
+        x: 4129
+        y: 252.5
+      positionAbsolute:
+        x: 4129
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1754377103094'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 48941c75-72b1-4d1a-9128-3f2b84903a46
+          role: system
+          text: "**核心身份与语言：**\n*   **角色：** 你是一名顶级的 ISO 27001 知识检索专家。你的唯一使命是基于提供的内部知识库，为用户提供精准、可靠且完全忠于原文的回答。\n\
+            *   **语言要求：** 你必须全程使用**中文**进行思考、分析和回答。所有输出内容必须是中文。\n\n**核心原则：**\n1.  **绝对忠诚\
+            \ (Absolute Fidelity):** 你的所有回答都必须 **100%** 源自提供的知识库（`{{#context#}}`）。严禁使用任何外部知识、个人经验或进行任何形式的推测。\n\
+            2.  **准确检索 (Precise Retrieval):** 深入理解用户查询（`{{#sys.query#}}`）的意图，在知识库中进行全面、精准的匹配。\n\
+            3.  **诚实透明 (Honest Transparency):** 如果找不到答案，就诚实地说明。如果信息是相关的但非直接答案，也要明确指出。始终提供信息来源。\n\
+            \n**处理流程：**\n1.  **分析查询：** 仔细分析用户提问的核心要点。\n2.  **全面检索：** 在知识库中扫描所有可能相关的信息片段。\n\
+            3.  **评估与整合：**\n    *   **如果找到能直接回答问题的单一或多个信息片段：** 将它们整合成一个逻辑连贯、条理清晰的回答。\n\
+            \    *   **如果未找到直接答案，但存在高度相关的信息：** 提取这些相关信息，并准备好向用户说明其“相关但非直接”的性质。\n \
+            \   *   **如果完全没有找到任何相关信息：** 确认知识库中存在信息空白。\n\n**输出要求与格式：**\n\n**总体格式要求：**\
+            \ 除“情况4”外，所有有效的回答（即情况1、2、3）都必须以清晰的**Markdown表格**形式呈现，以确保内容结构化、一目了然。\n\n\
+            ---\n\n*   **情况 1：找到直接且明确的答案**\n    *   **输出格式：** 使用一个包含“项目”和“说明与来源”两列的表格来呈现答案。\n\
+            \    *   **示例交互：**\n        *   用户提问：“ISO 27001的风险处理策略有哪些？”\n        *\
+            \   助手回答：\n            ```\n            | 查询项目 | 说明与来源 |\n           \
+            \ | :--- | :--- |\n            | 风险处理策略 | 根据知识库，ISO 27001风险处理过程通常包括风险规避、风险接受、风险降低和风险转移这四种策略。[来源：ISO\
+            \ 27001:2022 条款 6.1.3] |\n            ```\n\n*   **情况 2：答案需要整合多个来源的信息**\n\
+            \    *   **输出格式：** 使用表格将不同来源的信息分点、分项清晰列出。\n    *   **示例交互：**\n       \
+            \ *   用户提问：“管理层在ISO 27001体系中有什么职责？”\n        *   助手回答：\n            ```\n\
+            \            | 管理层职责 | 具体内容与来源 |\n            | :--- | :--- |\n      \
+            \      | 制定方针 | 制定信息安全方针并确保其在组织内部得到沟通和理解。[来源：ISO 27001:2022 条款 5.1] |\n\
+            \            | 分配资源 | 确保为信息安全管理体系（ISMS）的建立、实施、维护和持续改进提供必要的资源。[来源：ISO 27001:2022\
+            \ 条款 7.1] |\n            | 主持评审 | 定期主持管理评审会议，以评估ISMS的适宜性、充分性和有效性。[来源：ISO\
+            \ 27001:2022 条款 9.3] |\n            ```\n\n*   **情况 3：未找到直接答案，但有相关信息**\n\
+            \    *   **输出格式：** 首先给出一句引导语，明确告知用户未找到直接答案，然后用表格呈现相关信息。\n    *   **示例交互：**\n\
+            \        *   用户提问：“ISO 27001推荐使用哪款防火墙软件？”\n        *   助手回答：\n       \
+            \     知识库中未找到关于“推荐使用哪款防火墙软件”的直接信息。但根据相关指引，在选择安全工具时应考虑以下标准：\n         \
+            \   ```\n            | 相关指引 | 说明与来源 |\n            | :--- | :--- |\n \
+            \           | 安全工具选择标准 | 在选择安全工具时，应评估其是否符合组织的安全策略、技术兼容性以及供应商的支持能力。[来源：安全控制选择指南\
+            \ A.8.1] |\n            ```\n\n*   **情况 4：知识库完全不包含相关信息**\n    *   **输出格式：**\
+            \ 直接使用固定的文本回复。**此情况无需使用表格。**\n    *   **示例交互：**\n        *   用户提问：“ISO\
+            \ 27001和CMMI有什么关系？”\n        *   助手回答：\n            `知识库中未找到相关信息。`"
+        selected: false
+        title: 模型检索中
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754377110155'
+      position:
+        x: 4463
+        y: 252.5
+      positionAbsolute:
+        x: 4463
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754377110155.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1754377123481'
+      position:
+        x: 4797
+        y: 252.5
+      positionAbsolute:
+        x: 4797
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击左上角开启新对话~
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1755067894547'
+      position:
+        x: 789
+        y: 495
+      positionAbsolute:
+        x: 789
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: 用户问题：{{#sys.query#}}
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: a21e777e-8b14-4edf-ae40-b726707063d2
+          role: system
+          text: '#### **# 核心任务**
+
+            你的任务是作为一个智能分类器。分析给定的 `[记忆窗口]` (即上下文) 和 `[用户问题]`，判断该问题是否**强依赖**于`[记忆窗口]`来生成一个准确、连贯且符合用户意图的回答。
+
+             
+
+            ---
+
+             
+
+            #### **# 输入定义**
+
+            *   `[记忆窗口]`：代表之前的对话历史或背景信息。
+
+            *   `[用户问题]`：代表用户当前提出的问题。
+
+             
+
+            ---
+
+             
+
+            #### **# 判断规则**
+
+             
+
+            **首要规则：**
+
+            *   如果 `[记忆窗口]` 为空，**必须**输出 "no"。
+
+             
+
+            **特殊指令覆盖：**
+
+            *   如果 `[用户问题]` 中明确包含“无需检索知识库”或类似表述，**必须**输出 "yes"。
+
+             
+
+            **如果满足以下任一条件，输出 "yes" (代表“依赖上下文”)：**
+
+             
+
+            1.  **直接引用与显式指令**：问题直接询问、引用 `[记忆窗口]` 的内容，或包含明确指令要求基于上下文进行操作。
+
+                *   **关键词示例**：“根据上面说的”、“总结一下”、“继续”、“那这个呢？”、“详细说说”、“为什么会这样？”
+
+             
+
+            2.  **上下文延续与深化**：问题是 `[记忆窗口]` 话题的自然延续、追问、比较、要求举例、或进行推断。即使没有明确的指代词，逻辑上也紧密相连。
+
+                *   **示例**：
+
+                    *   记忆窗口：“苹果公司发布了新款iPhone。”
+
+                    *   用户问题：“它的摄像头有多少像素？”
+
+             
+
+            3.  **寻求相关替代方案**：问题在探讨与 `[记忆窗口]` 主题相关的其他选项、解决方案或可能性。
+
+                *   **示例**：
+
+                    *   记忆窗口：“A方案的优点是成本低。”
+
+                    *   用户问题：“那B方案呢？”
+
+             
+
+            **如果满足以下任一条件，输出 "no" (代表“不依赖上下文”)：**
+
+             
+
+            1.  **开启全新话题**：问题与 `[记忆窗口]` 的主题、实体、意图完全无关。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我们来讨论一下全球气候变化。”
+
+                    *   用户问题：“给我讲个笑话吧。”
+
+             '
+        selected: false
+        title: 判断是否需要根据上下文窗口回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1755067937789'
+      position:
+        x: 1123
+        y: 495
+      positionAbsolute:
+        x: 1123
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 删除模型思考
+        type: code
+        variables:
+        - value_selector:
+          - '1755067937789'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1755067975516'
+      position:
+        x: 1457
+        y: 495
+      positionAbsolute:
+        x: 1457
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: de77951a-35a4-4556-85aa-07ba87c86adf
+            value: 'yes'
+            varType: string
+            variable_selector:
+            - '1755067975516'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 126
+      id: '1755068017299'
+      position:
+        x: 1791
+        y: 495
+      positionAbsolute:
+        x: 1791
+        y: 495
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '问题如下：{{#sys.query#}}
+
+
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: f67da31d-ce35-4fb3-b591-b367722a3f7a
+          role: system
+          text: "## 核心任务\n严格按照以下逻辑和信息源优先级，生成一个与用户问题高度相关、准确且连贯的回答。\n\n## 信息源优先级\n1.\
+            \  **记忆窗口内容（最高）**\n2.  **（可选）外部知识库**\n3.  **模型内置知识（最低，用于补充和润色）**\n\n##\
+            \ 执行逻辑 (IF-ELSE结构)\n**IF** 用户明确表示“无需检索知识库”：\n    *   **THEN** 执行【**流程A：无知识库检索**】。\n\
+            **ELSE** (默认情况):\n    *   **THEN** 执行【**流程B：标准检索**】。\n\n---\n### 【流程A：无知识库检索】\n\
+            1.  **分析**：仅分析“记忆窗口内容”（如果存在）。\n2.  **整合**：以“记忆窗口内容”为核心，结合模型内置知识进行回答。\n\
+            3.  **生成**：生成直接回应用户问题的答案。\n\n### 【流程B：标准检索】\n1.  **分析**：分析“记忆窗口内容”、“外部知识库”中的所有相关信息。\n\
+            2.  **整合**：\n    *   以“记忆窗口内容”为最高优先级信息，整合所有来源的信息。\n    *   如果信息源之间存在冲突，优先采信“记忆窗口内容”。\n\
+            3.  **生成**：结合模型内置知识，生成一个连贯、准确且直接回应用户问题的答案。"
+        selected: false
+        title: 回答上下文窗口问题
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1755068034472'
+      position:
+        x: 2459
+        y: 335.5
+      positionAbsolute:
+        x: 2459
+        y: 335.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1755068034472.text#}}'
+        desc: ''
+        selected: false
+        title: 回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1755068100735'
+      position:
+        x: 2793
+        y: 335.5
+      positionAbsolute:
+        x: 2793
+        y: 335.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: empty
+            id: 4020ca09-3afd-4f85-9836-f60798baf496
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - sys
+            - files
+          id: 'true'
+          logical_operator: and
+        - case_id: 04b0b673-2b6a-44c7-866f-6165b8dafd55
+          conditions:
+          - comparison_operator: not empty
+            id: e7d636f5-3ca4-47a0-95d8-6e2510d7b4ae
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - sys
+            - files
+          id: 04b0b673-2b6a-44c7-866f-6165b8dafd55
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 3
+        type: if-else
+      height: 174
+      id: '1755248564389'
+      position:
+        x: 2793
+        y: 480.5
+      positionAbsolute:
+        x: 2793
+        y: 480.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档解析器
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '1755248778451'
+      position:
+        x: 3795
+        y: 378
+      positionAbsolute:
+        x: 3795
+        y: 378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1755248778451'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 6e41c93c-0cc9-4b92-ab6e-2a74211d1325
+          role: system
+          text: '**总则：请全程使用中文进行思考和回答。**
+
+
+            你的任务是从用户提供的文本（`{{#context#}}`）中，识别并分别提取两种类型的信息：**1) 政策条款** 和 **2) 政策问题**。
+
+
+            请严格按照以下定义和格式进行操作。
+
+
+            ---
+
+
+            ### **任务一：识别和提取“政策条款”**
+
+
+            **“政策条款”** 是指描述公司强制性要求、操作标准、合规义务或明确责任的陈述句。
+
+
+            **识别标准（满足以下任一即可）：**
+
+            *   **强制性词语：** 包含“**必须**”、“**应**”、“**将**”、“**要求**”、“**规定**”、“**禁止**”等词语。
+
+            *   **明确的责任：** 明确了特定角色（如员工、供应商、承包商）的责任或义务。
+
+            *   **技术/管理控制：** 描述了具体的安全或操作控制措施（如“使用VPN”、“加密存储”、“记录日志”）。
+
+            *   **合规性要求：** 明确引用了外部法律法规或行业标准作为行为依据（如“**符合GDPR**”、“**满足《网络安全法》要求**”、“**遵循ISO27001标准**”）。
+
+            *   **标准操作程序（SOP）：** 带有编号（特别是带小数点的，如 `3.1.2`）并描述具体操作步骤或规则的条款。
+
+
+            **示例原文：**
+
+            *   “供应商必须签署保密协议。”
+
+            *   “个人数据应加密存储，以满足《网络安全法》要求。”
+
+            *   “4.2.1 所有对生产数据库的访问都必须通过双因素认证（2FA）。”
+
+
+            ---
+
+
+            ### **任务二：识别和提取“政策问题”**
+
+
+            **“政策问题”** 是指为了验证某项政策是否被遵守而提出的疑问句或检查项。
+
+
+            **识别标准：**
+
+            *   **疑问形式：** 通常以“**是否**”、“**如何**”、“**有没有**”等词开头，或以问号“**？**”结尾。
+
+            *   **审核性陈述：** 以“**检查项**”、“**审核点**”、“**验证**”、“**确保**”等词语引导的，用于确认合规状态的陈述句。
+
+            *   **内容相关性：** 问题的核心内容直接关联到某项规则的执行情况。
+
+
+            **示例原文：**
+
+            *   “是否对所有个人数据实施加密存储？”
+
+            *   “是否要求所有供应商签署保密协议？”
+
+            *   “检查项：确认所有数据库访问均已记录日志。”
+
+
+            ---
+
+
+            ### **输出要求**
+
+
+            请将所有识别出的结果汇总到一个**表格**中进行输出。
+
+
+            *   **表格格式**：表格应包含三列，依次为：**“序号”**、**“类型”**和**“内容”**。
+
+            *   **“序号”列**：从1开始的自动递增编号。
+
+            *   **“类型”列**：明确标注该条目是“**政策条款**”还是“**政策问题**”。
+
+            *   **“内容”列**：填入从原文中提取的完整句子。
+
+
+            **输出表示例：**
+
+
+            | 序号 | 类型 | 内容 |
+
+            | :--- | :--- | :--- |
+
+            | 1 | 政策条款 | 供应商必须签署保密协议。 |
+
+            | 2 | 政策条款 | 个人数据应加密存储，以满足《网络安全法》要求。 |
+
+            | 3 | 政策问题 | 是否对所有个人数据实施加密存储？ |
+
+            | 4 | 政策问题 | 检查项：确认所有数据库访问均已记录日志。 |
+
+
+
+            **重要提示：**
+
+            *   如果原文中没有找到任何符合条件的内容，则输出一个空表。
+
+            *   不要自己创造或改写内容，严格从原文中提取。
+
+            *   **再次强调，必须全程使用中文进行思考和回答，并以包含序号的三列表格形式呈现最终结果。**'
+        selected: false
+        title: 问题/条款提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1755248806923'
+      position:
+        x: 4129
+        y: 399
+      positionAbsolute:
+        x: 4129
+        y: 399
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }\n\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清除模型思考内容
+        type: code
+        variables:
+        - value_selector:
+          - '1755248806923'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1755248821393'
+      position:
+        x: 4797
+        y: 423.5
+      positionAbsolute:
+        x: 4797
+        y: 423.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 713n5h2IjyhZRq/KdGW1CRAUu19WNp4SyJS+ARp5lVarNAauWuHIRlJyMCUB/xf9
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 250
+        query_variable_selector:
+        - '1755248821393'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: ISO 27001知识库检索
+        type: knowledge-retrieval
+      height: 92
+      id: '1755248875090'
+      position:
+        x: 5131
+        y: 398
+      positionAbsolute:
+        x: 5131
+        y: 398
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1755248875090'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: abcff5ce-3685-46cf-9570-29dab91b7913
+          role: system
+          text: "**核心行为准则：**\n1.  **语言：** 您必须全程使用**中文**进行思考、分析和回答。您的所有输出，包括最终的分析报告，都必须是中文。\n\
+            2.  **角色：** 您是一名资深的ISO 27001合规专家，负责分析信息安全政策。您的分析必须严谨、客观、基于证据。\n\n**核心任务：**\n\
+            您的任务是将提供的文档（`分析此文档`）中的各项政策，与公司的`知识库上下文`进行逐条比对和合规性分析。\n\n**核心约束：**\n* \
+            \  **严格限定范围：** 分析时，**仅能参考**提供的`知识库上下文`。严禁引用任何外部在线ISO文档、通用知识或知识库以外的内容。\n\
+            *   **格式化输出：** 最终结果**必须以一个Markdown表格**呈现，并在表格下方附上分析摘要。\n\n---\n\n**输入信息**\n\
+            \n**分析此文档：**\n{{#1755248821393.result#}}\n\n**知识库上下文：**\n{{#context#}}\n\
+            \n---\n\n**分析与决策逻辑**\n\n对每一项独立的输入政策，请遵循以下决策树进行判断：\n```\n决策树 = \"\"\"\n\
+            知识库匹配规则：\n✅ 符合：\n- 要求：与知识库策略无实质性冲突，允许表述上的差异。\n- 逻辑：输入政策达到或超越了知识库要求的目标。\n\
+            - 示例：知识库:\"密码必须12位\" vs 输入:\"密码最短12位\"。\n\n❌ 不符合：\n- 要求：与知识库的核心要求存在直接、明确的冲突。\n\
+            - 逻辑：输入政策削弱、规避或违背了知识库中定义的控制措施。\n- 示例：知识库:\"禁止共享账户\" vs 输入:\"允许临时共享账户\"\
+            。\n\n\U0001F7E1 未找到匹配：\n- 要求：知识库中没有与输入政策直接相关的条款。\n- 示例：输入政策是关于“物理服务器退役的数据擦除标准”，但知识库中仅有“虚拟服务器管理策略”。\n\
+            \"\"\"\n```\n\n---\n\n### **输出格式要求**\n\n请将您的分析报告严格按照以下“表格”和“摘要”两部分格式输出。\n\
+            \n#### **1. 分析结果表格**\n\n创建一个包含以下列的Markdown表格：\n\n| 序号 | 输入政策 | 符合状态 |\
+            \ 知识库引用 | 证据 (文本与位置) | 详情 (冲突与改进措施) |\n| :--- | :--- | :--- | :--- | :---\
+            \ | :--- |\n\n**各列填写说明：**\n*   **序号：** 填入从1开始的连续编号。\n*   **输入政策：** 填入待评估的政策原文。\n\
+            *   **符合状态：** 填写 `符合`、`不符合` 或 `未找到匹配`。\n*   **知识库引用：** 填写匹配到的 `[文档编号].[章节号]`，若无则填写\
+            \ `不适用`。\n*   **证据 (文本与位置)：**\n    *   当状态为 `符合` 或 `不符合` 时，填写：\n     \
+            \   *   **证据文本：** `\"[知识库中的直接引用]\"`\n        *   **证据位置：** `[文档名称] > [章节标题]`\n\
+            \    *   当状态为 `未找到匹配` 时，此栏填写 `无`。\n*   **详情 (冲突与改进措施)：**\n    *   **仅当“符合状态”为“不符合”时**，才需要填写此列。内容应包括：\n\
+            \        *   **冲突详情：** `- [具体冲突点描述]`\n        *   **改进措施：** `- [具体的行动建议]\
+            \ (负责人：[角色]，时限：[时间])`\n    *   对于其他状态，此栏填写 `无`。\n\n#### **2. 分析摘要**\n\n\
+            在表格的下方，提供一个独立的摘要部分：\n\n**已分析政策总数：** [X]\n**符合：** [Y]\n**不符合：** [Z]\n**未找到匹配：**\
+            \ [W]\n\n---\n\n### **完整输出示例**\n\n| 序号 | 输入政策 | 符合状态 | 知识库引用 | 证据 (文本与位置)\
+            \ | 详情 (冲突与改进措施) |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| 1 |\
+            \ \"增量备份必须每天执行\" | 符合 | IT-POL-005.4.1 | **证据文本：** `\"每日增量备份为最低要求，并鼓励更频繁的备份。\"\
+            `<br>**证据位置：** `《备份与恢复策略》 > 4.1 备份频率` | 无 |\n| 2 | \"允许临时项目使用4字符密码\" |\
+            \ 不符合 | SEC-POL-002.3.3 | **证据文本：** `\"所有系统账户的密码长度不得少于12个字符，并应包含大写字母、小写字母、数字和特殊符号中的至少三类。\"\
+            `<br>**证据位置：** `《身份与访问控制策略》 > 3.3 密码复杂度` | **冲突详情：**<br>- 输入政策允许的4字符密码严重违反了知识库要求的最小12字符密码长度标准。<br>**改进措施：**<br>-\
+            \ 废除临时项目的密码例外规则，确保所有项目均遵循统一的密码策略。(负责人：`安全团队`，时限：`1周内`) |\n| 3 | \"公司访客必须在进入数据中心时交出手机\"\
+            \ | 未找到匹配 | 不适用 | 无 | 无 |\n\n**分析摘要**\n\n**已分析政策总数：** 3\n**符合：** 1\n**不符合：**\
+            \ 1\n**未找到匹配：** 1"
+        selected: false
+        title: 合规检查器
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1755248889863'
+      position:
+        x: 5465
+        y: 398
+      positionAbsolute:
+        x: 5465
+        y: 398
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '合规检查结果：
+
+
+          {{#1755248889863.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答
+        type: answer
+        variables: []
+      height: 121
+      id: '1755248941618'
+      position:
+        x: 5799
+        y: 398
+      positionAbsolute:
+        x: 5799
+        y: 398
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: ' '
+        desc: ''
+        selected: false
+        title: 直接回复 5
+        type: answer
+        variables: []
+      height: 86
+      id: '1755316367973'
+      position:
+        x: 4129
+        y: 558
+      positionAbsolute:
+        x: 4129
+        y: 558
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 713n5h2IjyhZRq/KdGW1CRAUu19WNp4SyJS+ARp5lVarNAauWuHIRlJyMCUB/xf9
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 250
+        query_variable_selector:
+        - '17554798567911'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: ISO 27001知识库检索 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17553168074810'
+      position:
+        x: 2459
+        y: 686
+      positionAbsolute:
+        x: 2459
+        y: 686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17553168074810'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 48941c75-72b1-4d1a-9128-3f2b84903a46
+          role: system
+          text: "**核心身份与语言：**\n*   **角色：** 你是一名顶级的 ISO 27001 知识检索专家。你的唯一使命是基于提供的内部知识库，为用户提供精准、可靠且完全忠于原文的回答。\n\
+            *   **语言要求：** 你必须全程使用**中文**进行思考、分析和回答。所有输出内容必须是中文。\n\n**核心原则：**\n1.  **绝对忠诚\
+            \ (Absolute Fidelity):** 你的所有回答都必须 **100%** 源自提供的知识库（`{{#context#}}`）。严禁使用任何外部知识、个人经验或进行任何形式的推测。\n\
+            2.  **准确检索 (Precise Retrieval):** 深入理解用户查询（`{{#sys.query#}}`）的意图，在知识库中进行全面、精准的匹配。\n\
+            3.  **诚实透明 (Honest Transparency):** 如果找不到答案，就诚实地说明。如果信息是相关的但非直接答案，也要明确指出。始终提供信息来源。\n\
+            \n**处理流程：**\n1.  **分析查询：** 仔细分析用户提问的核心要点。\n2.  **全面检索：** 在知识库中扫描所有可能相关的信息片段。\n\
+            3.  **评估与整合：**\n    *   **如果找到能直接回答问题的单一或多个信息片段：** 将它们整合成一个逻辑连贯、条理清晰的回答。\n\
+            \    *   **如果未找到直接答案，但存在高度相关的信息：** 提取这些相关信息，并准备好向用户说明其“相关但非直接”的性质。\n \
+            \   *   **如果完全没有找到任何相关信息：** 确认知识库中存在信息空白。\n\n**输出要求与格式：**\n\n**总体格式要求：**\
+            \ 除“情况4”外，所有有效的回答（即情况1、2、3）都必须以清晰的**Markdown表格**形式呈现，以确保内容结构化、一目了然。\n\n\
+            ---\n\n*   **情况 1：找到直接且明确的答案**\n    *   **输出格式：** 使用一个包含“项目”和“说明与来源”两列的表格来呈现答案。\n\
+            \    *   **示例交互：**\n        *   用户提问：“ISO 27001的风险处理策略有哪些？”\n        *\
+            \   助手回答：\n            ```\n            | 查询项目 | 说明与来源 |\n           \
+            \ | :--- | :--- |\n            | 风险处理策略 | 根据知识库，ISO 27001风险处理过程通常包括风险规避、风险接受、风险降低和风险转移这四种策略。[来源：ISO\
+            \ 27001:2022 条款 6.1.3] |\n            ```\n\n*   **情况 2：答案需要整合多个来源的信息**\n\
+            \    *   **输出格式：** 使用表格将不同来源的信息分点、分项清晰列出。\n    *   **示例交互：**\n       \
+            \ *   用户提问：“管理层在ISO 27001体系中有什么职责？”\n        *   助手回答：\n            ```\n\
+            \            | 管理层职责 | 具体内容与来源 |\n            | :--- | :--- |\n      \
+            \      | 制定方针 | 制定信息安全方针并确保其在组织内部得到沟通和理解。[来源：ISO 27001:2022 条款 5.1] |\n\
+            \            | 分配资源 | 确保为信息安全管理体系（ISMS）的建立、实施、维护和持续改进提供必要的资源。[来源：ISO 27001:2022\
+            \ 条款 7.1] |\n            | 主持评审 | 定期主持管理评审会议，以评估ISMS的适宜性、充分性和有效性。[来源：ISO\
+            \ 27001:2022 条款 9.3] |\n            ```\n\n*   **情况 3：未找到直接答案，但有相关信息**\n\
+            \    *   **输出格式：** 首先给出一句引导语，明确告知用户未找到直接答案，然后用表格呈现相关信息。\n    *   **示例交互：**\n\
+            \        *   用户提问：“ISO 27001推荐使用哪款防火墙软件？”\n        *   助手回答：\n       \
+            \     知识库中未找到关于“推荐使用哪款防火墙软件”的直接信息。但根据相关指引，在选择安全工具时应考虑以下标准：\n         \
+            \   ```\n            | 相关指引 | 说明与来源 |\n            | :--- | :--- |\n \
+            \           | 安全工具选择标准 | 在选择安全工具时，应评估其是否符合组织的安全策略、技术兼容性以及供应商的支持能力。[来源：安全控制选择指南\
+            \ A.8.1] |\n            ```\n\n*   **情况 4：知识库完全不包含相关信息**\n    *   **输出格式：**\
+            \ 直接使用固定的文本回复。**此情况无需使用表格。**\n    *   **示例交互：**\n        *   用户提问：“ISO\
+            \ 27001和CMMI有什么关系？”\n        *   助手回答：\n            `知识库中未找到相关信息。`"
+        selected: false
+        title: 模型检索中 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17553168074811'
+      position:
+        x: 2793
+        y: 694.5
+      positionAbsolute:
+        x: 2793
+        y: 694.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17553168074811.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答 (1)
+        type: answer
+        variables: []
+      height: 105
+      id: '17553168074812'
+      position:
+        x: 3127
+        y: 687
+      positionAbsolute:
+        x: 3127
+        y: 687
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: empty
+            id: 4020ca09-3afd-4f85-9836-f60798baf496
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - sys
+            - files
+          id: 'true'
+          logical_operator: and
+        - case_id: 04b0b673-2b6a-44c7-866f-6165b8dafd55
+          conditions:
+          - comparison_operator: not empty
+            id: e7d636f5-3ca4-47a0-95d8-6e2510d7b4ae
+            value: ''
+            varType: array[file]
+            variable_selector:
+            - sys
+            - files
+          id: 04b0b673-2b6a-44c7-866f-6165b8dafd55
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 3 (1)
+        type: if-else
+      height: 174
+      id: '17553168074813'
+      position:
+        x: 1123
+        y: 907.5
+      positionAbsolute:
+        x: 1123
+        y: 907.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        is_array_file: true
+        selected: false
+        title: 文档解析器 (1)
+        type: document-extractor
+        variable_selector:
+        - sys
+        - files
+      height: 94
+      id: '17553168074814'
+      position:
+        x: 2125
+        y: 812.5
+      positionAbsolute:
+        x: 2125
+        y: 812.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17553168074814'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 6e41c93c-0cc9-4b92-ab6e-2a74211d1325
+          role: system
+          text: '**总则：请全程使用中文进行思考和回答。**
+
+
+            你的任务是从用户提供的文本（`{{#context#}}`）中，识别并分别提取两种类型的信息：**1) 政策条款** 和 **2) 政策问题**。
+
+
+            请严格按照以下定义和格式进行操作。
+
+
+            ---
+
+
+            ### **任务一：识别和提取“政策条款”**
+
+
+            **“政策条款”** 是指描述公司强制性要求、操作标准、合规义务或明确责任的陈述句。
+
+
+            **识别标准（满足以下任一即可）：**
+
+            *   **强制性词语：** 包含“**必须**”、“**应**”、“**将**”、“**要求**”、“**规定**”、“**禁止**”等词语。
+
+            *   **明确的责任：** 明确了特定角色（如员工、供应商、承包商）的责任或义务。
+
+            *   **技术/管理控制：** 描述了具体的安全或操作控制措施（如“使用VPN”、“加密存储”、“记录日志”）。
+
+            *   **合规性要求：** 明确引用了外部法律法规或行业标准作为行为依据（如“**符合GDPR**”、“**满足《网络安全法》要求**”、“**遵循ISO27001标准**”）。
+
+            *   **标准操作程序（SOP）：** 带有编号（特别是带小数点的，如 `3.1.2`）并描述具体操作步骤或规则的条款。
+
+
+            **示例原文：**
+
+            *   “供应商必须签署保密协议。”
+
+            *   “个人数据应加密存储，以满足《网络安全法》要求。”
+
+            *   “4.2.1 所有对生产数据库的访问都必须通过双因素认证（2FA）。”
+
+
+            ---
+
+
+            ### **任务二：识别和提取“政策问题”**
+
+
+            **“政策问题”** 是指为了验证某项政策是否被遵守而提出的疑问句或检查项。
+
+
+            **识别标准：**
+
+            *   **疑问形式：** 通常以“**是否**”、“**如何**”、“**有没有**”等词开头，或以问号“**？**”结尾。
+
+            *   **审核性陈述：** 以“**检查项**”、“**审核点**”、“**验证**”、“**确保**”等词语引导的，用于确认合规状态的陈述句。
+
+            *   **内容相关性：** 问题的核心内容直接关联到某项规则的执行情况。
+
+
+            **示例原文：**
+
+            *   “是否对所有个人数据实施加密存储？”
+
+            *   “是否要求所有供应商签署保密协议？”
+
+            *   “检查项：确认所有数据库访问均已记录日志。”
+
+
+            ---
+
+
+            ### **输出要求**
+
+
+            请将所有识别出的结果汇总到一个**表格**中进行输出。
+
+
+            *   **表格格式**：表格应包含三列，依次为：**“序号”**、**“类型”**和**“内容”**。
+
+            *   **“序号”列**：从1开始的自动递增编号。
+
+            *   **“类型”列**：明确标注该条目是“**政策条款**”还是“**政策问题**”。
+
+            *   **“内容”列**：填入从原文中提取的完整句子。
+
+
+            **输出表示例：**
+
+
+            | 序号 | 类型 | 内容 |
+
+            | :--- | :--- | :--- |
+
+            | 1 | 政策条款 | 供应商必须签署保密协议。 |
+
+            | 2 | 政策条款 | 个人数据应加密存储，以满足《网络安全法》要求。 |
+
+            | 3 | 政策问题 | 是否对所有个人数据实施加密存储？ |
+
+            | 4 | 政策问题 | 检查项：确认所有数据库访问均已记录日志。 |
+
+
+
+            **重要提示：**
+
+            *   如果原文中没有找到任何符合条件的内容，则输出一个空表。
+
+            *   不要自己创造或改写内容，严格从原文中提取。
+
+            *   **再次强调，必须全程使用中文进行思考和回答，并以包含序号的三列表格形式呈现最终结果。**'
+        selected: false
+        title: 问题/条款提取
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17553168074815'
+      position:
+        x: 2459
+        y: 831.5
+      positionAbsolute:
+        x: 2459
+        y: 831.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }\n\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清除模型思考内容
+        type: code
+        variables:
+        - value_selector:
+          - '17553168074815'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17553168074816'
+      position:
+        x: 3127
+        y: 858
+      positionAbsolute:
+        x: 3127
+        y: 858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - 713n5h2IjyhZRq/KdGW1CRAUu19WNp4SyJS+ARp5lVarNAauWuHIRlJyMCUB/xf9
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 250
+        query_variable_selector:
+        - sys
+        - query
+        retrieval_mode: multiple
+        selected: false
+        title: ISO 27001知识库检索 (1)
+        type: knowledge-retrieval
+      height: 92
+      id: '17553168074817'
+      position:
+        x: 3461
+        y: 831.5
+      positionAbsolute:
+        x: 3461
+        y: 831.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17553168074817'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: abcff5ce-3685-46cf-9570-29dab91b7913
+          role: system
+          text: "**核心行为准则：**\n1.  **语言：** 您必须全程使用**中文**进行思考、分析和回答。您的所有输出，包括最终的分析报告，都必须是中文。\n\
+            2.  **角色：** 您是一名资深的ISO 27001合规专家，负责分析信息安全政策。您的分析必须严谨、客观、基于证据。\n\n**核心任务：**\n\
+            您的任务是将提供的文档（`分析此文档`）中的各项政策，与公司的`知识库上下文`进行逐条比对和合规性分析。\n\n**核心约束：**\n* \
+            \  **严格限定范围：** 分析时，**仅能参考**提供的`知识库上下文`。严禁引用任何外部在线ISO文档、通用知识或知识库以外的内容。\n\
+            *   **格式化输出：** 最终结果**必须以一个Markdown表格**呈现，并在表格下方附上分析摘要。\n\n---\n\n**输入信息**\n\
+            \n**分析此文档：**\n{{#17553168074816.result#}}\n\n**知识库上下文：**\n{{#context#}}\n\
+            \n---\n\n**分析与决策逻辑**\n\n对每一项独立的输入政策，请遵循以下决策树进行判断：\n```\n决策树 = \"\"\"\n\
+            知识库匹配规则：\n✅ 符合：\n- 要求：与知识库策略无实质性冲突，允许表述上的差异。\n- 逻辑：输入政策达到或超越了知识库要求的目标。\n\
+            - 示例：知识库:\"密码必须12位\" vs 输入:\"密码最短12位\"。\n\n❌ 不符合：\n- 要求：与知识库的核心要求存在直接、明确的冲突。\n\
+            - 逻辑：输入政策削弱、规避或违背了知识库中定义的控制措施。\n- 示例：知识库:\"禁止共享账户\" vs 输入:\"允许临时共享账户\"\
+            。\n\n\U0001F7E1 未找到匹配：\n- 要求：知识库中没有与输入政策直接相关的条款。\n- 示例：输入政策是关于“物理服务器退役的数据擦除标准”，但知识库中仅有“虚拟服务器管理策略”。\n\
+            \"\"\"\n```\n\n---\n\n### **输出格式要求**\n\n请将您的分析报告严格按照以下“表格”和“摘要”两部分格式输出。\n\
+            \n#### **1. 分析结果表格**\n\n创建一个包含以下列的Markdown表格：\n\n| 序号 | 输入政策 | 符合状态 |\
+            \ 知识库引用 | 证据 (文本与位置) | 详情 (冲突与改进措施) |\n| :--- | :--- | :--- | :--- | :---\
+            \ | :--- |\n\n**各列填写说明：**\n*   **序号：** 填入从1开始的连续编号。\n*   **输入政策：** 填入待评估的政策原文。\n\
+            *   **符合状态：** 填写 `符合`、`不符合` 或 `未找到匹配`。\n*   **知识库引用：** 填写匹配到的 `[文档编号].[章节号]`，若无则填写\
+            \ `不适用`。\n*   **证据 (文本与位置)：**\n    *   当状态为 `符合` 或 `不符合` 时，填写：\n     \
+            \   *   **证据文本：** `\"[知识库中的直接引用]\"`\n        *   **证据位置：** `[文档名称] > [章节标题]`\n\
+            \    *   当状态为 `未找到匹配` 时，此栏填写 `无`。\n*   **详情 (冲突与改进措施)：**\n    *   **仅当“符合状态”为“不符合”时**，才需要填写此列。内容应包括：\n\
+            \        *   **冲突详情：** `- [具体冲突点描述]`\n        *   **改进措施：** `- [具体的行动建议]\
+            \ (负责人：[角色]，时限：[时间])`\n    *   对于其他状态，此栏填写 `无`。\n\n#### **2. 分析摘要**\n\n\
+            在表格的下方，提供一个独立的摘要部分：\n\n**已分析政策总数：** [X]\n**符合：** [Y]\n**不符合：** [Z]\n**未找到匹配：**\
+            \ [W]\n\n---\n\n### **完整输出示例**\n\n| 序号 | 输入政策 | 符合状态 | 知识库引用 | 证据 (文本与位置)\
+            \ | 详情 (冲突与改进措施) |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| 1 |\
+            \ \"增量备份必须每天执行\" | 符合 | IT-POL-005.4.1 | **证据文本：** `\"每日增量备份为最低要求，并鼓励更频繁的备份。\"\
+            `<br>**证据位置：** `《备份与恢复策略》 > 4.1 备份频率` | 无 |\n| 2 | \"允许临时项目使用4字符密码\" |\
+            \ 不符合 | SEC-POL-002.3.3 | **证据文本：** `\"所有系统账户的密码长度不得少于12个字符，并应包含大写字母、小写字母、数字和特殊符号中的至少三类。\"\
+            `<br>**证据位置：** `《身份与访问控制策略》 > 3.3 密码复杂度` | **冲突详情：**<br>- 输入政策允许的4字符密码严重违反了知识库要求的最小12字符密码长度标准。<br>**改进措施：**<br>-\
+            \ 废除临时项目的密码例外规则，确保所有项目均遵循统一的密码策略。(负责人：`安全团队`，时限：`1周内`) |\n| 3 | \"公司访客必须在进入数据中心时交出手机\"\
+            \ | 未找到匹配 | 不适用 | 无 | 无 |\n\n**分析摘要**\n\n**已分析政策总数：** 3\n**符合：** 1\n**不符合：**\
+            \ 1\n**未找到匹配：** 1"
+        selected: true
+        title: 合规检查器
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17553168074818'
+      position:
+        x: 3795
+        y: 814.5
+      positionAbsolute:
+        x: 3795
+        y: 814.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '合规检查结果：
+
+
+          {{#17553168074818.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答 (1)
+        type: answer
+        variables: []
+      height: 121
+      id: '17553168074819'
+      position:
+        x: 4129
+        y: 818
+      positionAbsolute:
+        x: 4129
+        y: 818
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: ' '
+        desc: ''
+        selected: false
+        title: 直接回复 5 (1)
+        type: answer
+        variables: []
+      height: 86
+      id: '175531680748110'
+      position:
+        x: 2459
+        y: 991.5
+      positionAbsolute:
+        x: 2459
+        y: 991.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '已提取出以下问题/条款：
+
+
+          {{#1755248806923.text#}}'
+        desc: ''
+        selected: false
+        title: 问题/条款回复
+        type: answer
+        variables: []
+      height: 121
+      id: '1755478880922'
+      position:
+        x: 4463
+        y: 382.5
+      positionAbsolute:
+        x: 4463
+        y: 382.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '已提取出以下问题/条款：
+
+
+          {{#17553168074815.text#}}'
+        desc: ''
+        selected: false
+        title: 问题/条款回复 (1)
+        type: answer
+        variables: []
+      height: 121
+      id: '17554791653920'
+      position:
+        x: 2793
+        y: 824.5
+      positionAbsolute:
+        x: 2793
+        y: 824.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 9674c285-035e-4e8f-baa3-d93c66cfb598
+          role: system
+          text: '请处理以下文本，移除其中所有的反斜杠符号 \，然后返回处理后的文本。
+
+            文本：{{#context#}}'
+        selected: false
+        title: 移除转义字符
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1755479721037'
+      position:
+        x: 3461
+        y: 252.5
+      positionAbsolute:
+        x: 3461
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }\n\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清除模型思考内容 (1)
+        type: code
+        variables:
+        - value_selector:
+          - '1755479721037'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17554797443260'
+      position:
+        x: 3795
+        y: 252.5
+      positionAbsolute:
+        x: 3795
+        y: 252.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - sys
+          - query
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 9674c285-035e-4e8f-baa3-d93c66cfb598
+          role: system
+          text: '请处理以下文本，移除其中所有的反斜杠符号 \，然后返回处理后的文本。
+
+            文本：{{#context#}}'
+        selected: false
+        title: 移除转义字符 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17554798567910'
+      position:
+        x: 1791
+        y: 705
+      positionAbsolute:
+        x: 1791
+        y: 705
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>',\
+          \ '', arg1, flags=re.DOTALL)  # Fixed pattern\n    final_answer = re.sub(r'^\\\
+          n+', '', clean_answer)  # Separate line\n    return {\n        \"result\"\
+          : final_answer,\n    }\n\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 清除模型思考内容 (2)
+        type: code
+        variables:
+        - value_selector:
+          - '17554798567910'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17554798567911'
+      position:
+        x: 2125
+        y: 687
+      positionAbsolute:
+        x: 2125
+        y: 687
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 107.4414592157284
+      y: -36.663902706982185
+      zoom: 0.4929210753741232
