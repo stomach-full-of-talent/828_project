@@ -1,0 +1,902 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 人力资源部-员工考勤AI助手
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@77274df8fe2632cac66bfd153fcc75aa5e96abbe92b5c611b8984ad9f4cd4457
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 15
+        file_size_limit: 200
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1753857088359-source-1753864961307-target
+      source: '1753857088359'
+      sourceHandle: source
+      target: '1753864961307'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 17538650565260-source-17538650652620-target
+      source: '17538650565260'
+      sourceHandle: source
+      target: '17538650652620'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17538650652620-source-1753865077626-target
+      source: '17538650652620'
+      sourceHandle: source
+      target: '1753865077626'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1753864961307-false-1754535541206-target
+      source: '1753864961307'
+      sourceHandle: 'false'
+      target: '1754535541206'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: knowledge-retrieval
+      id: 17545355851260-source-17538650565260-target
+      source: '17545355851260'
+      sourceHandle: source
+      target: '17538650565260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754535541206-source-1754548215938-target
+      source: '1754535541206'
+      sourceHandle: source
+      target: '1754548215938'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: code
+      id: 1754548215938-source-17545355851260-target
+      source: '1754548215938'
+      sourceHandle: source
+      target: '17545355851260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1754551409989-false-1754551467900-target
+      source: '1754551409989'
+      sourceHandle: 'false'
+      target: '1754551467900'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754551467900-source-1754551494598-target
+      source: '1754551467900'
+      sourceHandle: source
+      target: '1754551494598'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1754551381078-source-1754551677124-target
+      source: '1754551381078'
+      sourceHandle: source
+      target: '1754551677124'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1754551677124-source-1754551409989-target
+      source: '1754551677124'
+      sourceHandle: source
+      target: '1754551409989'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1753864961307-true-1754556756406-target
+      source: '1753864961307'
+      sourceHandle: 'true'
+      target: '1754556756406'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: answer
+        targetType: llm
+      id: 1754556756406-source-1754551381078-target
+      source: '1754556756406'
+      sourceHandle: source
+      target: '1754551381078'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1754551409989-true-1754535541206-target
+      source: '1754551409989'
+      sourceHandle: 'true'
+      target: '1754535541206'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 记忆
+          max_length: 48
+          options:
+          - 是
+          - 否
+          required: true
+          type: select
+          variable: memory
+      height: 90
+      id: '1753857088359'
+      position:
+        x: 30
+        y: 268.5
+      positionAbsolute:
+        x: 30
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 608335b7-cc52-44e5-a528-cade98681f63
+            value: 是
+            varType: string
+            variable_selector:
+            - '1753857088359'
+            - memory
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1753864961307'
+      position:
+        x: 364
+        y: 268.5
+      positionAbsolute:
+        x: 364
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - GnwzKuWtvINk6venMnJ7UFn07QHAlOJXVecBuMu+58K1nachEuYEsZ8XJebOhd0W
+        desc: ''
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: /home/user/Desktop/MODELFILE/bge-reranker-v2-m3
+            provider: langgenius/openai_api_compatible/openai_api_compatible
+          score_threshold: null
+          top_k: 450
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: /home/user/Desktop/MODELFILE/bge-m3
+              embedding_provider_name: langgenius/openai_api_compatible/openai_api_compatible
+              vector_weight: 0.7
+        query_variable_selector:
+        - '17545355851260'
+        - result
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 92
+      id: '17538650565260'
+      position:
+        x: 3218
+        y: 268.5
+      positionAbsolute:
+        x: 3218
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '17538650565260'
+          - result
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 318771e1-4fe1-4c75-a626-4f5df01111b0
+          role: system
+          text: "**角色**\n你是奥迪威公司的智能客服，擅长根据公司内部知识库回答员工的考勤、请假和出差问题。\n\n**背景**\n严格根据下方定义的知识库结构、考勤规则和查询逻辑回答用户问题。确保所有回答都源于此内部信息，这对帮助用户理解个人考勤数据至关重要。\n\
+            \n**任务**\n1.  根据下方提供的知识库上下文，精确回答用户的问题。\n2.  你需要理解不同数据表之间的关联，并应用考勤规则来判断考勤状态。\n\
+            3.  以清晰的表格形式展示查询结果。\n4.  在思考和回答用户问题时，请全程使用中文。\n\n**知识库结构**\n知识库包含以下几张数据表，它们可以通过`工号`或`姓名`进行关联：\n\
+            \n**1. 打卡明细表 (`attendance_details`)**\n*   `工号` (employee_id) - 主键，用于关联其他表\n\
+            *   `姓名` (name)\n*   `部门名称` (department)\n*   `职位` (position)\n*   `打卡日期`\
+            \ (record_date)\n*   `星期` (day_of_week)\n*   `打卡时间` (punch_time) // 注意：同一个人同一天可以有多条打卡记录。\n\
+            *   `打卡结果` (punch_status) // 例如：正常、迟到、早退、缺卡。\n\n**2. 出差明细表 (`business_trips`)**\n\
+            *   `工号` (employee_id) - 用于关联\n*   `姓名` (name)\n*   `出差申请单号` (trip_id)\n\
+            *   `出差开始时间` (start_datetime)\n*   `出差结束时间` (end_datetime)\n*   `出差总时长_小时`\
+            \ (duration_hours)\n*   `是否为三天以上出差` (is_over_3_days_trip)\n\n**3. 请假明细表\
+            \ (`leave_records`)**\n*   `工号` (employee_id) - 用于关联\n*   `姓名` (name)\n\
+            *   `请假申请单号` (leave_id)\n*   `请假类型` (leave_type) // 例如：事假、病假、年假\n*   `请假开始时间`\
+            \ (start_datetime)\n*   `请假结束时间` (end_datetime)\n*   `请假总时长_小时` (duration_hours)\n\
+            *   `请假原因` (reason)\n\n**考勤规则**\n以下规则用于判断`打卡明细表`中的`打卡结果`：\n\n1.  **周一至周五\
+            \ (工作日):**\n    *   标准上班时间：**08:00**\n    *   标准下班时间：**17:30**\n    *\
+            \   **迟到**：当天**最早**的打卡时间晚于 08:00。\n    *   **早退**：当天**最晚**的打卡时间早于 17:30。\n\
+            \    *   **正常**：上班不迟到，且下班不早退。\n\n2.  **周六 (工作日):**\n    *   标准上班时间：**08:00**\n\
+            \    *   标准下班时间：**12:00**\n    *   **迟到**：当天**最早**的打卡时间晚于 08:00。\n   \
+            \ *   **早退**：当天**最晚**的打卡时间早于 12:00。\n    *   **正常**：上班不迟到，且下班不早退。\n\n\
+            3.  **周日 (休息日):**\n    *   无需打卡。\n\n**查询逻辑**\n当用户查询某段时间的考勤时，应按以下优先级综合判断每日的最终状态：\n\
+            \n1.  **最高优先级**：检查该日期是否在`请假明细表`或`出差明细表`的时间范围内。\n    *   如果在请假范围内，当天状态记为“请假”。\n\
+            \    *   如果在出差范围内，当天状态记为“出差”。\n2.  **次高优先级**：如果当天非请假或出差，则根据`打卡明细表`和`考勤规则`判断。\n\
+            \    *   有打卡记录：根据`考勤规则`判断为“正常”、“迟到”或“早退”（或组合，如“迟到且早退”）。\n    *   无打卡记录：在应打卡日（周一至周六），状态记为“缺卡”。在周日，状态记为“休息日”。\n\
+            \n---\n**如果知识库中没有用户查询的相关信息，请明确告知：“抱歉，在您的考勤数据库中未找到相关内容。”，不要猜测或提供外部信息。**\n\
+            \n**注意事项：检索正确的结果请务必以清晰的表格形式展现。**"
+        - id: 403ccd90-ab80-49dd-b104-36f9cbb48743
+          role: user
+          text: '用户问题：{{#sys.query#}}
+
+            知识库上下文：{{#context#}}
+
+            '
+        selected: false
+        title: 模型回答中
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17538650652620'
+      position:
+        x: 3552
+        y: 268.5
+      positionAbsolute:
+        x: 3552
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17538650652620.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1753865077626'
+      position:
+        x: 3886
+        y: 268.5
+      positionAbsolute:
+        x: 3886
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 3fad6cae-d888-4c10-a058-ea854ebd5ef3
+          role: system
+          text: '你是一个专业的知识库检索引擎优化师。你的任务是将用户的自然语言问题，转换为一个由空格分隔的、高度优化的关键词查询字符串。
+
+             
+
+            请遵循以下规则：
+
+            - 只提取核心的名词、技术术语、专有名词和关键操作。
+
+            - 过滤掉所有停止词、疑问词、口语化表达和不影响核心语义的词。
+
+            - 输出结果必须是一行文本，关键词之间用单个空格隔开，结尾不要有任何标点或说明。
+
+             
+
+            ---
+
+            [示例开始]
+
+             
+
+            问题: 你好，请问在Dify里怎么创建一个RAG应用啊？我找不到入口。
+
+            输出: Dify 创建 RAG 应用
+
+             
+
+            问题: 我想了解一下你们的私有化部署方案，特别是对服务器硬件有什么要求。
+
+            输出: 私有化部署 服务器 硬件 要求
+
+             
+
+            问题: 把知识库接入企业微信的步骤是什么？
+
+            输出: 知识库 接入 企业微信 步骤
+
+             
+
+            [示例结束]
+
+            ---'
+        - id: 6c50d509-9a0e-4d4a-b67d-83f0b14529a6
+          role: user
+          text: 问题如下：{{#sys.query#}}
+        selected: true
+        title: 提取问题关键词
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754535541206'
+      position:
+        x: 2216
+        y: 268.5
+      positionAbsolute:
+        x: 2216
+        y: 268.5
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "import re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 删除模型思考
+        type: code
+        variables:
+        - value_selector:
+          - '1754535541206'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '17545355851260'
+      position:
+        x: 2884
+        y: 268.5
+      positionAbsolute:
+        x: 2884
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '关键词已提取：
+
+          {{#1754535541206.text#}}
+
+          正将以上关键词用于知识检索，请耐心等待...'
+        desc: ''
+        selected: false
+        title: 关键词提取中
+        type: answer
+        variables: []
+      height: 137
+      id: '1754548215938'
+      position:
+        x: 2550
+        y: 268.5
+      positionAbsolute:
+        x: 2550
+        y: 268.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: 用户问题：{{#sys.query#}}
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 81d49213-b422-43b5-92ec-fa631ffce83e
+          role: system
+          text: '#### **# 核心任务**
+
+            你的任务是作为一个智能分类器。分析给定的 `[记忆窗口]` (即上下文) 和 `[用户问题]`，判断该问题是否**强依赖**于`[记忆窗口]`来生成一个准确、连贯且符合用户意图的回答。
+
+             
+
+            ---
+
+             
+
+            #### **# 输入定义**
+
+            *   `[记忆窗口]`：代表之前的对话历史或背景信息。
+
+            *   `[用户问题]`：代表用户当前提出的问题。
+
+             
+
+            ---
+
+             
+
+            #### **# 判断规则**
+
+             
+
+            **首要规则：**
+
+            *   如果 `[记忆窗口]` 为空，**必须**输出 "no"。
+
+             
+
+            **特殊指令覆盖：**
+
+            *   如果 `[用户问题]` 中明确包含“无需检索知识库”或类似表述，**必须**输出 "yes"。
+
+             
+
+            **如果满足以下任一条件，输出 "yes" (代表“依赖上下文”)：**
+
+             
+
+            1.  **直接引用与显式指令**：问题直接询问、引用 `[记忆窗口]` 的内容，或包含明确指令要求基于上下文进行操作。
+
+                *   **关键词示例**：“根据上面说的”、“总结一下”、“继续”、“那这个呢？”、“详细说说”、“为什么会这样？”
+
+             
+
+            2.  **上下文延续与深化**：问题是 `[记忆窗口]` 话题的自然延续、追问、比较、要求举例、或进行推断。即使没有明确的指代词，逻辑上也紧密相连。
+
+                *   **示例**：
+
+                    *   记忆窗口：“苹果公司发布了新款iPhone。”
+
+                    *   用户问题：“它的摄像头有多少像素？”
+
+             
+
+            3.  **寻求相关替代方案**：问题在探讨与 `[记忆窗口]` 主题相关的其他选项、解决方案或可能性。
+
+                *   **示例**：
+
+                    *   记忆窗口：“A方案的优点是成本低。”
+
+                    *   用户问题：“那B方案呢？”
+
+             
+
+            **如果满足以下任一条件，输出 "no" (代表“不依赖上下文”)：**
+
+             
+
+            1.  **开启全新话题**：问题与 `[记忆窗口]` 的主题、实体、意图完全无关。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我们来讨论一下全球气候变化。”
+
+                    *   用户问题：“给我讲个笑话吧。”
+
+             
+
+            2.  **可独立回答的通用问题**：问题虽然可能与上下文主题有微弱关联，但它是一个可以独立、完整回答的通用知识性问题，无需依赖 `[记忆窗口]`
+            的具体信息。
+
+                *   **示例**：
+
+                    *   记忆窗口：“我正在看关于特斯拉Model Y的评测。”
+
+                    *   用户问题：“特斯拉是哪个国家的公司？” (这个问题本身是独立的，不需要评测的具体内容)
+
+             
+
+            ---
+
+             
+
+            #### **# 案例学习**
+
+             
+
+            *   **案例 1 (yes)**
+
+                *   `[记忆窗口]`：“AI的发展为社会带来了许多便利，例如在医疗领域的智能诊断和金融领域的风险控制。”
+
+                *   `[用户问题]`：“它在未来还可能有哪些应用？”
+
+                *   **分析**：属于“上下文延续与深化”。
+
+             
+
+            *   **案例 2 (yes)**
+
+                *   `[记忆窗口]`：“配料：面粉500克，水250克，酵母5克，糖10克。首先将酵母和糖溶于温水中。”
+
+                *   `[用户问题]`：“然后呢？”
+
+                *   **分析**：属于“直接引用与显式指令”。
+
+             
+
+            *   **案例 3 (no)**
+
+                *   `[记忆窗口]`：“我计划下周去北京旅游，有什么推荐的景点吗？”
+
+                *   `[用户问题]`：“推荐一部最近好看的电影。”
+
+                *   **分析**：属于“开启全新话题”。
+
+             
+
+            *   **案例 4 (no)**
+
+                *   `[记忆窗口]`：“iPhone 15 Pro Max采用了A17 Pro芯片，性能非常强大。”
+
+                *   `[用户问题]`：“苹果公司的股价是多少？”
+
+                *   **分析**：属于“可独立回答的通用问题”。虽然都和苹果有关，但回答股价问题无需知道芯片信息。
+
+             
+
+            *   **案例 5 (no)**
+
+                *   `[记忆窗口]`： (空)
+
+                *   `[用户问题]`：“你好。”
+
+                *   **分析**：“首要规则”。
+
+             
+
+            ---
+
+             
+
+            #### **# 输出要求**
+
+            *   严格遵循上述规则，仅输出 "yes" 或 "no"。
+
+            *   禁止添加任何解释、理由或其他无关字符。'
+        selected: false
+        title: 判断是否需要根据上下文窗口回答
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754551381078'
+      position:
+        x: 1123
+        y: 436
+      positionAbsolute:
+        x: 1123
+        y: 436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 5554128a-b7d8-46e3-9f28-5d6fc17da7be
+            value: 'no'
+            varType: string
+            variable_selector:
+            - '1754551677124'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE 2
+        type: if-else
+      height: 126
+      id: '1754551409989'
+      position:
+        x: 1791
+        y: 436
+      positionAbsolute:
+        x: 1791
+        y: 436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '问题如下：{{#sys.query#}}
+
+            '
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: /home/user/Desktop/MODELFILE/Qwen3-30B-A3B-think-2507
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 25f1b54a-d511-4a20-a778-d954d095d396
+          role: system
+          text: "## 核心任务\n严格按照以下逻辑和信息源优先级，生成一个与用户问题高度相关、准确且连贯的回答。\n\n## 信息源优先级\n1.\
+            \  **记忆窗口内容（最高）**\n2.  **（可选）外部知识库**\n3.  **模型内置知识（最低，用于补充和润色）**\n\n##\
+            \ 执行逻辑 (IF-ELSE结构)\n**IF** 用户明确表示“无需检索知识库”：\n    *   **THEN** 执行【**流程A：无知识库检索**】。\n\
+            **ELSE** (默认情况):\n    *   **THEN** 执行【**流程B：标准检索**】。\n\n---\n### 【流程A：无知识库检索】\n\
+            1.  **分析**：仅分析“记忆窗口内容”（如果存在）。\n2.  **整合**：以“记忆窗口内容”为核心，结合模型内置知识进行回答。\n\
+            3.  **生成**：生成直接回应用户问题的答案。\n\n### 【流程B：标准检索】\n1.  **分析**：分析“记忆窗口内容”、“外部知识库”中的所有相关信息。\n\
+            2.  **整合**：\n    *   以“记忆窗口内容”为最高优先级信息，整合所有来源的信息。\n    *   如果信息源之间存在冲突，优先采信“记忆窗口内容”。\n\
+            3.  **生成**：结合模型内置知识，生成一个连贯、准确且直接回应用户问题的答案。"
+        selected: false
+        title: 回答上下文窗口问题
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754551467900'
+      position:
+        x: 2550
+        y: 490
+      positionAbsolute:
+        x: 2550
+        y: 490
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754551467900.text#}}'
+        desc: ''
+        selected: false
+        title: 最终回答
+        type: answer
+        variables: []
+      height: 105
+      id: '1754551494598'
+      position:
+        x: 2884
+        y: 441
+      positionAbsolute:
+        x: 2884
+        y: 441
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nimport re\ndef main(arg1: str) -> dict:\n    clean_answer = re.sub(r'<think[^>]*>.*?</think>','',arg1,flags=re.DOTALL)\n\
+          \    final_answer = re.sub(r'^\\n+','',clean_answer)\n    return {\n   \
+          \     \"result\": final_answer,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 删除模型思考
+        type: code
+        variables:
+        - value_selector:
+          - '1754551381078'
+          - text
+          value_type: string
+          variable: arg1
+      height: 54
+      id: '1754551677124'
+      position:
+        x: 1457
+        y: 436
+      positionAbsolute:
+        x: 1457
+        y: 436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 您已开启上下文记忆功能，回答时长会有所增加，请耐心等待。如需关闭记忆功能，请点击左上角开启新对话~
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 134
+      id: '1754556756406'
+      position:
+        x: 789
+        y: 436
+      positionAbsolute:
+        x: 789
+        y: 436
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -2207.8477833771894
+      y: 16.643124922004063
+      zoom: 0.8190366978598284
